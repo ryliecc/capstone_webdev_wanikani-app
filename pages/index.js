@@ -1,7 +1,7 @@
 import { exampleData } from "../src/data.js";
 
 export default function HomePage() {
-  const VocabList = exampleData.map((item) => {
+  const VocabListItems = exampleData.map((item) => {
     const key = item.id;
     const characters = item.data.characters;
     const allReadings = item.data.readings.map((reading) => reading.reading);
@@ -15,5 +15,12 @@ export default function HomePage() {
     );
   });
 
-  return <ul>{VocabList}</ul>;
+  return (
+    <div className="list-container">
+      <ul className="vocabulary-list">
+        <h2>Vocabulary</h2>
+        {VocabListItems}
+      </ul>
+    </div>
+  );
 }

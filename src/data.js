@@ -1,4 +1,4 @@
-export default exampleData = [
+export const exampleData = [
   {
     data: {
       auxiliary_meanings: [{ type: "whitelist", meaning: "1" }],

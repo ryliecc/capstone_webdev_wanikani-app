@@ -4,14 +4,8 @@ export default function HomePage() {
   const VocabList = exampleData.map((item) => {
     const key = item.id;
     const characters = item.data.characters;
-    const allReadings = item.data.readings.map((reading) => {
-      const readings = reading.reading;
-      return { readings };
-    });
-    const allMeanings = item.data.meanings.map((meaning) => {
-      const meanings = meaning.meaning;
-      return { meanings };
-    });
+    const allReadings = item.data.readings.map((reading) => reading.reading);
+    const allMeanings = item.data.meanings.map((meaning) => meaning.meaning);
     return (
       <li className="vocabulary-item" key={key}>
         <span className="characters">{characters}</span>

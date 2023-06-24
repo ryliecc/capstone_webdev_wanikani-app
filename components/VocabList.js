@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { exampleData } from "../src/data.js";
 
+const VocabularyData = exampleData.filter(
+  (item) => item.object === "vocabulary"
+);
+
 const VocabHeader = styled.h2`
   text-align: center;
 `;
@@ -27,7 +31,7 @@ const VocabularyList = () => {
     <>
       <VocabHeader>Vocabulary</VocabHeader>
       <VocabList>
-        {exampleData.map((item) => (
+        {VocabularyData.map((item) => (
           <VocabListItem key={item.id}>
             <VocabListItemSpan>{item.data.characters}</VocabListItemSpan>
             <VocabListItemSpan>

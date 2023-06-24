@@ -29,7 +29,7 @@ const VocabListItemSpan = styled.span`
 const VocabularyList = () => {
   return (
     <>
-      <VocabHeader>Vocabulary</VocabHeader>
+      <VocabHeader>単語 - Vocabulary</VocabHeader>
       <VocabList>
         {VocabularyData.map((item) => (
           <VocabListItem key={item.id}>

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { exampleData } from "../src/data.js";
 
 const RadicalData = exampleData.filter((item) => item.type === "radical");

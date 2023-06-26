@@ -1,12 +1,12 @@
 import VocabularyList from "../components/VocabList.js";
-import Link from "next/link.js";
+import AppHeader from "../components/AppHeader.js";
+import CollectionNavBar from "../components/CollectionNavBar.js";
 
 export default function VocabularyPage() {
   return (
     <>
-      <Link href="/">Home</Link>
-      <Link href="/radicals">Radicals</Link>
-      <Link href="/kanji">Kanji</Link>
+      <AppHeader />
+      <CollectionNavBar />
       <VocabularyList />
     </>
   );

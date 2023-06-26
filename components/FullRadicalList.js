@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { exampleData } from "../src/data.js";
 
-const RadicalData = exampleData.filter((item) => item.type === "radical");
+const RadicalData = exampleData.filter((item) => item.object === "radical");
 
 const RadicalHeader = styled.h2`
   text-align: center;
@@ -19,7 +19,7 @@ const RadicalListItem = styled.li`
 `;
 
 const RadicalListItemSpan = styled.span`
-  width: 50%;
+  width: 49%;
   border: 1px solid black;
   text-align: center;
 `;

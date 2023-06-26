@@ -1,11 +1,12 @@
 import FullKanjiList from "../components/FullKanjiList.js";
+import Link from "next/link";
 
 export default function KanjiPage() {
   return (
     <>
-      <a href="/">Home</a>
-      <a href="/radicals">Radicals</a>
-      <a href="/vocabulary">Vocabulary</a>
+      <Link href="/">Home</Link>
+      <Link href="/radicals">Radicals</Link>
+      <Link href="/vocabulary">Vocabulary</Link>
       <FullKanjiList />
     </>
   );

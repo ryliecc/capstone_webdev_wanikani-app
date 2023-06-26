@@ -1,11 +1,12 @@
 import FullRadicalList from "../components/FullRadicalList.js";
+import Link from "next/link";
 
 export default function RadicalsPage() {
   return (
     <>
-      <a href="/">Home</a>
-      <a href="/kanji">Kanji</a>
-      <a href="/vocabulary">Vocabulary</a>
+      <Link href="/">Home</Link>
+      <Link href="/kanji">Kanji</Link>
+      <Link href="/vocabulary">Vocabulary</Link>
       <FullRadicalList />
     </>
   );

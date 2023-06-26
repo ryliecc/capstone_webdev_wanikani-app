@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 export default function HomePage() {
   return (
     <>
-      <a href="/radicals">Radicals</a>
-      <a href="/kanji">Kanji</a>
-      <a href="/vocabulary">Vocabulary</a>
+      <Link href="/radicals">Radicals</Link>
+      <Link href="/kanji">Kanji</Link>
+      <Link href="/vocabulary">Vocabulary</Link>
     </>
   );
 }

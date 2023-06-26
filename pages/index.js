@@ -6,8 +6,9 @@ export default function HomePage() {
   return (
     <>
       <VocabularyList />
-      <FullKanjiList />
-      <FullRadicalList />
+
+      <a href="/radicals">Radicals</a>
+      <a href="/kanji">Kanji</a>
     </>
   );
 }

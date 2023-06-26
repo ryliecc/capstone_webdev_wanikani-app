@@ -25,15 +25,20 @@ const RadicalListItemSpan = styled.span`
 
 const FullRadicalList = () => {
   return (
-    <RadicalList>
-      {RadicalData.map((item) => (
-        <RadicalListItem key={item.id}>
-          <RadicalListItemSpan>{item.data.characters}</RadicalListItemSpan>
-          <RadicalListItemSpan>
-            {item.data.meanings.map((meaning) => meaning.meaning).join(", ")}
-          </RadicalListItemSpan>
-        </RadicalListItem>
-      ))}
-    </RadicalList>
+    <>
+      <RadicalHeader>部首 - Radicals</RadicalHeader>
+      <RadicalList>
+        {RadicalData.map((item) => (
+          <RadicalListItem key={item.id}>
+            <RadicalListItemSpan>{item.data.characters}</RadicalListItemSpan>
+            <RadicalListItemSpan>
+              {item.data.meanings.map((meaning) => meaning.meaning).join(", ")}
+            </RadicalListItemSpan>
+          </RadicalListItem>
+        ))}
+      </RadicalList>
+    </>
   );
 };
+
+export default FullRadicalList;

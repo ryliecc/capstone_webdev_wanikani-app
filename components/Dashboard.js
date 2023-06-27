@@ -1,4 +1,5 @@
 import SessionButtons from "./SessionButtons";
+import LevelProgressBar from "./LevelProgressBar";
 import SubjectsNavBar from "./SubjectsNavBar";
 import styled from "styled-components";
 
@@ -24,6 +25,7 @@ export default function Dashboard() {
     <Container>
       <Greeting>頑張って!</Greeting>
       <SessionButtons />
+      <LevelProgressBar />
       <Heading>Overview:</Heading>
       <SubjectsNavBar />
     </Container>

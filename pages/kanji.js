@@ -1,12 +1,12 @@
 import FullKanjiList from "../components/FullKanjiList.js";
 import AppHeader from "../components/AppHeader.js";
-import CollectionNavBar from "../components/CollectionNavBar.js";
+import SubjectsNavBar from "../components/SubjectsNavBar.js";
 
 export default function KanjiPage() {
   return (
     <>
       <AppHeader />
-      <CollectionNavBar />
+      <SubjectsNavBar />
       <FullKanjiList />
     </>
   );

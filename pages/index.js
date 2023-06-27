@@ -1,11 +1,11 @@
 import AppHeader from "../components/AppHeader";
-import CollectionNavBar from "../components/CollectionNavBar";
+import SubjectsNavBar from "../components/SubjectsNavBar";
 
 export default function HomePage() {
   return (
     <>
       <AppHeader />
-      <CollectionNavBar />
+      <SubjectsNavBar />
     </>
   );
 }

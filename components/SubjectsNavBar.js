@@ -11,7 +11,7 @@ const NavLink = styled.a`
   font-weight: 700;
 `;
 
-export default function CollectionNavBar() {
+export default function SubjectsNavBar() {
   return (
     <NavBar>
       <NavLink href="/radicals">部首 - Radicals</NavLink>

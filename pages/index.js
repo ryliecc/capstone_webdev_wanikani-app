@@ -1,11 +1,11 @@
 import AppHeader from "../components/AppHeader";
-import CollectionNavBar from "../components/CollectionNavBar";
+import Dashboard from "../components/Dashboard";
 
 export default function HomePage() {
   return (
     <>
       <AppHeader />
-      <CollectionNavBar />
+      <Dashboard />
     </>
   );
 }

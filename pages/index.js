@@ -1,13 +1,11 @@
 import AppHeader from "../components/AppHeader";
-import SessionButtons from "../components/SessionButtons";
-import SubjectsNavBar from "../components/SubjectsNavBar";
+import Dashboard from "../components/Dashboard";
 
 export default function HomePage() {
   return (
     <>
       <AppHeader />
-      <SessionButtons />
-      <SubjectsNavBar />
+      <Dashboard />
     </>
   );
 }

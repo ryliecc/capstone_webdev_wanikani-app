@@ -6,15 +6,16 @@ const ButtonElement = styled.button`
   height: 5rem;
   background-color: props.color;
   display: grid;
-  grid-template-areas: "svg" "text"; "svg" "number";
-  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "svg text" "svg number";
+  grid-template-columns: 1fr 1fr;
 `;
 
 const ButtonIllustration = styled.svg`
   grid-area: svg;
-  border-radius: 24px;
   xmlns: "http://www.w3.org/2000/svg";
   viewbox: "0 0 22 22";
+  margin: 0;
+  padding: 0;
 `;
 
 const ButtonText = styled.span`

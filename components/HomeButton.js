@@ -3,6 +3,7 @@ import styled from "styled-components";
 const HomeButtonElement = styled.button`
   border: none;
   background-color: transparent;
+  align-self: start;
 `;
 
 const HomeSVG = styled.svg`

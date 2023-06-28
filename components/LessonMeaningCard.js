@@ -60,24 +60,19 @@ export default function LessonMeaningCard({ backgroundColor, textColor }) {
         <MainContainer>
           <MainTitle color={textColor}>Meaning Explanation</MainTitle>
           <MainContent color={textColor}>
-            One morning, when Gregor Samsa woke from troubled dreams, he found
-            himself transformed in his bed into a horrible vermin. He lay on his
-            armour-like back, and if he lifted his head a little he could see
-            his brown belly, slightly domed and divided by arches into stiff
-            sections. The bedding was hardly able to cover it and seemed ready
-            to slide off any moment. His many legs, pitifully thin compared with
-            the size of the rest of him, waved about helplessly as he looked.
+            おはよう is a casual way to say &quot;good morning.&quot; It can
+            also be written in kanji, but hiragana is much more common.
           </MainContent>
         </MainContainer>
         <SidebarContainer>
           <SidebarFirstTitle color={textColor}>
             Other Meanings
           </SidebarFirstTitle>
-          <SidebarFirstContent color={textColor}>
-            One morning, when Gregor{" "}
-          </SidebarFirstContent>
+          <SidebarFirstContent color={textColor}>Morning</SidebarFirstContent>
           <SidebarSecondTitle color={textColor}>Word Type</SidebarSecondTitle>
-          <SidebarSecondContent color={textColor}>One</SidebarSecondContent>
+          <SidebarSecondContent color={textColor}>
+            expression
+          </SidebarSecondContent>
         </SidebarContainer>
       </CardContainer>
     </>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import LessonMeaningCard from "./LessonMeaningCard.js";
+import LessonContextCard from "./LessonContextCard.js";
 
 const Container = styled.div`
   width: 100%;
@@ -19,16 +20,16 @@ const MenuItem = styled.button`
 `;
 
 export default function LessonSessionMenuBar({ backgroundColor, textColor }) {
-  let [meaningVisibility, setMeaningVisibility] = useState("visible");
+  let [displayedCard, setDisplayedCard] = useState(<LessonMeaningCard />);
 
   function handleClickMeaning() {
-    console.log("clicked");
-    setMeaningVisibility("visible");
+    setDisplayedCard(<LessonMeaningCard />);
   }
 
   function handleClickContext() {
-    setMeaningVisibility("hidden");
+    setDisplayedCard(<LessonContextCard />);
   }
+
   return (
     <>
       <Container color={backgroundColor}>
@@ -39,10 +40,7 @@ export default function LessonSessionMenuBar({ backgroundColor, textColor }) {
           Context
         </MenuItem>
       </Container>
-      <LessonMeaningCard
-        backgroundColor="gray"
-        visibility={meaningVisibility}
-      />
+      {displayedCard}
     </>
   );
 }

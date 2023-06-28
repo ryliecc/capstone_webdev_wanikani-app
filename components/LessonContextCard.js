@@ -9,11 +9,18 @@ const CardContainer = styled.div`
   visibility: props.visibility;
 `;
 
+const FirstTitle = styled.h3``;
+
+const SecondTitle = styled.h3``;
+
+const ThirdTitle = styled.h3``;
+
 export default function LessonContextCard(visibility, backgroundColor) {
   return (
-    <CardContainer
-      color={backgroundColor}
-      visibility={visibility}
-    ></CardContainer>
+    <CardContainer color={backgroundColor} visibility={visibility}>
+      <FirstTitle>Patterns of Use</FirstTitle>
+      <SecondTitle>Common Word Combinations</SecondTitle>
+      <ThirdTitle>Context Sentences</ThirdTitle>
+    </CardContainer>
   );
 }

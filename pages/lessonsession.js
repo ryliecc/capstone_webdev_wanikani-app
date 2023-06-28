@@ -1,9 +1,8 @@
 import HomeButton from "../components/HomeButton.js";
 import SessionItem from "../components/SessionItem.js";
-import SessionMenuBar from "../components/SessionMenuBar.js";
+import LessonSessionMenuBar from "../components/LessonSessionMenuBar.js";
 
 export default function LessonSessionPage() {
-  const menuItems = ["Meaning", "Context"];
   return (
     <>
       <SessionItem
@@ -14,11 +13,7 @@ export default function LessonSessionPage() {
       >
         <HomeButton />
       </SessionItem>
-      <SessionMenuBar
-        backgroundColor="white"
-        textColor="black"
-        menuItems={menuItems}
-      />
+      <LessonSessionMenuBar backgroundColor="white" textColor="black" />
     </>
   );
 }

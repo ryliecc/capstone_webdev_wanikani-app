@@ -6,7 +6,6 @@ const CardContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  visibility: props.visibility;
 `;
 
 const MainContainer = styled.section`
@@ -54,14 +53,10 @@ const SidebarSecondContent = styled.p`
   color: props.color;
 `;
 
-export default function LessonMeaningCard({
-  backgroundColor,
-  textColor,
-  visibility,
-}) {
+export default function LessonMeaningCard({ backgroundColor, textColor }) {
   return (
     <>
-      <CardContainer color={backgroundColor} visibility={visibility}>
+      <CardContainer color={backgroundColor}>
         <MainContainer>
           <MainTitle color={textColor}>Meaning Explanation</MainTitle>
           <MainContent color={textColor}>

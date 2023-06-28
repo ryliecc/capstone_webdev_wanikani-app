@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 import LessonMeaningCard from "./LessonMeaningCard.js";
 
 const Container = styled.div`
@@ -10,19 +11,38 @@ const Container = styled.div`
   justify-content: space-evenly;
 `;
 
-const MenuItemSpan = styled.span`
+const MenuItem = styled.button`
   color: props.color;
   font-size: 1.5em;
+  type: button;
+  onclick: props.onClick;
 `;
 
 export default function LessonSessionMenuBar({ backgroundColor, textColor }) {
+  let [meaningVisibility, setMeaningVisibility] = useState("visible");
+
+  function handleClickMeaning() {
+    console.log("clicked");
+    setMeaningVisibility("visible");
+  }
+
+  function handleClickContext() {
+    setMeaningVisibility("hidden");
+  }
   return (
     <>
       <Container color={backgroundColor}>
-        <MenuItemSpan color={textColor}>Meaning</MenuItemSpan>
-        <MenuItemSpan color={textColor}>Context</MenuItemSpan>
+        <MenuItem color={textColor} onClick={handleClickMeaning}>
+          Meaning
+        </MenuItem>
+        <MenuItem color={textColor} onClick={handleClickContext}>
+          Context
+        </MenuItem>
       </Container>
-      <LessonMeaningCard backgroundColor={backgroundColor} />
+      <LessonMeaningCard
+        backgroundColor="gray"
+        visibility={meaningVisibility}
+      />
     </>
   );
 }

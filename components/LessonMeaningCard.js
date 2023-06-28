@@ -6,6 +6,7 @@ const CardContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  visibility: props.visibility;
 `;
 
 const MainContainer = styled.section`
@@ -53,10 +54,14 @@ const SidebarSecondContent = styled.p`
   color: props.color;
 `;
 
-export default function LessonMeaningCard({ backgroundColor, textColor }) {
+export default function LessonMeaningCard({
+  backgroundColor,
+  textColor,
+  visibility,
+}) {
   return (
     <>
-      <CardContainer color={backgroundColor}>
+      <CardContainer color={backgroundColor} visibility={visibility}>
         <MainContainer>
           <MainTitle color={textColor}>Meaning Explanation</MainTitle>
           <MainContent color={textColor}>
@@ -67,8 +72,6 @@ export default function LessonMeaningCard({ backgroundColor, textColor }) {
             sections. The bedding was hardly able to cover it and seemed ready
             to slide off any moment. His many legs, pitifully thin compared with
             the size of the rest of him, waved about helplessly as he looked.
-            "What's happened to me?" he thought. It wasn't a dream. His room, a
-            proper human{" "}
           </MainContent>
         </MainContainer>
         <SidebarContainer>

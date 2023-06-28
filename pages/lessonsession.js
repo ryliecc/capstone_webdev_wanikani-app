@@ -12,8 +12,6 @@ export default function LessonSessionPage() {
       >
         <HomeButton />
       </SessionItem>
-
-      <h1>Lesson Session</h1>
     </>
   );
 }

@@ -26,7 +26,7 @@ export default function Dashboard() {
       <Greeting>頑張って!</Greeting>
       <SessionButton
         ButtonColor="var(--secondary-color)"
-        onClick={() => (window.location.href = "/")}
+        onClick={() => (window.location.href = "/lessonsession")}
         ButtonText="Lessons:"
         ButtonNumber="10"
         SvgPath="M15 1v1h2v1h1v1h1v1h1v2h1v8h-1v2h-1v1h-1v1h-1v1h-2v1H7v-1H5v-1H4v-1H3v-1H2v-2H1V7h1V5h1V4h1V3h1V2h2V1h8M8 6v10h6v-2h-4V6H8Z"

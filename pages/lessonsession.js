@@ -4,6 +4,7 @@ export default function LessonSession() {
   return (
     <>
       <HomeButton />
+      <h1>Lesson Session</h1>
     </>
   );
 }

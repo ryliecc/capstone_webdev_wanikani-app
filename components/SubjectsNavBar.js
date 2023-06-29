@@ -3,8 +3,7 @@ import styled from "styled-components";
 const NavBar = styled.nav`
   display: flex;
   width: 100%;
-  justify-content: stretch;
-  gap: 0.3rem;
+  margin-top: 0.5rem;
 `;
 
 const NavLink = styled.a.attrs((props) => ({
@@ -17,6 +16,8 @@ const NavLink = styled.a.attrs((props) => ({
   width: 33%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin: 0.3rem;
   background-color: ${(props) => props.$backgroundcolor};
   border-radius: 5px;
   border-bottom: 3px solid ${(props) => props.$bordercolor};

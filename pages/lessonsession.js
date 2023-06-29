@@ -5,15 +5,10 @@ import LessonSessionMenuBar from "../components/LessonSessionMenuBar.js";
 export default function LessonSessionPage() {
   return (
     <>
-      <SessionItem
-        backgroundColor="black"
-        textColor="white"
-        itemText="おはよう"
-        itemMeaningText="Good Morning"
-      >
+      <SessionItem itemText="おはよう" itemMeaningText="Good Morning">
         <HomeButton />
       </SessionItem>
-      <LessonSessionMenuBar backgroundColor="white" textColor="black" />
+      <LessonSessionMenuBar />
     </>
   );
 }

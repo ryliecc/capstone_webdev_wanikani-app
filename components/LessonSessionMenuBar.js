@@ -5,7 +5,7 @@ import LessonContextCard from "./LessonContextCard.js";
 
 const Container = styled.div`
   width: 100%;
-  background-color: props.color;
+  background-color: #ececec;
   height: 3em;
   display: flex;
   flex-direction: row;
@@ -13,9 +13,10 @@ const Container = styled.div`
 `;
 
 const MenuItem = styled.button`
-  color: props.color;
+  color: #333;
   font-size: 1.5em;
   type: button;
+  border: none;
   onclick: props.onClick;
 `;
 

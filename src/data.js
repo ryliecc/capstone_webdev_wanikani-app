@@ -1092,4 +1092,429 @@ export const exampleData = [
     object: "radical",
     url: "https://api.example.url/radical/wanikani",
   },
+  {
+    data: {
+      auxiliary_meanings: [],
+      characters: "刀",
+      created_at: "2012-02-27T19:55:19.000000Z",
+      hidden_at: null,
+      lesson_position: 34,
+      level: 2,
+      meaning_hint:
+        "This kanji also looks a lot like the kanji <ja>力</ja>. To avoid getting them confused, remember that this one is missing the little nubbin at the top, because 90% of the power comes from the sword to cut your enemies down (which is why the sword kanji is 90% of the power kanji).",
+      meaning_mnemonic:
+        "The radical and the meaning of this kanji are almost the same! The radical is <radical>sword</radical>, but we're learning Japanese, so can you name a Japanese <kanji>sword</kanji>? That's right, the most common is a <kanji>katana</kanji>, which happens to be the meaning of this kanji as well.",
+      meanings: [
+        { meaning: "Sword", primary: true, accepted_answer: true },
+        { meaning: "Katana", primary: false, accepted_answer: true },
+      ],
+      reading_hint:
+        "Imagine trying to travel to <ja>とうきょう</ja> with your katana. Airport security is not happy with you trying to take a katana on the plane, so you get a full cavity search. I hope you don't have any other swords hidden anywhere.",
+      reading_mnemonic:
+        "So now you have this sweet <kanji>katana</kanji> in your hands and you're swinging it around like an idiot. Feel free to make whooshing noises as you swing it around. To become a master katana wielder, you decide to travel to <ja><reading>とう</reading>きょう</ja> (That's Tokyo!). <ja>とうきょう</ja> has the best sword and katana schools in the world, so it makes sense to travel to <ja>とうきょう</ja>.",
+      readings: [
+        {
+          accepted_answer: true,
+          primary: true,
+          reading: "とう",
+          type: "onyomi",
+        },
+        {
+          accepted_answer: false,
+          primary: false,
+          reading: "かたな",
+          type: "kunyomi",
+        },
+      ],
+      slug: "刀",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2022-11-24T09:21:30.749670Z",
+    id: 36,
+    object: "kanji",
+    url: "https://api.example.url/kanji/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [],
+      characters: "土",
+      created_at: "2012-02-27T19:55:19.000000Z",
+      hidden_at: null,
+      lesson_position: 35,
+      level: 2,
+      meaning_hint:
+        "As long as you know the radical dirt, you know the kanji dirt.",
+      meaning_mnemonic:
+        "The <radical>dirt</radical> radical and the <kanji>dirt</kanji> kanji are the same!",
+      meanings: [
+        { meaning: "Dirt", primary: true, accepted_answer: true },
+        { meaning: "Soil", primary: false, accepted_answer: true },
+        { meaning: "Earth", primary: false, accepted_answer: true },
+        { meaning: "Ground", primary: false, accepted_answer: true },
+      ],
+      reading_hint: "Dogs and dirt just go together!",
+      reading_mnemonic:
+        "Who spends a lot of time in <kanji>dirt</kanji>? <reading>Do</reading>gs (<ja>ど</ja>) do! Dogs dig in dirt, they roll in dirt, sometimes they try to eat dirt (which isn't so great).",
+      readings: [
+        {
+          accepted_answer: true,
+          primary: true,
+          reading: "ど",
+          type: "onyomi",
+        },
+        {
+          accepted_answer: true,
+          primary: false,
+          reading: "と",
+          type: "onyomi",
+        },
+        {
+          accepted_answer: false,
+          primary: false,
+          reading: "つち",
+          type: "kunyomi",
+        },
+      ],
+      slug: "土",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2022-11-24T09:21:30.749670Z",
+    id: 37,
+    object: "kanji",
+    url: "https://api.example.url/kanji/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [
+        { type: "whitelist", meaning: "1000" },
+        { type: "whitelist", meaning: "1,000" },
+      ],
+      characters: "千",
+      created_at: "2012-02-27T19:55:19.000000Z",
+      hidden_at: null,
+      lesson_position: 36,
+      level: 2,
+      meaning_hint:
+        "As long as you know the radical <radical>thousand</radical> then you know the kanji <kanji>thousand</kanji> as well!",
+      meaning_mnemonic:
+        "This kanji looks like and means the same thing as the radical, which makes it particularly easy to remember.",
+      meanings: [{ meaning: "Thousand", primary: true, accepted_answer: true }],
+      reading_hint:
+        "But, the problem is even though you have a <kanji>thousand</kanji> <reading>cents</reading> in your pocket, you can't get them out. You're stuck under all these crosses. So, your savior just shrugs and runs off, he won't help you anymore. Feel the desperateness of the situation to help yourself remember the kanji better. Hear the coins falling on the ground.",
+      reading_mnemonic: `Remember the thousand crosses you got stuck under while learning the radical <ja>千</ja>? You're still under it. Then, suddenly, someone pops his head over you and says "Hey, I'll save you... but only for a <kanji>thousand</kanji> <reading>cents</reading> (<ja>せん</ja>). Go ahead and try to calculate what that would come out to. It's not that expensive, actually.`,
+      readings: [
+        {
+          accepted_answer: true,
+          primary: true,
+          reading: "せん",
+          type: "onyomi",
+        },
+        {
+          accepted_answer: false,
+          primary: false,
+          reading: "ち",
+          type: "kunyomi",
+        },
+      ],
+      slug: "千",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2022-11-24T09:21:30.749670Z",
+    id: 38,
+    object: "kanji",
+    url: "https://api.example.url/kanji/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [],
+      characters: "夕",
+      created_at: "2012-02-27T19:55:19.000000Z",
+      hidden_at: null,
+      lesson_position: 37,
+      level: 2,
+      meaning_hint: "Do what you're meant to do. Study those radicals!",
+      meaning_mnemonic:
+        "The <radical>evening</radical> radical and the <kanji>evening</kanji> kanji are the same. If you know the radical you know the meaning of the kanji.",
+      meanings: [{ meaning: "Evening", primary: true, accepted_answer: true }],
+      reading_hint: `Young people love staying up the entire evening doing youth-people things, and it's really obnoxious for us curmudgeonly folk.\r\n\r\nNote: All the <ja>ゆう</ja> readings will use the word "youths" for the reading mnemonic. You can think of these "youths" as a group of younger people who cause a lot of the problems in this world, just like how people treat millennials nowadays.`,
+      reading_mnemonic:
+        "The <kanji>evening</kanji> is when all the <reading>you</reading>ths (<ja>ゆう</ja>) come outside to play.",
+      readings: [
+        {
+          accepted_answer: true,
+          primary: true,
+          reading: "せき",
+          type: "onyomi",
+        },
+        {
+          accepted_answer: false,
+          primary: false,
+          reading: "ゆう",
+          type: "kunyomi",
+        },
+      ],
+      slug: "夕",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2022-11-24T09:21:30.749670Z",
+    id: 39,
+    object: "kanji",
+    url: "https://api.example.url/kanji/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [],
+      characters: "子",
+      created_at: "2012-02-27T19:55:19.000000Z",
+      hidden_at: null,
+      lesson_position: 38,
+      level: 2,
+      meaning_hint:
+        "So, if you know your radicals, you know your kanji as well! This won't last forever (where radicals are exactly the same as the kanji) so enjoy it while the kanji are still small and simple!",
+      meaning_mnemonic:
+        "The <radical>child</radical> radical and the <kanji>child</kanji> kanji are exactly the same.",
+      meanings: [
+        { meaning: "Child", primary: true, accepted_answer: true },
+        { meaning: "Kid", primary: false, accepted_answer: true },
+      ],
+      reading_hint:
+        "The child runs away and you chase after it. Every time it's about to turn a corner it looks like a sheep in a suit again, but whenever you yell and point, it turns back. You're the only one who can see this sheep suit child!!",
+      reading_mnemonic:
+        "To remember the sounds  <ja>し</ja> and <ja>す</ja> we'll use these mnemonics:\r\n\r\nThere is a <kanji>child</kanji> standing in front of you. You look closely at the child but something seems wrong. You rub your eyes and when you open them again there is a <reading>shee</reading>p (<ja>し</ja>) in a <reading>su</reading>it (<ja>す</ja>) in front of you. You yelp, blink, and it's back to being a child. Are... all children really just sheep in suits?!",
+      readings: [
+        {
+          accepted_answer: true,
+          primary: true,
+          reading: "し",
+          type: "onyomi",
+        },
+        {
+          accepted_answer: true,
+          primary: true,
+          reading: "す",
+          type: "onyomi",
+        },
+        {
+          accepted_answer: false,
+          primary: false,
+          reading: "こ",
+          type: "kunyomi",
+        },
+      ],
+      slug: "子",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2022-11-24T09:21:30.749670Z",
+    id: 40,
+    object: "kanji",
+    url: "https://api.example.url/kanji/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [],
+      characters: "刀",
+      context_sentences: [
+        {
+          en: "My sword was stolen by that samurai.",
+          ja: "あのさむらいに、刀をぬすまれたんだ。",
+        },
+        {
+          en: "That American has two katanas.",
+          ja: "あのアメリカ人は刀を二ほんもっている。",
+        },
+        {
+          en: "Who’s the guy who just whipped out a sword?",
+          ja: "スラリと刀をぬいたあのおとこはだれだ？",
+        },
+      ],
+      created_at: "2012-02-28T08:04:47.000000Z",
+      hidden_at: null,
+      lesson_position: 72,
+      level: 2,
+      meaning_mnemonic:
+        "The kanji and the word are exactly the same. That means they share meanings as well!",
+      meanings: [
+        { meaning: "Sword", primary: true, accepted_answer: true },
+        { meaning: "Katana", primary: false, accepted_answer: true },
+      ],
+      parts_of_speech: ["noun"],
+      reading_mnemonic:
+        "Since this word is made up of a single kanji, it uses the kun'yomi reading. I'm hoping you already know this word - that will make everything much easier. It's <reading>かたな</reading> (you know what a katana is, right?).",
+      readings: [{ primary: true, reading: "かたな", accepted_answer: true }],
+      slug: "刀",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2023-05-01T11:39:37.488584Z",
+    id: 41,
+    object: "vocabulary",
+    url: "https://api.example.url/vocabulary/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [],
+      characters: "土",
+      context_sentences: [
+        { en: "This is Koshien’s dirt.", ja: "これは、こうしえんの土です。" },
+        {
+          en: "If you bury seven of these marbles, you will hear the voice of heaven.",
+          ja: "このビー玉を七つ土にうめたら、天のこえがきこえます。",
+        },
+        {
+          en: "Matt’s hobby is digging dirt.",
+          ja: "マットのしゅみは、土をほりあげることだ。",
+        },
+      ],
+      created_at: "2012-02-28T08:04:47.000000Z",
+      hidden_at: null,
+      lesson_position: 73,
+      level: 2,
+      meaning_mnemonic:
+        "The kanji and the word are exactly the same. That means they share meanings as well.",
+      meanings: [
+        { meaning: "Soil", primary: true, accepted_answer: true },
+        { meaning: "Earth", primary: false, accepted_answer: true },
+        { meaning: "Ground", primary: false, accepted_answer: true },
+        { meaning: "Dirt", primary: false, accepted_answer: true },
+      ],
+      parts_of_speech: ["noun"],
+      reading_mnemonic:
+        "Since this word is made up of a single kanji, it uses the kun'yomi reading. Here's a mnemonic to help you to remember it: \r\n\r\nYou look through the soil. You're trying to find something. As you dig and sift, you come across not one but <reading>two chee</reading>ses (<ja>つち</ja>). Pull them out of the ground and put them in your mouth. How do the two cheeses taste and compare?",
+      readings: [{ primary: true, reading: "つち", accepted_answer: true }],
+      slug: "土",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2023-05-01T11:39:37.488584Z",
+    id: 42,
+    object: "vocabulary",
+    url: "https://api.example.url/vocabulary/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [
+        { type: "whitelist", meaning: "1000" },
+        { type: "whitelist", meaning: "1,000" },
+        { type: "whitelist", meaning: "One thousand" },
+        { type: "whitelist", meaning: "1 Thousand" },
+        { type: "blacklist", meaning: "Ten thousand" },
+      ],
+      characters: "千",
+      context_sentences: [
+        {
+          en: "This cookbook is one thousand yen.",
+          ja: "このりょうりの本は、千円です。",
+        },
+        {
+          en: "That French person is a one-in-a-thousand genius.",
+          ja: "そのフランス人は、千に一人の天才です。",
+        },
+        {
+          en: "I ate a thousand rice flour dumplings.",
+          ja: "白玉を千こたべた。",
+        },
+      ],
+      created_at: "2012-02-28T08:04:47.000000Z",
+      hidden_at: null,
+      lesson_position: 74,
+      level: 2,
+      meaning_mnemonic:
+        "The kanji and the word are exactly the same. That means they share meanings as well.",
+      meanings: [{ meaning: "Thousand", primary: true, accepted_answer: true }],
+      parts_of_speech: ["numeral"],
+      reading_mnemonic:
+        "Normally a single kanji making up a word like this means it will use the kun'yomi readings. Numbers are generally the exception, though, which means this word uses the on'yomi reading. If you learned the kanji, then you should already know this!",
+      readings: [{ primary: true, reading: "せん", accepted_answer: true }],
+      slug: "千",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2023-05-01T11:39:37.488584Z",
+    id: 43,
+    object: "vocabulary",
+    url: "https://api.example.url/vocabulary/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [
+        { type: "whitelist", meaning: "1000" },
+        { type: "whitelist", meaning: "1,000" },
+        { type: "whitelist", meaning: "a thousand" },
+        { type: "whitelist", meaning: "1 thousand" },
+        { type: "blacklist", meaning: "ten thousand" },
+        { type: "blacklist", meaning: "Two thousand" },
+      ],
+      characters: "一千",
+      context_sentences: [
+        {
+          en: "Ten million people gathered at the live show.",
+          ja: "そのライブには、一千まん人があつまった。",
+        },
+        {
+          en: "That katana is one thousand yen.",
+          ja: "その刀は、一千えんです。",
+        },
+        {
+          en: "I farted at an elevation of 1000 feet.",
+          ja: "一千フィートのたかさでおならをした。",
+        },
+      ],
+      created_at: "2012-02-28T08:04:47.000000Z",
+      hidden_at: null,
+      lesson_position: 75,
+      level: 2,
+      meaning_mnemonic:
+        "If you have one thousand, you have <vocabulary>one thousand</vocabulary>.",
+      meanings: [
+        { meaning: "One Thousand", primary: true, accepted_answer: true },
+      ],
+      parts_of_speech: ["numeral"],
+      reading_mnemonic:
+        "This is a jukugo word, which usually means on'yomi readings from the kanji. If you know the readings of your kanji you'll know how to read this as well. The only thing that's a bit weird is the reading of the <ja>一</ja>. The <ja>ち</ja> turns into a small <ja>っ</ja>, making the reading for this word <ja><reading>いっせん</reading></ja>.",
+      readings: [{ primary: true, reading: "いっせん", accepted_answer: true }],
+      slug: "一千",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2023-05-01T11:39:37.488584Z",
+    id: 44,
+    object: "vocabulary",
+    url: "https://api.example.url/vocabulary/wanikani",
+  },
+  {
+    data: {
+      auxiliary_meanings: [],
+      characters: "夕べ",
+      context_sentences: [
+        {
+          en: "I went to a party last night.",
+          ja: "夕べ、パーティーにいきました。",
+        },
+        {
+          en: "The prince in Denmark invited two French people to a musical evening.",
+          ja: "デンマークの王子はフランス人二人をおんがくの夕べにしょうたいしました。",
+        },
+        {
+          en: "Last night I wrote the kanji for meat on my forehead.",
+          ja: "夕べ、ひたいに肉とかいてみた。",
+        },
+      ],
+      created_at: "2012-02-28T08:04:47.000000Z",
+      hidden_at: null,
+      lesson_position: 76,
+      level: 2,
+      meaning_mnemonic:
+        "I spent all <kanji>evening</kanji> in <reading>be</reading>(<ja>べ</ja>)d  <vocabulary>last night</vocabulary>. It was a really chilled <vocabulary>evening</vocabulary>.",
+      meanings: [
+        { meaning: "Last Night", primary: true, accepted_answer: true },
+        { meaning: "Evening", primary: false, accepted_answer: true },
+      ],
+      parts_of_speech: ["noun"],
+      reading_mnemonic:
+        "When hiragana is attached to a kanji, you can usually assume that that kanji is going to be read using the kun'yomi reading, which is exactly what's going on with this word as well. By learning this word's kanji you've also learned the reading for this word.",
+      readings: [{ primary: true, reading: "ゆうべ", accepted_answer: true }],
+      slug: "夕べ",
+      spaced_repetition_system_id: 2,
+    },
+    data_updated_at: "2023-05-01T11:39:37.488584Z",
+    id: 45,
+    object: "vocabulary",
+    url: "https://api.example.url/vocabulary/wanikani",
+  },
 ];

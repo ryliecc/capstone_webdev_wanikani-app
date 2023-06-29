@@ -1,47 +1,77 @@
 import styled from "styled-components";
 
-const ButtonElement = styled.button`
-  border-radius: 24px;
-  width: 70%;
+const ButtonElement = styled.button.attrs((props) => ({
+  type: "button",
+  $color: props.$color,
+  $bordercolor: props.$bordercolor,
+}))`
+  border: none;
+  border-bottom: 3px solid ${(props) => props.$bordercolor};
+  border-radius: 7px;
+  width: 80%;
   height: 5rem;
-  background-color: props.color;
+  background-color: ${(props) => props.$color};
   display: grid;
-  grid-template-areas: "svg text" "svg number";
-  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "svg svg" "text number";
+  justify-content: space-evenly;
+  padding: 0.5rem;
 `;
 
 const ButtonIllustration = styled.svg`
   grid-area: svg;
   xmlns: "http://www.w3.org/2000/svg";
-  viewbox: "0 0 22 22";
-  margin: 0;
-  padding: 0;
+  viewbox: "0 0 24 24";
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+const ButtonIllustrationPath = styled.path``;
 
 const ButtonTextSpan = styled.span`
   grid-area: text;
-  color: var(--secondary-text-color);
+  color: #ffffff;
+  align-self: center;
+  font-size: 1.5rem;
 `;
 
-const ButtonNumberSpan = styled.span`
+const ButtonNumberSpan = styled.span.attrs((props) => ({
+  $color: props.$color,
+  $backgroundcolor: props.$backgroundcolor,
+}))`
   grid-area: number;
-  color: var(--secondary-text-color);
+  border-radius: 25px;
+  background-color: ${(props) => props.$backgroundcolor};
+  color: ${(props) => props.$color};
+  width: 4rem;
+  padding: 0.3em;
+  margin-right: 0;
+  font-size: 1.2rem;
 `;
 
 export default function SessionButton({
   ButtonColor,
+  ButtonBorderColor,
   ButtonText,
+  ButtonTextColor,
   ButtonNumber,
   SvgPath,
   onClick,
 }) {
   return (
-    <ButtonElement color={ButtonColor} onClick={onClick}>
+    <ButtonElement
+      $color={ButtonColor}
+      $bordercolor={ButtonBorderColor}
+      onClick={onClick}
+    >
       <ButtonIllustration>
-        <path d={SvgPath} />
+        <ButtonIllustrationPath d={SvgPath} />
       </ButtonIllustration>
+
       <ButtonTextSpan>{ButtonText}</ButtonTextSpan>
-      <ButtonNumberSpan>{ButtonNumber}</ButtonNumberSpan>
+      <ButtonNumberSpan $color={ButtonColor} $backgroundcolor={ButtonTextColor}>
+        {ButtonNumber}
+      </ButtonNumberSpan>
     </ButtonElement>
   );
 }

@@ -9,6 +9,7 @@ const Container = styled.div`
   align-items: center;
   gap: 1em;
   background-color: #ececec;
+  padding: 0.5em;
 `;
 
 const Greeting = styled.p`
@@ -17,10 +18,12 @@ const Greeting = styled.p`
   border-radius: 5px;
   padding: 1rem;
   margin-top: 0.5em;
+  color: #333;
 `;
 
 const Heading = styled.h2`
   font-size: 1.5rem;
+  color: #333;
 `;
 
 export default function Dashboard() {

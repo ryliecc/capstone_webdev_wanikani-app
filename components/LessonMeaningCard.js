@@ -1,56 +1,59 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  border: 1px solid black;
-  background-color: props.color;
-  width: 100%;
+  background-color: #fafafa;
+  margin: 0.8em;
+  padding: 0.4em;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
+  height: 30em;
 `;
 
 const MainContainer = styled.section`
   width: 75%;
   display: flex;
   flex-direction: column;
-  background-color: transparent;
+  gap: 0.4em;
 `;
 
 const MainTitle = styled.h3`
-  color: props.color;
-  background-color: transparent;
+  color: #333;
 `;
 
 const MainContent = styled.p`
-  background-color: transparent;
-  color: props.color;
+  color: #333;
 `;
 
 const SidebarContainer = styled.section`
   border: none;
-  border-left: 1px solid black;
+  border-left: 2px solid #333;
   display: flex;
   flex-direction: column;
-  background-color: transparent;
+  align-items: stretch;
+  gap: 0.2em;
+  padding: 0.4em;
 `;
 
 const SidebarFirstTitle = styled.h3`
-  color: props.color;
-  background-color: transparent;
+  color: #333;
+  font-size: 1.2em;
 `;
 
 const SidebarFirstContent = styled.p`
-  background-color: transparent;
-  color: props.color;
+  color: #333;
+  font-size: 1em;
+  margin-bottom: 1em;
 `;
 
 const SidebarSecondTitle = styled.h3`
-  color: props.color;
-  background-color: transparent;
+  color: #333;
+  font-size: 1.2em;
 `;
 
 const SidebarSecondContent = styled.p`
-  background-color: transparent;
-  color: props.color;
+  color: #333;
+  font-size: 1em;
 `;
 
 export default function LessonMeaningCard({ backgroundColor, textColor }) {

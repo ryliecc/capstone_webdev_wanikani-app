@@ -7,10 +7,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: transparent;
   }
 
   body {
     margin: 0;
-    font-family: system-ui;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 `;

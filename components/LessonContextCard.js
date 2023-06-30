@@ -15,9 +15,12 @@ const FirstTitle = styled.h3`
   color: #333;
 `;
 
-const Pattern = styled.div.attrs((props) => ({
+const Pattern = styled.button.attrs((props) => ({
   $backgroundcolor: props.$backgroundcolor,
 }))`
+  type: "button";
+  border: none;
+  text-align: start;
   color: #333;
   background-color: ${(props) => props.$backgroundcolor};
 `;

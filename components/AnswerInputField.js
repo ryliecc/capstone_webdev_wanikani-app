@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as ChevronRightSVG } from "../src/heroicons/chevron-right.svg";
+import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 
 const AnswerFormContainer = styled.div`
   display: flex;
@@ -32,14 +32,13 @@ const EnterButton = styled.button`
   border: none;
   width: 5em;
   height: 100%;
+  position: relative;
+  right: 0.8em;
 `;
 
-const EnterButtonImage = styled.img.attrs((props) => ({
-  $src: props.$src,
-}))`
-  src: ${(props) => props.$src};
+const EnterButtonImage = styled(ChevronRightSVG)`
   height: 2em;
-  width: 2em;
+  width: 100%;
   border: none;
 `;
 
@@ -49,7 +48,7 @@ export default function AnswerInputField({ placeholderText }) {
       <AnswerForm>
         <AnswerField placeholder={placeholderText} />
         <EnterButton>
-          <EnterButtonImage $src={ChevronRightSVG} />
+          <EnterButtonImage />
         </EnterButton>
       </AnswerForm>
     </AnswerFormContainer>

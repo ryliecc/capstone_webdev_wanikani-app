@@ -3,7 +3,7 @@ import HomeButton from "./HomeButton";
 
 const Container = styled.div`
   width: 100%;
-  height: 15em;
+  height: 14em;
   background-color: #aa00ff;
   display: flex;
   flex-direction: column;

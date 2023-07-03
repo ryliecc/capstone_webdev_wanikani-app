@@ -48,7 +48,7 @@ export default function Dashboard() {
       <SessionButton
         ButtonColor="#00aaff"
         ButtonBorderColor="#0088cc"
-        onClick={() => (window.location.href = "/")}
+        onClick={() => (window.location.href = "/reviewsession")}
         ButtonText="Reviews:"
         ButtonTextColor="#ffffff"
         ButtonNumber="187"

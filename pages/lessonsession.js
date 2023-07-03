@@ -1,13 +1,10 @@
-import HomeButton from "../components/HomeButton.js";
-import SessionItem from "../components/SessionItem.js";
+import LessonSessionItem from "../components/LessonSessionItem.js";
 import LessonSessionMenuBar from "../components/LessonSessionMenuBar.js";
 
 export default function LessonSessionPage() {
   return (
     <>
-      <SessionItem itemText="おはよう" itemMeaningText="Good Morning">
-        <HomeButton />
-      </SessionItem>
+      <LessonSessionItem itemText="おはよう" itemMeaningText="Good Morning" />
       <LessonSessionMenuBar />
     </>
   );

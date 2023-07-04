@@ -14,6 +14,8 @@ const AdditionalContentContainer = styled.div`
 const ContentButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 0.5em;
+  gap: 0.4em;
 `;
 
 const ButtonClockImage = styled(ClockSVG)`
@@ -42,6 +44,7 @@ const ButtonSpeakerWaveImage = styled(SpeakerWaveSVG)`
 
 const ContentButton = styled.button`
   type: button;
+  background-color: #f4f4f4;
   box-shadow: 3px 3px 0 #e1e1e1;
   width: 6.8em;
   height: 3em;

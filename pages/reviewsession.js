@@ -8,7 +8,7 @@ export default function ReviewSessionPage() {
     <>
       <ReviewSessionItem itemText="夕べ" />
       <ReviewCategoryBar objectText="Vocabulary" categoryText="Reading" />
-      <AnswerInputField placeholderText="答え" />
+      <AnswerInputField placeholderText="答え" validAnswerText="ゆうべ" />
       <AdditionalContent />
     </>
   );

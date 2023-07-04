@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import HomeButton from "./HomeButton";
 
 const Container = styled.div`
   width: 100%;
-  height: 15em;
+  height: 14em;
   background-color: #aa00ff;
   display: flex;
   flex-direction: column;
@@ -15,17 +16,11 @@ const Item = styled.p`
   margin: 0;
 `;
 
-const ItemMeaning = styled.p`
-  color: #ffffff;
-  font-size: 1.8em;
-`;
-
-export default function SessionItem({ itemText, itemMeaningText, children }) {
+export default function ReviewSessionItem({ itemText }) {
   return (
     <Container>
-      {children}
+      <HomeButton />
       <Item>{itemText}</Item>
-      <ItemMeaning>{itemMeaningText}</ItemMeaning>
     </Container>
   );
 }

@@ -6,6 +6,7 @@ import EyeSVG from "../src/heroicons/eye.svg";
 import SpeakerWaveSVG from "../src/heroicons/speaker-wave.svg";
 import { useState } from "react";
 import InformationCard from "./InformationCard.js";
+import WrongAnswerCard from "./WrongAnswerCard.js";
 
 const AdditionalContentContainer = styled.div`
   display: flex;
@@ -75,13 +76,16 @@ export default function AdditionalContent({
   compositionKanjiCharacter,
   compositionKanjiReading,
   compositionKanjiMeaning,
+  isHiddenWrong,
+  setIsHiddenWrong,
 }) {
-  const [isHidden, setIsHidden] = useState("true");
+  const [isHiddenInfo, setIsHiddenInfo] = useState(true);
 
-  const eyeImage = isHidden ? <ButtonEyeSlashImage /> : <ButtonEyeImage />;
+  const eyeImage = isHiddenInfo ? <ButtonEyeSlashImage /> : <ButtonEyeImage />;
 
   function handleClickInfoButton() {
-    setIsHidden(!isHidden);
+    setIsHiddenInfo(!isHiddenInfo);
+    setIsHiddenWrong(true);
   }
 
   return (
@@ -100,8 +104,9 @@ export default function AdditionalContent({
           <ButtonSpeakerWaveImage />
         </ContentButton>
       </ContentButtonContainer>
+      <WrongAnswerCard cardVisibility={!isHiddenWrong} />
       <InformationCard
-        cardVisibility={!isHidden}
+        cardVisibility={!isHiddenInfo}
         primaryMeaning={primaryMeaning}
         alternativeMeaning={alternativeMeaning}
         wordType={wordType}

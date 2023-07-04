@@ -46,7 +46,11 @@ const EnterButtonImage = styled(ChevronRightSVG)`
   border: none;
 `;
 
-export default function AnswerInputField({ placeholderText, validAnswerText }) {
+export default function AnswerInputField({
+  placeholderText,
+  validAnswerText,
+  setIsHiddenWrong,
+}) {
   const [inputFieldBackgroundColor, setInputFieldBackgroundColor] =
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
@@ -60,6 +64,7 @@ export default function AnswerInputField({ placeholderText, validAnswerText }) {
     } else {
       setInputFieldBackgroundColor("#ff0033");
       setTextColor("#ffffff");
+      setIsHiddenWrong(false);
     }
   }
 

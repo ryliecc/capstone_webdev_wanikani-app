@@ -2,6 +2,7 @@ import ReviewSessionItem from "../components/ReviewSessionItem.js";
 import ReviewCategoryBar from "../components/ReviewCategoryBar.js";
 import AnswerInputField from "../components/AnswerInputField.js";
 import AdditionalContent from "../components/ReviewSessionAdditionalContent.js";
+import { useState } from "react";
 
 export default function ReviewSessionPage() {
   const FirstWordCombinations = [
@@ -28,11 +29,17 @@ export default function ReviewSessionPage() {
       ja: "夕べ、ひたいに肉とかいてみた。",
     },
   ];
+
+  const [isHiddenWrong, setIsHiddenWrong] = useState(true);
   return (
     <>
       <ReviewSessionItem itemText="夕べ" />
       <ReviewCategoryBar objectText="Vocabulary" categoryText="Reading" />
-      <AnswerInputField placeholderText="答え" validAnswerText="ゆうべ" />
+      <AnswerInputField
+        placeholderText="答え"
+        validAnswerText="ゆうべ"
+        setIsHiddenWrong={setIsHiddenWrong}
+      />
       <AdditionalContent
         primaryMeaning="Last Night"
         alternativeMeaning="Evening"
@@ -49,6 +56,8 @@ export default function ReviewSessionPage() {
         compositionKanjiCharacter="夕"
         compositionKanjiReading="ゆう"
         compositionKanjiMeaning="Evening"
+        isHiddenWrong={isHiddenWrong}
+        setIsHiddenWrong={setIsHiddenWrong}
       />
     </>
   );

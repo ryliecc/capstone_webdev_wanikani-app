@@ -2,7 +2,10 @@ import styled from "styled-components";
 import ClockSVG from "../src/heroicons/clock.svg";
 import CheckSVG from "../src/heroicons/check.svg";
 import EyeSlashSVG from "../src/heroicons/eye-slash.svg";
+import EyeSVG from "../src/heroicons/eye.svg";
 import SpeakerWaveSVG from "../src/heroicons/speaker-wave.svg";
+import { useState } from "react";
+import InformationCard from "./InformationCard.js";
 
 const AdditionalContentContainer = styled.div`
   display: flex;
@@ -30,7 +33,13 @@ const ButtonCheckImage = styled(CheckSVG)`
   border: none;
 `;
 
-const ButtonEyeImage = styled(EyeSlashSVG)`
+const ButtonEyeSlashImage = styled(EyeSlashSVG)`
+  height: 2em;
+  width: 100%;
+  border: none;
+`;
+
+const ButtonEyeImage = styled(EyeSVG)`
   height: 2em;
   width: 100%;
   border: none;
@@ -51,7 +60,30 @@ const ContentButton = styled.button`
   border: none;
 `;
 
-export default function AdditionalContent() {
+export default function AdditionalContent({
+  primaryMeaning,
+  alternativeMeaning,
+  wordType,
+  meaningMnemonic,
+  primaryReading,
+  readingMnemonic,
+  firstPattern,
+  secondPattern,
+  firstWordCombinations,
+  secondWordCombinations,
+  contextSentences,
+  compositionKanjiCharacter,
+  compositionKanjiReading,
+  compositionKanjiMeaning,
+}) {
+  const [isHidden, setIsHidden] = useState("true");
+
+  const eyeImage = isHidden ? <ButtonEyeSlashImage /> : <ButtonEyeImage />;
+
+  function handleClickInfoButton() {
+    setIsHidden(!isHidden);
+  }
+
   return (
     <AdditionalContentContainer>
       <ContentButtonContainer>
@@ -61,13 +93,30 @@ export default function AdditionalContent() {
         <ContentButton>
           <ButtonCheckImage />
         </ContentButton>
-        <ContentButton>
-          <ButtonEyeImage />
+        <ContentButton onClick={handleClickInfoButton}>
+          {eyeImage}
         </ContentButton>
         <ContentButton>
           <ButtonSpeakerWaveImage />
         </ContentButton>
       </ContentButtonContainer>
+      <InformationCard
+        cardVisibility={!isHidden}
+        primaryMeaning={primaryMeaning}
+        alternativeMeaning={alternativeMeaning}
+        wordType={wordType}
+        meaningMnemonic={meaningMnemonic}
+        primaryReading={primaryReading}
+        readingMnemonic={readingMnemonic}
+        firstPattern={firstPattern}
+        secondPattern={secondPattern}
+        firstWordCombinations={firstWordCombinations}
+        secondWordCombinations={secondWordCombinations}
+        contextSentences={contextSentences}
+        compositionKanjiCharacter={compositionKanjiCharacter}
+        compositionKanjiReading={compositionKanjiReading}
+        compositionKanjiMeaning={compositionKanjiMeaning}
+      />
     </AdditionalContentContainer>
   );
 }

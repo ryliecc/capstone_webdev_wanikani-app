@@ -26,7 +26,7 @@ export default function HomePage() {
     "Wanikani-Revision": "20170710",
     Authorization: "Bearer " + apiToken,
   });
-  var apiEndpoint = new Request("https://api.wanikani.com/v2/user", {
+  let apiEndpoint = new Request("https://api.wanikani.com/v2/user", {
     method: "GET",
     headers: requestHeaders,
   });

@@ -3,6 +3,12 @@ import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 import ChevronDownSVG from "../src/heroicons/chevron-down.svg";
 import { useState } from "react";
 
+const TokenBoxContainer = styled.section.attrs((props) => ({
+  $visibility: props.$visibility,
+}))`
+  display: ${(props) => (props.$visibility ? "block" : "none")};
+`;
+
 const TokenBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,7 +87,10 @@ const HelpFullText = styled.p.attrs((props) => ({
   margin-bottom: 0.6em;
 `;
 
-export default function APITokenInputField({ onSubmitAPITokenInput }) {
+export default function APITokenInputField({
+  onSubmitAPITokenInput,
+  inputFieldIsVisible,
+}) {
   const [helpIsClicked, setHelpIsClicked] = useState(false);
   const displayedHelpButtonImage = helpIsClicked ? (
     <ShowHelpButtonClickedImage />
@@ -93,35 +102,37 @@ export default function APITokenInputField({ onSubmitAPITokenInput }) {
     setHelpIsClicked(!helpIsClicked);
   }
   return (
-    <TokenBox>
-      <InputText>Please enter your personal API Token.</InputText>
-      <TokenForm onSubmit={onSubmitAPITokenInput}>
-        <InputField
-          placeholder="Your API Token here"
-          type="text"
-          name="answer"
-          autoComplete="off"
-          autocapitalize="none"
-          autocorrect="off"
-          spellcheck="false"
-          autoFocus
-        />
-        <EnterButton>
-          <EnterButtonImage />
-        </EnterButton>
-      </TokenForm>
+    <TokenBoxContainer $visibility={inputFieldIsVisible}>
+      <TokenBox>
+        <InputText>Please enter your personal API Token.</InputText>
+        <TokenForm onSubmit={onSubmitAPITokenInput}>
+          <InputField
+            placeholder="Your API Token here"
+            type="text"
+            name="tokenInput"
+            autoComplete="off"
+            autocapitalize="none"
+            autocorrect="off"
+            spellcheck="false"
+            autoFocus
+          />
+          <EnterButton>
+            <EnterButtonImage />
+          </EnterButton>
+        </TokenForm>
 
-      <HelpTextButton type="button" onClick={handleClickHelpButton}>
-        {displayedHelpButtonImage}
-        <HelpText>Where do I find my token?</HelpText>
-      </HelpTextButton>
-      <HelpFullText $visibility={helpIsClicked}>
-        Enter the WaniKani Website in your browser and click on your profile
-        icon in the upper right corner. Navigate to Settings and then to API
-        Tokens. There you can create a new token, give it a name and manage its
-        permissions. Please tick all boxes or else the app might not work
-        properly.
-      </HelpFullText>
-    </TokenBox>
+        <HelpTextButton type="button" onClick={handleClickHelpButton}>
+          {displayedHelpButtonImage}
+          <HelpText>Where do I find my token?</HelpText>
+        </HelpTextButton>
+        <HelpFullText $visibility={helpIsClicked}>
+          Enter the WaniKani Website in your browser and click on your profile
+          icon in the upper right corner. Navigate to Settings and then to API
+          Tokens. There you can create a new token, give it a name and manage
+          its permissions. Please tick all boxes or else the app might not work
+          properly.
+        </HelpFullText>
+      </TokenBox>
+    </TokenBoxContainer>
   );
 }

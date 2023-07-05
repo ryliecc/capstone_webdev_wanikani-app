@@ -4,6 +4,7 @@ import APITokenInputField from "../components/APITokenInputField.js";
 import useLocalStorageState from "use-local-storage-state";
 import LoadingComponent from "../components/Loading.js";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router.js";
 
 const WelcomeMessage = styled.h2`
   text-align: center;
@@ -14,31 +15,64 @@ const WelcomeMessage = styled.h2`
 
 export default function WelcomePage() {
   const [loadingIsVisible, setLoadingIsVisible] = useState(true);
+  const [inputFieldIsVisible, setInputFieldIsVisible] = useState(false);
   const [apiToken, setApiToken] = useLocalStorageState("apiToken", {
     defaultValue: "",
   });
-  const [subjects, setSubjects] = useLocalStorageState("subjects", {
+  const [userObject, setUserObject] = useLocalStorageState("userObject", {
     defaultValue: [],
   });
   const requestHeaders = new Headers({
     "Wanikani-Revision": "20170710",
     Authorization: "Bearer " + apiToken,
   });
-  var apiEndpoint = new Request("https://api.wanikani.com/v2/subjects", {
+  var apiEndpoint = new Request("https://api.wanikani.com/v2/user", {
     method: "GET",
     headers: requestHeaders,
   });
+  const router = useRouter();
 
   useEffect(() => {
     if (apiToken === "") {
       setLoadingIsVisible(false);
+      setInputFieldIsVisible(true);
+    } else {
+      setLoadingIsVisible(true);
+      setInputFieldIsVisible(false);
+      fetch(apiEndpoint)
+        .then((response) => response.json())
+        .then((responseBody) => setUserObject(responseBody))
+        .then(
+          setTimeout(() => {
+            router.push("/");
+          }, 2000)
+        )
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+        });
     }
   }, [apiToken]);
 
+  function handleSubmitAPITokenInput(event) {
+    event.preventDefault();
+    const tokenInput = event.target.elements.tokenInput.value;
+    setApiToken(tokenInput);
+  }
+
   useEffect(() => {
-    fetch(apiEndpoint)
-      .then((response) => response.json())
-      .then((responseBody) => setSubjects(responseBody));
+    if (apiToken !== "") {
+      fetch(apiEndpoint)
+        .then((response) => response.json())
+        .then((responseBody) => setUserObject(responseBody))
+        .then(
+          setTimeout(() => {
+            router.push("/");
+          }, 2000)
+        )
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+        });
+    }
   }, []);
 
   return (
@@ -46,7 +80,10 @@ export default function WelcomePage() {
       <AppHeader />
       <WelcomeMessage>いらっしゃいませ !</WelcomeMessage>
       <LoadingComponent loadingIsVisible={loadingIsVisible} />
-      <APITokenInputField />
+      <APITokenInputField
+        onSubmitAPITokenInput={handleSubmitAPITokenInput}
+        inputFieldIsVisible={inputFieldIsVisible}
+      />
     </>
   );
 }

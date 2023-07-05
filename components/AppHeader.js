@@ -17,7 +17,7 @@ export default function AppHeader() {
   return (
     <>
       <Heading>
-        <HeaderLink href="/">WaniKani</HeaderLink>
+        <HeaderLink href="/dashboard">WaniKani</HeaderLink>
       </Heading>
     </>
   );

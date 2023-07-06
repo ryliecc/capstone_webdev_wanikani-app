@@ -34,11 +34,11 @@ const LevelBarProgress = styled.div`
   height: 100%;
 `;
 
-export default function LevelProgressBar() {
+export default function LevelProgressBar({ level }) {
   return (
     <Container>
       <Title>
-        Level <LevelNumber>5</LevelNumber> Progress:
+        Level <LevelNumber>{level}</LevelNumber> Progress:
       </Title>
       <ActualLevelBar>
         <LevelBarProgress />

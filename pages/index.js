@@ -29,7 +29,7 @@ export default function HomePage() {
         router.push("/dashboard");
       }, 1000);
     }
-  }, [apiToken]);
+  }, [apiToken, router]);
 
   function handleSubmitAPITokenInput(event) {
     event.preventDefault();

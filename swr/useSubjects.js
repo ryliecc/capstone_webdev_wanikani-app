@@ -31,6 +31,8 @@ export default function useSubjects(levels, types) {
     apiToken ? ["subjects", levels, types] : null,
     fetchSubjects
   );
+
+  console.log(data);
   return {
     subjects: data?.subjects,
     isLoading,

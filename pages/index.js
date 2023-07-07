@@ -93,6 +93,7 @@ export default function HomePage() {
               setSubjectKanjiData(responseBody.data);
               break;
             case "subjects?types=vocabulary":
+              console.log(responseBody.data);
               setSubjectVocabularyData(responseBody.data);
               break;
             case "subjects?types=kana_vocabulary":

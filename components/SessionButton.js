@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useSummary from "../swr/useSummary.js";
 
 const ButtonElement = styled.button.attrs((props) => ({
   type: "button",
@@ -54,10 +55,19 @@ export default function SessionButton({
   ButtonBorderColor,
   ButtonText,
   ButtonTextColor,
-  ButtonNumber,
   SvgPath,
   onClick,
+  summaryType,
 }) {
+  const { summary, isLoading, isError } = useSummary();
+  if (isLoading) {
+    return <div>...</div>;
+  }
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  const ButtonNumber = summary && summary[summaryType][0].subject_ids.length;
   return (
     <ButtonElement
       $color={ButtonColor}

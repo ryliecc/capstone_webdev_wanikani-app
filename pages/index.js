@@ -5,7 +5,6 @@ import useLocalStorageState from "use-local-storage-state";
 import LoadingComponent from "../components/Loading.js";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router.js";
-import useUser from "../swr/UseUser.js";
 
 const WelcomeMessage = styled.h2`
   text-align: center;
@@ -19,22 +18,16 @@ export default function HomePage() {
   const [apiToken, setApiToken] = useLocalStorageState("apiToken", {
     defaultValue: "",
   });
-  const { user, isLoading, isError } = useUser();
   const router = useRouter();
 
   useEffect(() => {
     if (apiToken === "") {
       setLoadingIsVisible(false);
     } else {
-      if (isLoading) {
-        setLoadingIsVisible(true);
-      }
-      if (isError) {
-        console.log("Error fetching");
-      }
+      setLoadingIsVisible(true);
       setTimeout(() => {
         router.push("/dashboard");
-      }, 2000);
+      }, 1000);
     }
   }, [apiToken]);
 

@@ -20,13 +20,15 @@ export default function useSubjects(levels, types) {
         headers: requestHeaders,
       }
     );
+
     const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
     const { data, error } = await fetcher(apiEndpoint);
     return { subjects: data, isError: error };
   };
 
   const { data, error, isLoading } = useSWR(
-    apiToken ? "subjects" : null,
+    apiToken ? ["subjects", levels, types] : null,
     fetchSubjects
   );
   return {

@@ -38,7 +38,7 @@ export default function Dashboard() {
     defaultValue: [],
   });
 
-  const level = userData.level.toString();
+  const level = userData.level;
 
   return (
     <Container>

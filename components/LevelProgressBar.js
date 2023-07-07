@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import useUser from "../swr/useUser.js";
-import LoadingComponent from "./Loading.js";
 
 const Container = styled.section`
   display: flex;
@@ -39,14 +38,10 @@ const LevelBarProgress = styled.div`
 export default function LevelProgressBar() {
   const { user, isLoading, isError } = useUser();
   if (isLoading) {
-    return (
-      <>
-        <LoadingComponent loadingIsVisible />
-      </>
-    );
+    return <div>Loading ...</div>;
   }
   if (isError) {
-    console.log("Error fetching");
+    return <div>Error fetching data ...</div>;
   }
 
   const userLevel = user && user.level;

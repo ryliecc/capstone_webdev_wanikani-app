@@ -12,25 +12,13 @@ const ButtonElement = styled.button.attrs((props) => ({
   width: 80%;
   height: 5rem;
   background-color: ${(props) => props.$color};
-  display: grid;
-  grid-template-areas: "svg svg" "text number";
+  display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 0.5rem;
 `;
 
-const ButtonIllustration = styled.svg`
-  grid-area: svg;
-  xmlns: "http://www.w3.org/2000/svg";
-  viewbox: "0 0 24 24";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ButtonIllustrationPath = styled.path``;
-
 const ButtonTextSpan = styled.span`
-  grid-area: text;
   color: #ffffff;
   align-self: center;
   font-size: 1.5rem;
@@ -40,11 +28,11 @@ const ButtonNumberSpan = styled.span.attrs((props) => ({
   $color: props.$color,
   $backgroundcolor: props.$backgroundcolor,
 }))`
-  grid-area: number;
   border-radius: 25px;
   background-color: ${(props) => props.$backgroundcolor};
   color: ${(props) => props.$color};
   width: 4rem;
+  height: 2em;
   padding: 0.3em;
   margin-right: 0;
   font-size: 1.2rem;
@@ -55,9 +43,9 @@ export default function SessionButton({
   ButtonBorderColor,
   ButtonText,
   ButtonTextColor,
-  SvgPath,
   onClick,
   summaryType,
+  children,
 }) {
   const { summary, isLoading, isError } = useSummary();
   if (isLoading) {
@@ -74,10 +62,7 @@ export default function SessionButton({
       $bordercolor={ButtonBorderColor}
       onClick={onClick}
     >
-      <ButtonIllustration>
-        <ButtonIllustrationPath d={SvgPath} />
-      </ButtonIllustration>
-
+      {children}
       <ButtonTextSpan>{ButtonText}</ButtonTextSpan>
       <ButtonNumberSpan $color={ButtonColor} $backgroundcolor={ButtonTextColor}>
         {ButtonNumber}

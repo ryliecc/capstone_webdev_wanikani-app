@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { uid } from "uid";
 
 const CardContainer = styled.div`
   background-color: #fafafa;
@@ -82,10 +83,10 @@ export default function LessonContextCard({ backgroundColor, textColor }) {
   const wordCombinationElements = wordCombinations.map((wordCombination) => {
     return (
       <>
-        <CombinationElement key={wordCombination.jap}>
+        <CombinationElement key={uid()}>
           {wordCombination.jap}
         </CombinationElement>
-        <CombinationMeaning key={wordCombination.en}>
+        <CombinationMeaning key={uid()}>
           {wordCombination.en}
         </CombinationMeaning>
       </>

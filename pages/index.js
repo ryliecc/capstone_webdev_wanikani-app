@@ -15,65 +15,27 @@ const WelcomeMessage = styled.h2`
 
 export default function HomePage() {
   const [loadingIsVisible, setLoadingIsVisible] = useState(true);
-  const [inputFieldIsVisible, setInputFieldIsVisible] = useState(false);
   const [apiToken, setApiToken] = useLocalStorageState("apiToken", {
     defaultValue: "",
-  });
-  const [userObject, setUserObject] = useLocalStorageState("userObject", {
-    defaultValue: [],
-  });
-  const requestHeaders = new Headers({
-    "Wanikani-Revision": "20170710",
-    Authorization: "Bearer " + apiToken,
-  });
-  let apiEndpoint = new Request("https://api.wanikani.com/v2/user", {
-    method: "GET",
-    headers: requestHeaders,
   });
   const router = useRouter();
 
   useEffect(() => {
     if (apiToken === "") {
       setLoadingIsVisible(false);
-      setInputFieldIsVisible(true);
     } else {
       setLoadingIsVisible(true);
-      setInputFieldIsVisible(false);
-      fetch(apiEndpoint)
-        .then((response) => response.json())
-        .then((responseBody) => setUserObject(responseBody))
-        .then(
-          setTimeout(() => {
-            router.push("/dashboard");
-          }, 2000)
-        )
-        .catch((error) => {
-          console.error("Error fetching user data:", error);
-        });
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 1000);
     }
-  }, [apiToken]);
+  }, [apiToken, router]);
 
   function handleSubmitAPITokenInput(event) {
     event.preventDefault();
     const tokenInput = event.target.elements.tokenInput.value;
     setApiToken(tokenInput);
   }
-
-  useEffect(() => {
-    if (apiToken !== "") {
-      fetch(apiEndpoint)
-        .then((response) => response.json())
-        .then((responseBody) => setUserObject(responseBody))
-        .then(
-          setTimeout(() => {
-            router.push("/dashboard");
-          }, 2000)
-        )
-        .catch((error) => {
-          console.error("Error fetching user data:", error);
-        });
-    }
-  }, []);
 
   return (
     <>
@@ -82,7 +44,7 @@ export default function HomePage() {
       <LoadingComponent loadingIsVisible={loadingIsVisible} />
       <APITokenInputField
         onSubmitAPITokenInput={handleSubmitAPITokenInput}
-        inputFieldIsVisible={inputFieldIsVisible}
+        inputFieldIsVisible={!loadingIsVisible}
       />
     </>
   );

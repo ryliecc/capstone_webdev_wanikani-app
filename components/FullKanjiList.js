@@ -1,11 +1,5 @@
 import styled from "styled-components";
-import { exampleData } from "../src/data.js";
-
-const KanjiData = exampleData.filter((item) => item.object === "kanji");
-
-const LevelOneData = KanjiData.filter((item) => item.data.level === 1);
-
-const LevelTwoData = KanjiData.filter((item) => item.data.level === 2);
+import KanjiList from "./KanjiList.js";
 
 const KanjiHeader = styled.h2`
   text-align: center;
@@ -17,79 +11,30 @@ const LevelHeader = styled.h3`
   font-size: 1.2em;
 `;
 
-const KanjiList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  margin: 0.5em;
-`;
-
-const KanjiListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 7em;
-  height: 7em;
-  gap: 0.2em;
-  border-radius: 10px;
-  background-color: #ff00aa;
-  border-bottom: 3px solid #cc0088;
-`;
-
-const KanjiListCharacterSpan = styled.span`
-  color: #ffffff;
-  font-size: 2.2em;
-`;
-
-const KanjiListReadingSpan = styled.span`
-  color: #ffffff;
-  font-size: 0.9em;
-`;
-
-const KanjiListMeaningSpan = styled.span`
-  color: #ffffff;
-  font-size: 0.9em;
-`;
-
-const FullKanjiList = () => {
+export default function FullKanjiList() {
   return (
     <>
       <KanjiHeader>漢字 - Kanji</KanjiHeader>
       <LevelHeader>Level 1</LevelHeader>
-      <KanjiList>
-        {LevelOneData.map((item) => (
-          <KanjiListItem key={item.id}>
-            <KanjiListCharacterSpan>
-              {item.data.characters}
-            </KanjiListCharacterSpan>
-            <KanjiListReadingSpan>
-              {item.data.readings[0].reading}
-            </KanjiListReadingSpan>
-            <KanjiListMeaningSpan>
-              {item.data.meanings[0].meaning}
-            </KanjiListMeaningSpan>
-          </KanjiListItem>
-        ))}
-      </KanjiList>
+      <KanjiList LevelNumber="1" />
       <LevelHeader>Level 2</LevelHeader>
-      <KanjiList>
-        {LevelTwoData.map((item) => (
-          <KanjiListItem key={item.id}>
-            <KanjiListCharacterSpan>
-              {item.data.characters}
-            </KanjiListCharacterSpan>
-            <KanjiListReadingSpan>
-              {item.data.readings[0].reading}
-            </KanjiListReadingSpan>
-            <KanjiListMeaningSpan>
-              {item.data.meanings[0].meaning}
-            </KanjiListMeaningSpan>
-          </KanjiListItem>
-        ))}
-      </KanjiList>
+      <KanjiList LevelNumber="2" />
+      <LevelHeader>Level 3</LevelHeader>
+      <KanjiList LevelNumber="3" />
+      <LevelHeader>Level 4</LevelHeader>
+      <KanjiList LevelNumber="4" />
+      <LevelHeader>Level 5</LevelHeader>
+      <KanjiList LevelNumber="5" />
+      <LevelHeader>Level 6</LevelHeader>
+      <KanjiList LevelNumber="6" />
+      <LevelHeader>Level 7</LevelHeader>
+      <KanjiList LevelNumber="7" />
+      <LevelHeader>Level 8</LevelHeader>
+      <KanjiList LevelNumber="8" />
+      <LevelHeader>Level 9</LevelHeader>
+      <KanjiList LevelNumber="9" />
+      <LevelHeader>Level 10</LevelHeader>
+      <KanjiList LevelNumber="10" />
     </>
   );
-};
-
-export default FullKanjiList;
+}

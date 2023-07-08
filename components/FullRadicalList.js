@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import { exampleData } from "../src/data.js";
-
-const RadicalData = exampleData.filter((item) => item.object === "radical");
-
-const LevelOneData = RadicalData.filter((item) => item.data.level === 1);
-
-const LevelTwoData = RadicalData.filter((item) => item.data.level === 2);
+import useSubjects from "../swr/useSubjects.js";
+import RadicalList from "./RadicalList.js";
 
 const RadicalHeader = styled.h2`
   text-align: center;
@@ -17,66 +12,30 @@ const LevelHeader = styled.h3`
   font-size: 1.2em;
 `;
 
-const RadicalList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  margin: 0.5em;
-`;
-
-const RadicalListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 5em;
-  height: 5em;
-  gap: 0.2em;
-  border-radius: 10px;
-  background-color: #00aaff;
-  border-bottom: 3px solid #0088cc;
-`;
-
-const RadicalListCharacterSpan = styled.span`
-  color: #ffffff;
-  font-size: 1.8em;
-`;
-
-const RadicalListMeaningSpan = styled.span`
-  color: #ffffff;
-  font-size: 0.7em;
-`;
-
 export default function FullRadicalList() {
   return (
     <>
       <RadicalHeader>部首 - Radicals</RadicalHeader>
       <LevelHeader>Level 1</LevelHeader>
-      <RadicalList>
-        {LevelOneData.map((item) => (
-          <RadicalListItem key={item.id}>
-            <RadicalListCharacterSpan>
-              {item.data.characters}
-            </RadicalListCharacterSpan>
-            <RadicalListMeaningSpan>
-              {item.data.meanings.map((meaning) => meaning.meaning).join(", ")}
-            </RadicalListMeaningSpan>
-          </RadicalListItem>
-        ))}
-      </RadicalList>
+      <RadicalList LevelNumber="1" />
       <LevelHeader>Level 2</LevelHeader>
-      <RadicalList>
-        {LevelTwoData.map((item) => (
-          <RadicalListItem key={item.id}>
-            <RadicalListCharacterSpan>
-              {item.data.characters}
-            </RadicalListCharacterSpan>
-            <RadicalListMeaningSpan>
-              {item.data.meanings.map((meaning) => meaning.meaning).join(", ")}
-            </RadicalListMeaningSpan>
-          </RadicalListItem>
-        ))}
-      </RadicalList>
+      <RadicalList LevelNumber="2" />
+      <LevelHeader>Level 3</LevelHeader>
+      <RadicalList LevelNumber="3" />
+      <LevelHeader>Level 4</LevelHeader>
+      <RadicalList LevelNumber="4" />
+      <LevelHeader>Level 5</LevelHeader>
+      <RadicalList LevelNumber="5" />
+      <LevelHeader>Level 6</LevelHeader>
+      <RadicalList LevelNumber="6" />
+      <LevelHeader>Level 7</LevelHeader>
+      <RadicalList LevelNumber="7" />
+      <LevelHeader>Level 8</LevelHeader>
+      <RadicalList LevelNumber="8" />
+      <LevelHeader>Level 9</LevelHeader>
+      <RadicalList LevelNumber="9" />
+      <LevelHeader>Level 10</LevelHeader>
+      <RadicalList LevelNumber="10" />
     </>
   );
 }

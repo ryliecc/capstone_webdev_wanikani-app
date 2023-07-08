@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useUser from "../swr/useUser.js";
+import useUser from "../swr/UseUser.js";
 
 const Container = styled.section`
   display: flex;

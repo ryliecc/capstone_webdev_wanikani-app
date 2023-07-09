@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import useSubjects from "../swr/useSubjects.js";
 import RadicalList from "./RadicalList.js";
 
 const RadicalHeader = styled.h2`

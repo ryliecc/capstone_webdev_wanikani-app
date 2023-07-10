@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import AppHeader from "../../components/AppHeader";
+import AppHeader from "../../components/AppHeader.js";
 import SubjectsNavBar from "../../components/SubjectsNavBar.js";
 import DetailsPageHeader from "../../components/DetailsPageHeader.js";
 import RadicalCombination from "../../components/KanjiRadicalCombination.js";

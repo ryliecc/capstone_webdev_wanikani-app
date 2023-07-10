@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
+import { uid } from "uid";
 
 const Heading = styled.h3``;
 const Subheading = styled.h4``;
+const SentenceContainer = styled.div``;
 const SentenceElement = styled.p`
   color: #333;
 `;
@@ -22,10 +24,10 @@ export default function VocabularyContext({ id }) {
   }
 
   const Sentences = subjects?.context_sentences.map((item) => (
-    <>
+    <SentenceContainer key={uid()}>
       <SentenceElement>{item.ja}</SentenceElement>
       <SentenceMeaning>{item.en}</SentenceMeaning>
-    </>
+    </SentenceContainer>
   ));
   return (
     <>

@@ -14,7 +14,7 @@ export default function RadicalCombination({ id }) {
   }
 
   const RadicalIds = subjects?.component_subject_ids;
-  const endpointPath = "?ids=" + RadicalIds.join(",");
+  const endpointPath = RadicalIds && "?ids=" + RadicalIds.join(",");
 
   return (
     <>

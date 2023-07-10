@@ -1,12 +1,10 @@
 import useSWR from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function useSubjects(levels, types) {
+export default function useSubjects(endpointPath) {
   const [apiToken, setApiToken] = useLocalStorageState("apiToken", {
     defaultValue: "",
   });
-  let leveloption = "?levels=" + levels;
-  let typesoption = "&types=" + types;
 
   const fetchSubjects = async () => {
     const requestHeaders = new Headers({
@@ -14,7 +12,7 @@ export default function useSubjects(levels, types) {
       Authorization: "Bearer " + apiToken,
     });
     const apiEndpoint = new Request(
-      "https://api.wanikani.com/v2/subjects" + leveloption + typesoption,
+      "https://api.wanikani.com/v2/subjects/" + endpointPath,
       {
         method: "GET",
         headers: requestHeaders,
@@ -28,7 +26,7 @@ export default function useSubjects(levels, types) {
   };
 
   const { data, error, isLoading } = useSWR(
-    apiToken ? ["subjects", levels, types] : null,
+    apiToken ? ["subjects", endpointPath] : null,
     fetchSubjects
   );
 

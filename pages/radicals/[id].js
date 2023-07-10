@@ -13,10 +13,10 @@ export default function RadicalPage() {
     <>
       <AppHeader />
       <SubjectsNavBar />
-      <DetailsPageHeader />
-      <RadicalNameSection />
-      <RadicalFoundInKanji />
-      <RadicalProgression />
+      <DetailsPageHeader id={id} />
+      <RadicalNameSection id={id} />
+      <RadicalFoundInKanji id={id} />
+      <RadicalProgression id={id} />
     </>
   );
 }

@@ -47,10 +47,9 @@ const VocabListMeaningSpan = styled.span`
 `;
 
 export default function VocabularyListComponent({ LevelNumber }) {
-  const { subjects, isLoading, isError } = useSubjects(
-    LevelNumber,
-    "vocabulary"
-  );
+  const endpointPath =
+    "?levels=" + LevelNumber + "&types=vocabulary,kana_vocabulary";
+  const { subjects, isLoading, isError } = useSubjects(endpointPath);
   if (isLoading) {
     return <div>Loading ...</div>;
   }
@@ -63,7 +62,7 @@ export default function VocabularyListComponent({ LevelNumber }) {
       <VocabListCharacterSpan>{item.data.characters}</VocabListCharacterSpan>
       <SidebarContainer>
         <VocabListReadingSpan>
-          {item.data.readings[0].reading}
+          {item.data.readings ? item.data.readings[0].reading : ""}
         </VocabListReadingSpan>
         <VocabListMeaningSpan>
           {item.data.meanings[0].meaning}

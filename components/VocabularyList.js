@@ -46,9 +46,7 @@ const VocabListMeaningSpan = styled.span`
   font-size: 0.9em;
 `;
 
-export default function VocabularyListComponent({ LevelNumber }) {
-  const endpointPath =
-    "?levels=" + LevelNumber + "&types=vocabulary,kana_vocabulary";
+export default function VocabularyListComponent({ endpointPath }) {
   const { subjects, isLoading, isError } = useSubjects(endpointPath);
   if (isLoading) {
     return <div>Loading ...</div>;

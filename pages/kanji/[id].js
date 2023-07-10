@@ -15,10 +15,10 @@ export default function KanjiDetailsPage() {
       <AppHeader />
       <SubjectsNavBar />
       <DetailsPageHeader id={id} />
-      <RadicalCombination />
-      <KanjiMeaning />
-      <KanjiReading />
-      <KanjiFoundInVocabulary />
+      <RadicalCombination id={id} />
+      <KanjiMeaning id={id} />
+      <KanjiReading id={id} />
+      <KanjiFoundInVocabulary id={id} />
     </>
   );
 }

@@ -1,28 +1,25 @@
 import styled from "styled-components";
-import SingleRadical from "./SingleRadical.js";
+import useSubjects from "../swr/useSubjects.js";
+import RadicalList from "./RadicalList.js";
 
 const Heading = styled.h3``;
 
-const RadicalCombinationContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
+export default function RadicalCombination({ id }) {
+  const { subjects, isLoading, isError } = useSubjects(id);
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+  if (isError) {
+    return <div>Error fetching...</div>;
+  }
 
-const PlusText = styled.span`
-  font-size: 3em;
-  margin: 0.4em;
-`;
+  const RadicalIds = subjects?.component_subject_ids;
+  const endpointPath = "?ids=" + RadicalIds.join(",");
 
-export default function RadicalCombination() {
-  // component_subject_ids
   return (
     <>
       <Heading>Radical Combination</Heading>
-      <RadicalCombinationContainer>
-        <SingleRadical />
-        <PlusText>+</PlusText>
-        <SingleRadical />
-      </RadicalCombinationContainer>
+      <RadicalList endpointPath={endpointPath} />
     </>
   );
 }

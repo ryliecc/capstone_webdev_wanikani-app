@@ -16,25 +16,25 @@ export default function FullRadicalList() {
     <>
       <RadicalHeader>部首 - Radicals</RadicalHeader>
       <LevelHeader>Level 1</LevelHeader>
-      <RadicalList LevelNumber="1" />
+      <RadicalList endpointPath="?levels=1&types=radical" />
       <LevelHeader>Level 2</LevelHeader>
-      <RadicalList LevelNumber="2" />
+      <RadicalList endpointPath="?levels=2&types=radical" />
       <LevelHeader>Level 3</LevelHeader>
-      <RadicalList LevelNumber="3" />
+      <RadicalList endpointPath="?levels=3&types=radical" />
       <LevelHeader>Level 4</LevelHeader>
-      <RadicalList LevelNumber="4" />
+      <RadicalList endpointPath="?levels=4&types=radical" />
       <LevelHeader>Level 5</LevelHeader>
-      <RadicalList LevelNumber="5" />
+      <RadicalList endpointPath="?levels=5&types=radical" />
       <LevelHeader>Level 6</LevelHeader>
-      <RadicalList LevelNumber="6" />
+      <RadicalList endpointPath="?levels=6&types=radical" />
       <LevelHeader>Level 7</LevelHeader>
-      <RadicalList LevelNumber="7" />
+      <RadicalList endpointPath="?levels=7&types=radical" />
       <LevelHeader>Level 8</LevelHeader>
-      <RadicalList LevelNumber="8" />
+      <RadicalList endpointPath="?levels=8&types=radical" />
       <LevelHeader>Level 9</LevelHeader>
-      <RadicalList LevelNumber="9" />
+      <RadicalList endpointPath="?levels=9&types=radical" />
       <LevelHeader>Level 10</LevelHeader>
-      <RadicalList LevelNumber="10" />
+      <RadicalList endpointPath="?levels=10&types=radical" />
     </>
   );
 }

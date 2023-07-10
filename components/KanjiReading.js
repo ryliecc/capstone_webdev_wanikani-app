@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useSubjects from "../swr/useSubjects";
 
 const Heading = styled.h3``;
 
@@ -22,29 +23,47 @@ const Paragraph = styled.p``;
 
 const HintContainer = styled.section``;
 
-export default function KanjiReading() {
+export default function KanjiReading({ id }) {
+  const { subjects, isLoading, isError } = useSubjects(id);
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+  if (isError) {
+    return <div>Error fetching...</div>;
+  }
+  const OnYomis = subjects?.readings.filter((item) => item.type === "onyomi");
+  const OnYomiString = OnYomis?.map((item) => item.reading).join(", ");
+  const KunYomis = subjects?.readings.filter((item) => item.type === "kunyomi");
+  const KunYomiString = KunYomis?.map((item) => item.reading).join(", ");
+  const Nanoris = subjects?.readings.filter((item) => item.type === "nanori");
+  let NanoriString = Nanoris?.map((item) => item.reading).join(", ");
+  if (Nanoris?.length === 0) {
+    NanoriString = "None";
+  }
+  const Mnemonic = subjects?.reading_mnemonic;
+  const Hint = subjects?.reading_hint;
   return (
     <>
       <Heading>Readings</Heading>
       <ReadingList>
         <ReadingListItem>
           <ReadingCategory>On&apos;yomi</ReadingCategory>
-          <ReadingKana>じょう</ReadingKana>
+          <ReadingKana>{OnYomiString}</ReadingKana>
         </ReadingListItem>
         <ReadingListItem>
           <ReadingCategory>Kun&apos;yomi</ReadingCategory>
-          <ReadingKana>うえ, あ, のぼ, うわ, かみ</ReadingKana>
+          <ReadingKana>{KunYomiString}</ReadingKana>
         </ReadingListItem>
         <ReadingListItem>
           <ReadingCategory>Nanori</ReadingCategory>
-          <ReadingKana>None</ReadingKana>
+          <ReadingKana>{NanoriString}</ReadingKana>
         </ReadingListItem>
       </ReadingList>
       <Subheading>Mnemonic</Subheading>
-      <Paragraph>Lorem Ipsum.</Paragraph>
+      <Paragraph>{Mnemonic}</Paragraph>
       <HintContainer>
         <Subheading>HINTS</Subheading>
-        <Paragraph>Lorem Ipsum.</Paragraph>
+        <Paragraph>{Hint}</Paragraph>
       </HintContainer>
     </>
   );

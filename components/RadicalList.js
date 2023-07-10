@@ -32,9 +32,8 @@ const RadicalListMeaningSpan = styled.span`
   font-size: 0.7em;
 `;
 
-export default function RadicalList({ LevelNumber }) {
+export default function RadicalList({ endpointPath }) {
   const router = useRouter();
-  const endpointPath = "?levels=" + LevelNumber + "&types=radical";
   const { subjects, isLoading, isError } = useSubjects(endpointPath);
   if (isLoading) {
     return <div>Loading ...</div>;

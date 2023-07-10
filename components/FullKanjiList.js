@@ -16,25 +16,25 @@ export default function FullKanjiList() {
     <>
       <KanjiHeader>漢字 - Kanji</KanjiHeader>
       <LevelHeader>Level 1</LevelHeader>
-      <KanjiList LevelNumber="1" />
+      <KanjiList endpointPath="?levels=1&types=kanji" />
       <LevelHeader>Level 2</LevelHeader>
-      <KanjiList LevelNumber="2" />
+      <KanjiList endpointPath="?levels=2&types=kanji" />
       <LevelHeader>Level 3</LevelHeader>
-      <KanjiList LevelNumber="3" />
+      <KanjiList endpointPath="?levels=3&types=kanji" />
       <LevelHeader>Level 4</LevelHeader>
-      <KanjiList LevelNumber="4" />
+      <KanjiList endpointPath="?levels=4&types=kanji" />
       <LevelHeader>Level 5</LevelHeader>
-      <KanjiList LevelNumber="5" />
+      <KanjiList endpointPath="?levels=5&types=kanji" />
       <LevelHeader>Level 6</LevelHeader>
-      <KanjiList LevelNumber="6" />
+      <KanjiList endpointPath="?levels=6&types=kanji" />
       <LevelHeader>Level 7</LevelHeader>
-      <KanjiList LevelNumber="7" />
+      <KanjiList endpointPath="?levels=7&types=kanji" />
       <LevelHeader>Level 8</LevelHeader>
-      <KanjiList LevelNumber="8" />
+      <KanjiList endpointPath="?levels=8&types=kanji" />
       <LevelHeader>Level 9</LevelHeader>
-      <KanjiList LevelNumber="9" />
+      <KanjiList endpointPath="?levels=9&types=kanji" />
       <LevelHeader>Level 10</LevelHeader>
-      <KanjiList LevelNumber="10" />
+      <KanjiList endpointPath="?levels=10&types=kanji" />
     </>
   );
 }

@@ -36,8 +36,7 @@ const KanjiListMeaningSpan = styled.span`
   font-size: 0.9em;
 `;
 
-export default function KanjiList({ LevelNumber }) {
-  const endpointPath = "?levels=" + LevelNumber + "&types=kanji";
+export default function KanjiList({ endpointPath }) {
   const { subjects, isLoading, isError } = useSubjects(endpointPath);
   if (isLoading) {
     return <div>Loading ...</div>;

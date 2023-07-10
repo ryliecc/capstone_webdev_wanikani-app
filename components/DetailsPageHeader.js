@@ -15,7 +15,7 @@ const CharacterSpan = styled.span`
 `;
 
 export default function DetailsPageHeader({ id }) {
-  const { subject, isLoading, isError } = useSubjects(id);
+  const { subjects, isLoading, isError } = useSubjects(id);
   if (isLoading) {
     return <div>Loading ...</div>;
   }
@@ -23,9 +23,9 @@ export default function DetailsPageHeader({ id }) {
     return <div>Error fetching...</div>;
   }
 
-  const LevelNumber = subject.level;
-  const Character = subject.characters;
-  const Name = subject.meanings[0].meaning;
+  const LevelNumber = subjects && subjects.level;
+  const Character = subjects && subjects.characters;
+  const Name = subjects && subjects.meanings[0].meaning;
   return (
     <>
       <Heading>

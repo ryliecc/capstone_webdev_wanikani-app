@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
+import { useRouter } from "next/router.js";
 
 const KanjiListElement = styled.ul`
   display: flex;
@@ -37,6 +38,7 @@ const KanjiListMeaningSpan = styled.span`
 `;
 
 export default function KanjiList({ endpointPath }) {
+  const router = useRouter();
   const { subjects, isLoading, isError } = useSubjects(endpointPath);
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -46,7 +48,10 @@ export default function KanjiList({ endpointPath }) {
   }
 
   const KanjiListItems = subjects?.map((item) => (
-    <KanjiListItem key={item.id}>
+    <KanjiListItem
+      key={item.id}
+      onClick={() => router.push("/kanji/" + item.id)}
+    >
       <KanjiListCharacterSpan>{item.data.characters}</KanjiListCharacterSpan>
       <KanjiListReadingSpan>
         {item.data.readings[0].reading}

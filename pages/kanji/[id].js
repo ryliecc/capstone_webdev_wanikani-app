@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
-import AppHeader from "../../components/AppHeader.js";
+import AppHeader from "../../components/AppHeader";
 import SubjectsNavBar from "../../components/SubjectsNavBar.js";
 import DetailsPageHeader from "../../components/DetailsPageHeader.js";
-import RadicalNameSection from "../../components/RadicalNameSection.js";
-import RadicalFoundInKanji from "../../components/RadicalFoundInKanji.js";
 
-export default function RadicalDetailsPage() {
+export default function KanjiDetailsPage() {
   const router = useRouter();
   const { id } = router.query;
   return (
@@ -13,8 +11,6 @@ export default function RadicalDetailsPage() {
       <AppHeader />
       <SubjectsNavBar />
       <DetailsPageHeader id={id} />
-      <RadicalNameSection id={id} />
-      <RadicalFoundInKanji id={id} />
     </>
   );
 }

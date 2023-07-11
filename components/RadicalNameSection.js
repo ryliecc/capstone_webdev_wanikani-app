@@ -1,10 +1,23 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
 
-const Heading = styled.h3``;
-const Paragraph = styled.p``;
-const CategorySpan = styled.span``;
-const Subheading = styled.h4``;
+const Heading = styled.h3`
+  font-size: 1.6em;
+  margin: 0.4em;
+`;
+const Paragraph = styled.p`
+  display: flex;
+  gap: 0.8em;
+  font-size: 1em;
+  margin: 0.6em;
+`;
+const CategorySpan = styled.span`
+  color: #999;
+`;
+const Subheading = styled.h4`
+  font-size: 1.2em;
+  margin: 0.4em;
+`;
 
 export default function RadicalNameSection({ id }) {
   const { subjects, isLoading, isError } = useSubjects(id);

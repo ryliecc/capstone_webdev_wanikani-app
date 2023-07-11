@@ -12,7 +12,7 @@ export default function RadicalDetailsPage() {
     <>
       <AppHeader />
       <SubjectsNavBar />
-      <DetailsPageHeader id={id} />
+      <DetailsPageHeader id={id} typeColor="#0af" />
       <RadicalNameSection id={id} />
       <RadicalFoundInKanji id={id} />
     </>

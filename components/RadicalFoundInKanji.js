@@ -2,7 +2,10 @@ import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
 import KanjiList from "./KanjiList.js";
 
-const Heading = styled.h3``;
+const Heading = styled.h3`
+  font-size: 1.6em;
+  margin: 0.4em;
+`;
 
 export default function RadicalFoundInKanji({ id }) {
   const { subjects, isLoading, isError } = useSubjects(id);

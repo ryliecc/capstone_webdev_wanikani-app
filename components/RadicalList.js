@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
+import { useRouter } from "next/router.js";
 
 const RadicalListElement = styled.ul`
   display: flex;
@@ -31,8 +32,9 @@ const RadicalListMeaningSpan = styled.span`
   font-size: 0.7em;
 `;
 
-export default function RadicalList({ LevelNumber }) {
-  const { subjects, isLoading, isError } = useSubjects(LevelNumber, "radical");
+export default function RadicalList({ endpointPath }) {
+  const router = useRouter();
+  const { subjects, isLoading, isError } = useSubjects(endpointPath);
   if (isLoading) {
     return <div>Loading ...</div>;
   }
@@ -41,7 +43,10 @@ export default function RadicalList({ LevelNumber }) {
   }
 
   const RadicalListItems = subjects?.map((item) => (
-    <RadicalListItem key={item.id}>
+    <RadicalListItem
+      key={item.id}
+      onClick={() => router.push("/radicals/" + item.id)}
+    >
       <RadicalListCharacterSpan>
         {item.data.characters}
       </RadicalListCharacterSpan>

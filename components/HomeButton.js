@@ -1,24 +1,28 @@
 import styled from "styled-components";
+import HomeSVG from "../src/heroicons/home.svg";
+import { useRouter } from "next/router";
 
 const HomeButtonElement = styled.button`
   border: none;
-  background-color: transparent;
+  background-color: #fafafa;
   align-self: start;
+  margin-left: 0.4em;
+  border-radius: 0.4em;
+  padding: 0.4em;
+  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset,
+    0 0 10px rgba(255, 255, 255, 0.5);
 `;
 
-const HomeSVG = styled.svg`
-  xmlns: "http://www.w3.org/2000/svg";
-  viewbox: "0 0 24 24";
-  fill: black;
-  width: 5em;
+const HomeIcon = styled(HomeSVG)`
+  width: 100%;
+  height: 3em;
 `;
 
 export default function HomeButton() {
+  const router = useRouter();
   return (
-    <HomeButtonElement onClick={() => (window.location.href = "/dashboard")}>
-      <HomeSVG viewBox="0 0 24 24">
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z" />
-      </HomeSVG>
+    <HomeButtonElement onClick={() => router.push("/dashboard")}>
+      <HomeIcon />
     </HomeButtonElement>
   );
 }

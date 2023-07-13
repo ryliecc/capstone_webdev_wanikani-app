@@ -3,7 +3,6 @@ import LevelProgressBar from "./LevelProgressBar";
 import SubjectsNavBar from "./SubjectsNavBar";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import useSummary from "../swr/useSummary.js";
 
 const Container = styled.div`
   display: flex;
@@ -36,15 +35,6 @@ const Heading = styled.h2`
 
 export default function Dashboard() {
   const router = useRouter();
-  const { summary, isLoading, isError } = useSummary();
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error fetching...</div>;
-  }
-
-  const LessonSessionIds = summary?.lessons.map((item) => item.subject_ids);
   return (
     <Container>
       <Greeting>頑張って!</Greeting>

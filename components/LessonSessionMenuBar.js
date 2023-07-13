@@ -44,7 +44,11 @@ const MenuItem = styled.button`
   onclick: props.onClick;
 `;
 
-export default function LessonSessionMenuBar({ backgroundColor, textColor }) {
+export default function LessonSessionMenuBar({
+  currentLesson,
+  currentLessonIndex,
+  setCurrentLessonIndex,
+}) {
   const router = useRouter();
   const [displayedCard, setDisplayedCard] = useState("meaning");
   function handleClickMeaning() {
@@ -57,7 +61,12 @@ export default function LessonSessionMenuBar({ backgroundColor, textColor }) {
 
   function handleClickLeftButton() {
     if (displayedCard === "meaning") {
-      setDisplayedCard("context");
+      if (currentLessonIndex >= 1) {
+        setCurrentLessonIndex(currentLessonIndex - 1);
+        setDisplayedCard("context");
+      } else {
+        setDisplayedCard("context");
+      }
     } else {
       setDisplayedCard("meaning");
     }
@@ -67,26 +76,44 @@ export default function LessonSessionMenuBar({ backgroundColor, textColor }) {
     if (displayedCard === "meaning") {
       setDisplayedCard("context");
     } else {
-      router.push("/dashboard");
+      if (currentLessonIndex <= 3) {
+        setDisplayedCard("meaning");
+        setCurrentLessonIndex(currentLessonIndex + 1);
+      } else {
+        setDisplayedCard("meaning");
+      }
     }
   }
   ("context");
+
+  const MeaningMnemonic = currentLesson?.data.meaning_mnemonic;
+  const NonPrimaryMeanings = currentLesson?.data.meanings.filter(
+    (item) => item.primary === false
+  );
+  let AlternativeMeanings = NonPrimaryMeanings?.map(
+    (item) => item.meaning
+  ).join(`, `);
+  if (NonPrimaryMeanings?.length === 0) {
+    AlternativeMeanings = "None";
+  }
+  const WordTypes = currentLesson?.data.parts_of_speech.join(", ");
+  const ContextSentences = currentLesson?.data.context_sentences;
   return (
     <>
-      <Container color={backgroundColor}>
+      <Container>
         <LeftButtonIcon onClick={handleClickLeftButton} />
-        <MenuItem color={textColor} onClick={handleClickMeaning}>
-          Meaning
-        </MenuItem>
-        <MenuItem color={textColor} onClick={handleClickContext}>
-          Context
-        </MenuItem>
+        <MenuItem onClick={handleClickMeaning}>Meaning</MenuItem>
+        <MenuItem onClick={handleClickContext}>Context</MenuItem>
         <RightButtonIcon onClick={handleClickRightButton} />
       </Container>
       {displayedCard === "meaning" ? (
-        <LessonMeaningCard />
+        <LessonMeaningCard
+          MeaningMnemonic={MeaningMnemonic}
+          AlternativeMeanings={AlternativeMeanings}
+          WordType={WordTypes}
+        />
       ) : (
-        <LessonContextCard />
+        <LessonContextCard contextSentences={ContextSentences} />
       )}
     </>
   );

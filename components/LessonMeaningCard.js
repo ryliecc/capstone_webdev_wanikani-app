@@ -7,7 +7,8 @@ const CardContainer = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  height: 30em;
+  height: auto;
+  padding-bottom: 2em;
 `;
 
 const MainContainer = styled.section`
@@ -15,6 +16,7 @@ const MainContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.4em;
+  margin: 0.2em;
 `;
 
 const MainTitle = styled.h3`
@@ -33,6 +35,7 @@ const SidebarContainer = styled.section`
   align-items: stretch;
   gap: 0.2em;
   padding: 0.4em;
+  margin: 0.2em;
 `;
 
 const SidebarFirstTitle = styled.h3`
@@ -56,26 +59,23 @@ const SidebarSecondContent = styled.p`
   font-size: 1em;
 `;
 
-export default function LessonMeaningCard({ backgroundColor, textColor }) {
+export default function LessonMeaningCard({
+  MeaningMnemonic,
+  AlternativeMeanings,
+  WordType,
+}) {
   return (
     <>
-      <CardContainer color={backgroundColor}>
+      <CardContainer>
         <MainContainer>
-          <MainTitle color={textColor}>Meaning Explanation</MainTitle>
-          <MainContent color={textColor}>
-            おはよう is a casual way to say &quot;good morning.&quot; It can
-            also be written in kanji, but hiragana is much more common.
-          </MainContent>
+          <MainTitle>Meaning Explanation</MainTitle>
+          <MainContent>{MeaningMnemonic}</MainContent>
         </MainContainer>
         <SidebarContainer>
-          <SidebarFirstTitle color={textColor}>
-            Other Meanings
-          </SidebarFirstTitle>
-          <SidebarFirstContent color={textColor}>Morning</SidebarFirstContent>
-          <SidebarSecondTitle color={textColor}>Word Type</SidebarSecondTitle>
-          <SidebarSecondContent color={textColor}>
-            expression
-          </SidebarSecondContent>
+          <SidebarFirstTitle>Other Meanings</SidebarFirstTitle>
+          <SidebarFirstContent>{AlternativeMeanings}</SidebarFirstContent>
+          <SidebarSecondTitle>Word Type</SidebarSecondTitle>
+          <SidebarSecondContent>{WordType}</SidebarSecondContent>
         </SidebarContainer>
       </CardContainer>
     </>

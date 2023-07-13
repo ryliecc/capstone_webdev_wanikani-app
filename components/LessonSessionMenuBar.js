@@ -1,5 +1,7 @@
 import LessonKanaVocabularyMenuBar from "./LessonKanaVocabMenuBar";
 import LessonVocabularyMenuBar from "./LessonVocabMenuBar";
+import LessonRadicalMenuBar from "./LessonRadicalMenuBar";
+import LessonKanjiMenuBar from "./LessonKanjiMenuBar";
 
 export default function LessonSessionMenuBar({
   currentLesson,
@@ -14,8 +16,7 @@ export default function LessonSessionMenuBar({
         setCurrentLessonIndex={setCurrentLessonIndex}
       />
     );
-  }
-  if (currentLesson && currentLesson.object === "vocabulary") {
+  } else if (currentLesson && currentLesson.object === "vocabulary") {
     return (
       <LessonVocabularyMenuBar
         currentLesson={currentLesson}
@@ -23,6 +24,22 @@ export default function LessonSessionMenuBar({
         setCurrentLessonIndex={setCurrentLessonIndex}
       />
     );
+  } else if (currentLesson && currentLesson.object === "radical") {
+    return (
+      <LessonRadicalMenuBar
+        currentLesson={currentLesson}
+        currentLessonIndex={currentLessonIndex}
+        setCurrentLessonIndex={setCurrentLessonIndex}
+      />
+    );
   }
-  return <div>For this object type is no MenuBar available yet.</div>;
+  return (
+    <>
+      <LessonKanjiMenuBar
+        currentLesson={currentLesson}
+        currentLessonIndex={currentLessonIndex}
+        setCurrentLessonIndex={setCurrentLessonIndex}
+      />
+    </>
+  );
 }

@@ -2,6 +2,8 @@ import SessionButton from "./SessionButton";
 import LevelProgressBar from "./LevelProgressBar";
 import SubjectsNavBar from "./SubjectsNavBar";
 import styled from "styled-components";
+import { useRouter } from "next/router";
+import useSummary from "../swr/useSummary.js";
 
 const Container = styled.div`
   display: flex;
@@ -33,13 +35,23 @@ const Heading = styled.h2`
 `;
 
 export default function Dashboard() {
+  const router = useRouter();
+  const { summary, isLoading, isError } = useSummary();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error fetching...</div>;
+  }
+
+  const LessonSessionIds = summary?.lessons.map((item) => item.subject_ids);
   return (
     <Container>
       <Greeting>頑張って!</Greeting>
       <SessionButton
         ButtonColor="#ff00aa"
         ButtonBorderColor="#cc0088"
-        onClick={() => (window.location.href = "/lessonsession")}
+        onClick={() => router.push("/lessonsession")}
         ButtonText="Lessons:"
         ButtonTextColor="#ffffff"
         summaryType="lessons"
@@ -47,7 +59,7 @@ export default function Dashboard() {
       <SessionButton
         ButtonColor="#00aaff"
         ButtonBorderColor="#0088cc"
-        onClick={() => (window.location.href = "/reviewsession")}
+        onClick={() => router.push("/reviewsession")}
         ButtonText="Reviews:"
         ButtonTextColor="#ffffff"
         summaryType="reviews"

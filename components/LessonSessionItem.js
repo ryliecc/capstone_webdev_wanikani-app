@@ -3,10 +3,12 @@ import HomeButton from "./HomeButton.js";
 import LessonItemsLeftCounter from "./LessonItemsLeftCounter.js";
 import useSummary from "../swr/useSummary.js";
 
-const Container = styled.div`
+const Container = styled.div.attrs((props) => ({
+  $backgroundcolor: props.$backgroundcolor,
+}))`
   width: 100%;
-  height: 15em;
-  background-color: #aa00ff;
+  height: 17em;
+  background-color: ${(props) => props.$backgroundcolor};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +24,7 @@ const TopBarContainer = styled.div`
 const Item = styled.p`
   color: #ffffff;
   font-size: 4.5em;
-  margin: 0;
+  margin-top: 0.4em;
 `;
 
 const ItemMeaning = styled.p`
@@ -41,7 +43,7 @@ export default function LessonSessionItem({ itemText, itemMeaningText }) {
 
   const LessonIds = summary?.lessons[0].subject_ids.join(",");
   return (
-    <Container>
+    <Container $backgroundcolor="#AA00FF">
       <TopBarContainer>
         <HomeButton />
         <LessonItemsLeftCounter LessonIds={LessonIds} />

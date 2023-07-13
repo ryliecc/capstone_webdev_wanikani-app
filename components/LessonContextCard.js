@@ -1,15 +1,25 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { uid } from "uid";
 
 const CardContainer = styled.div`
-  background-color: #fafafa;
+  background-color: #f4f4f4;
   margin: 0.8em;
   padding: 0.6em;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 0.4em;
+  position: relative;
+`;
+
+const BorderArrow = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 1.6em solid transparent;
+  border-right: 1.6em solid transparent;
+  border-bottom: 1.6em solid #f4f4f4;
+  position: absolute;
+  top: -1.5em;
+  right: 25%;
 `;
 
 const CombinationElement = styled.p`
@@ -46,6 +56,7 @@ export default function LessonContextCard({ contextSentences }) {
   });
   return (
     <CardContainer>
+      <BorderArrow />
       <Subheading>Context Sentences</Subheading>
       {SentenceElements}
     </CardContainer>

@@ -1,14 +1,27 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  background-color: #fafafa;
+  background-color: #f4f4f4;
   margin: 0.8em;
+  margin-top: 1em;
   padding: 0.4em;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
   height: auto;
   padding-bottom: 2em;
+  position: relative;
+`;
+
+const BorderArrow = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 1.6em solid transparent;
+  border-right: 1.6em solid transparent;
+  border-bottom: 1.6em solid #f4f4f4;
+  position: absolute;
+  top: -1.5em;
+  right: 60%;
 `;
 
 const MainContainer = styled.section`
@@ -67,6 +80,7 @@ export default function LessonMeaningCard({
   return (
     <>
       <CardContainer>
+        <BorderArrow />
         <MainContainer>
           <MainTitle>Meaning Explanation</MainTitle>
           <MainContent>{MeaningMnemonic}</MainContent>

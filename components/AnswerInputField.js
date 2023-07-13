@@ -55,6 +55,7 @@ export default function AnswerInputField({
   const [inputFieldBackgroundColor, setInputFieldBackgroundColor] =
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
+  const [inputLength, setInputLength] = useState(0);
 
   function handleSubmitAnswer(event) {
     event.preventDefault();
@@ -71,8 +72,18 @@ export default function AnswerInputField({
 
   function handleChangeAnswerField(event) {
     const RomajiInput = event.target.value;
-    const HiraganaOutput = RomajiConverter(RomajiInput);
-    event.target.value = HiraganaOutput;
+    const inputLength = RomajiInput.length;
+
+    if (inputLength === 1 && RomajiInput === "n") {
+      setInputLength(inputLength);
+    } else if (inputLength === 2 && RomajiInput === "nn") {
+      event.target.value = "ん";
+      setInputLength(inputLength);
+    } else {
+      const HiraganaOutput = RomajiConverter(RomajiInput);
+      event.target.value = HiraganaOutput;
+      setInputLength(inputLength);
+    }
   }
 
   return (

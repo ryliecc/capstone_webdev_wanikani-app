@@ -22,16 +22,6 @@ const BorderArrow = styled.div`
   right: 25%;
 `;
 
-const CombinationElement = styled.p`
-  color: #333;
-  margin-top: 0.4em;
-`;
-
-const CombinationMeaning = styled.p`
-  color: #333;
-  margin-bottom: 0.5em;
-`;
-
 const Subheading = styled.h3`
   color: #333;
 `;

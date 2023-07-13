@@ -28,7 +28,6 @@ export default function useSummary() {
     { refreshInterval: 600000 }
   );
 
-  console.log(data);
   return {
     summary: data?.summary,
     isLoading,

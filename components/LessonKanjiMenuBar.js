@@ -85,8 +85,12 @@ export default function LessonKanjiMenuBar({
     } else if (displayedCard === "reading") {
       setDisplayedCard("context");
     } else if (displayedCard === "context") {
-      setDisplayedCard("meaning");
-      setCurrentLessonIndex(currentLessonIndex + 1);
+      if (currentLessonIndex <= 3) {
+        setDisplayedCard("meaning");
+        setCurrentLessonIndex(currentLessonIndex + 1);
+      } else {
+        setDisplayedCard("meaning");
+      }
     }
   }
 

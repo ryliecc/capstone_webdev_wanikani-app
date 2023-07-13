@@ -9,7 +9,6 @@ export default function LessonSessionPage() {
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
   const { summary } = useSummary();
   const LessonIds = summary?.lessons[0]?.subject_ids;
-  console.log(LessonIds);
   const { subjects, isLoading, isError } = useSubjects(
     LessonIds && "?ids=" + LessonIds.join(",")
   );
@@ -25,10 +24,7 @@ export default function LessonSessionPage() {
       return a.data.level - b.data.level;
     }) || [];
 
-  console.log(OrderedLessons);
-
   const CurrentLesson = OrderedLessons && OrderedLessons[currentLessonIndex];
-  console.log(CurrentLesson);
   return (
     <>
       <LessonSessionItem currentLesson={CurrentLesson} LessonIds={LessonIds} />

@@ -76,15 +76,14 @@ export default function LessonKanaVocabularyMenuBar({
     if (displayedCard === "meaning") {
       setDisplayedCard("context");
     } else {
-      /* if (currentLessonIndex <= 3) { */
-      setDisplayedCard("meaning");
-      setCurrentLessonIndex(currentLessonIndex + 1);
-      /* } else {
+      if (currentLessonIndex <= 3) {
         setDisplayedCard("meaning");
-      } */
+        setCurrentLessonIndex(currentLessonIndex + 1);
+      } else {
+        setDisplayedCard("meaning");
+      }
     }
   }
-  ("context");
 
   const MeaningMnemonic = currentLesson?.data.meaning_mnemonic;
   const NonPrimaryMeanings = currentLesson?.data.meanings.filter(

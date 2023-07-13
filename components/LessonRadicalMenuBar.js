@@ -76,8 +76,12 @@ export default function LessonRadicalMenuBar({
     if (displayedCard === "meaning") {
       setDisplayedCard("context");
     } else {
-      setDisplayedCard("meaning");
-      setCurrentLessonIndex(currentLessonIndex + 1);
+      if (currentLessonIndex <= 3) {
+        setDisplayedCard("meaning");
+        setCurrentLessonIndex(currentLessonIndex + 1);
+      } else {
+        setDisplayedCard("meaning");
+      }
     }
   }
 

@@ -21,7 +21,7 @@ const BorderArrow = styled.div`
   border-bottom: 1.6em solid #f4f4f4;
   position: absolute;
   top: -1.5em;
-  right: 60%;
+  right: 67%;
 `;
 
 const MainContainer = styled.section`
@@ -72,7 +72,7 @@ const SidebarSecondContent = styled.p`
   font-size: 1em;
 `;
 
-export default function LessonMeaningCard({
+export default function LessonVocabMeaningCard({
   MeaningMnemonic,
   AlternativeMeanings,
   WordType,

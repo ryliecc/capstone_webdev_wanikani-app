@@ -39,7 +39,9 @@ const KanjiListMeaningSpan = styled.span`
 
 export default function KanjiList({ endpointPath }) {
   const router = useRouter();
-  const { subjects, isLoading, isError } = useSubjects(endpointPath);
+  const { subjects, isLoading, isError } = useSubjects(
+    endpointPath && endpointPath
+  );
   if (isLoading) {
     return <div>Loading ...</div>;
   }

@@ -34,8 +34,19 @@ const ItemMeaning = styled.p`
 export default function LessonSessionItem({ currentLesson, LessonIds }) {
   const ItemText = currentLesson?.data.characters;
   const ItemMeaningText = currentLesson?.data.meanings?.[0]?.meaning;
+
+  function DynamicBackgroundColor() {
+    if (currentLesson && currentLesson.object === "radical") {
+      return "#00AAFF";
+    }
+    if (currentLesson && currentLesson.object === "kanji") {
+      return "#FF00AA";
+    } else {
+      return "#AA00FF";
+    }
+  }
   return (
-    <Container $backgroundcolor="#AA00FF">
+    <Container $backgroundcolor={DynamicBackgroundColor}>
       <TopBarContainer>
         <HomeButton />
         <LessonItemsLeftCounter LessonIds={LessonIds} />

@@ -56,8 +56,8 @@ const QuizIcon = styled.div`
   border-radius: 5px;
   background-color: #34d399;
   color: #fff;
-  font-size: 1em;
-  padding: 0.2em;
+  font-size: 1.4em;
+  padding: 0.2em 0.4em;
 `;
 
 export default function LessonSessionProgress({ currentLessonIndex }) {

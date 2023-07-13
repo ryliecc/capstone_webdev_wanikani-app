@@ -30,7 +30,6 @@ export default function useSubjects(endpointPath) {
     fetchSubjects
   );
 
-  console.log(data);
   return {
     subjects: data?.subjects,
     isLoading,

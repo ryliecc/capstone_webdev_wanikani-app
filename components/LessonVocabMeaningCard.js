@@ -1,13 +1,27 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  background-color: #fafafa;
+  background-color: #f4f4f4;
   margin: 0.8em;
+  margin-top: 1em;
   padding: 0.4em;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  height: 30em;
+  height: auto;
+  padding-bottom: 2em;
+  position: relative;
+`;
+
+const BorderArrow = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 1.6em solid transparent;
+  border-right: 1.6em solid transparent;
+  border-bottom: 1.6em solid #f4f4f4;
+  position: absolute;
+  top: -1.5em;
+  right: 67%;
 `;
 
 const MainContainer = styled.section`
@@ -15,6 +29,7 @@ const MainContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.4em;
+  margin: 0.2em;
 `;
 
 const MainTitle = styled.h3`
@@ -33,6 +48,7 @@ const SidebarContainer = styled.section`
   align-items: stretch;
   gap: 0.2em;
   padding: 0.4em;
+  margin: 0.2em;
 `;
 
 const SidebarFirstTitle = styled.h3`
@@ -56,26 +72,24 @@ const SidebarSecondContent = styled.p`
   font-size: 1em;
 `;
 
-export default function LessonMeaningCard({ backgroundColor, textColor }) {
+export default function LessonVocabMeaningCard({
+  MeaningMnemonic,
+  AlternativeMeanings,
+  WordType,
+}) {
   return (
     <>
-      <CardContainer color={backgroundColor}>
+      <CardContainer>
+        <BorderArrow />
         <MainContainer>
-          <MainTitle color={textColor}>Meaning Explanation</MainTitle>
-          <MainContent color={textColor}>
-            おはよう is a casual way to say &quot;good morning.&quot; It can
-            also be written in kanji, but hiragana is much more common.
-          </MainContent>
+          <MainTitle>Meaning Explanation</MainTitle>
+          <MainContent>{MeaningMnemonic}</MainContent>
         </MainContainer>
         <SidebarContainer>
-          <SidebarFirstTitle color={textColor}>
-            Other Meanings
-          </SidebarFirstTitle>
-          <SidebarFirstContent color={textColor}>Morning</SidebarFirstContent>
-          <SidebarSecondTitle color={textColor}>Word Type</SidebarSecondTitle>
-          <SidebarSecondContent color={textColor}>
-            expression
-          </SidebarSecondContent>
+          <SidebarFirstTitle>Other Meanings</SidebarFirstTitle>
+          <SidebarFirstContent>{AlternativeMeanings}</SidebarFirstContent>
+          <SidebarSecondTitle>Word Type</SidebarSecondTitle>
+          <SidebarSecondContent>{WordType}</SidebarSecondContent>
         </SidebarContainer>
       </CardContainer>
     </>

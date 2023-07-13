@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import KanjiList from "./KanjiList.js";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
@@ -19,7 +20,7 @@ const BorderArrow = styled.div`
   border-bottom: 1.6em solid #f4f4f4;
   position: absolute;
   top: -1.5em;
-  right: 25%;
+  right: 17%;
 `;
 
 const Subheading = styled.h3`
@@ -35,8 +36,9 @@ const SentenceMeaning = styled.p`
   margin-bottom: 0.5em;
 `;
 
-export default function LessonContextCard({ contextSentences }) {
-  const SentenceElements = contextSentences?.map((sentence, index) => {
+export default function LessonVocabContextCard({ currentLesson }) {
+  const ContextSentences = currentLesson?.data.context_sentences;
+  const SentenceElements = ContextSentences?.map((sentence, index) => {
     return (
       <div key={index}>
         <SentenceElement>{sentence.ja}</SentenceElement>
@@ -44,11 +46,17 @@ export default function LessonContextCard({ contextSentences }) {
       </div>
     );
   });
+
+  const KanjiIds = currentLesson?.data.component_subject_ids;
+
+  const endpointPath = KanjiIds && "?ids=" + KanjiIds.join(",");
   return (
     <CardContainer>
       <BorderArrow />
       <Subheading>Context Sentences</Subheading>
       {SentenceElements}
+      <Subheading>Kanji Composition</Subheading>
+      <KanjiList endpointPath={endpointPath && endpointPath} />
     </CardContainer>
   );
 }

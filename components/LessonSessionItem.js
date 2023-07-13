@@ -1,19 +1,29 @@
 import styled from "styled-components";
-import HomeButton from "./HomeButton";
+import HomeButton from "./HomeButton.js";
+import LessonItemsLeftCounter from "./LessonItemsLeftCounter.js";
 
-const Container = styled.div`
+const Container = styled.div.attrs((props) => ({
+  $backgroundcolor: props.$backgroundcolor,
+}))`
   width: 100%;
-  height: 15em;
-  background-color: #aa00ff;
+  height: 15.2em;
+  background-color: ${(props) => props.$backgroundcolor};
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
+const TopBarContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 0.4em;
+`;
+
 const Item = styled.p`
   color: #ffffff;
-  font-size: 4.5em;
-  margin: 0;
+  font-size: 4em;
+  margin-top: 0.4em;
 `;
 
 const ItemMeaning = styled.p`
@@ -21,12 +31,28 @@ const ItemMeaning = styled.p`
   font-size: 1.8em;
 `;
 
-export default function LessonSessionItem({ itemText, itemMeaningText }) {
+export default function LessonSessionItem({ currentLesson, LessonIds }) {
+  const ItemText = currentLesson?.data.characters;
+  const ItemMeaningText = currentLesson?.data.meanings?.[0]?.meaning;
+
+  function DynamicBackgroundColor() {
+    if (currentLesson && currentLesson.object === "radical") {
+      return "#00AAFF";
+    }
+    if (currentLesson && currentLesson.object === "kanji") {
+      return "#FF00AA";
+    } else {
+      return "#AA00FF";
+    }
+  }
   return (
-    <Container>
-      <HomeButton />
-      <Item>{itemText}</Item>
-      <ItemMeaning>{itemMeaningText}</ItemMeaning>
+    <Container $backgroundcolor={DynamicBackgroundColor}>
+      <TopBarContainer>
+        <HomeButton />
+        <LessonItemsLeftCounter LessonIds={LessonIds} />
+      </TopBarContainer>
+      <Item>{ItemText}</Item>
+      <ItemMeaning>{ItemMeaningText}</ItemMeaning>
     </Container>
   );
 }

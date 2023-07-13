@@ -14,8 +14,8 @@ const KanjiListItem = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 7em;
-  height: 7em;
+  width: 6em;
+  height: 6em;
   gap: 0.2em;
   border-radius: 10px;
   background-color: #ff00aa;
@@ -39,7 +39,9 @@ const KanjiListMeaningSpan = styled.span`
 
 export default function KanjiList({ endpointPath }) {
   const router = useRouter();
-  const { subjects, isLoading, isError } = useSubjects(endpointPath);
+  const { subjects, isLoading, isError } = useSubjects(
+    endpointPath && endpointPath
+  );
   if (isLoading) {
     return <div>Loading ...</div>;
   }

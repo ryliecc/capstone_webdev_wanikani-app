@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import KanjiList from "./KanjiList";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
   margin: 0.8em;
-  padding: 0.6em;
+  padding: 0.4em;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 0.4em;
+  gap: 0.2em;
+  align-items: center;
   position: relative;
 `;
 
@@ -24,31 +26,19 @@ const BorderArrow = styled.div`
 
 const Subheading = styled.h3`
   color: #333;
+  padding-left: 0.6em;
+  text-align: start;
+  width: 100%;
+  font-size: 1.4em;
 `;
 
-const SentenceElement = styled.p`
-  color: #333;
-`;
-
-const SentenceMeaning = styled.p`
-  color: #333;
-  margin-bottom: 0.5em;
-`;
-
-export default function LessonContextCard({ contextSentences }) {
-  const SentenceElements = contextSentences?.map((sentence, index) => {
-    return (
-      <div key={index}>
-        <SentenceElement>{sentence.ja}</SentenceElement>
-        <SentenceMeaning>{sentence.en}</SentenceMeaning>
-      </div>
-    );
-  });
+export default function LessonRadicalContextCard({ KanjiIds }) {
+  const endpointPath = KanjiIds && "?ids=" + KanjiIds;
   return (
     <CardContainer>
       <BorderArrow />
-      <Subheading>Context Sentences</Subheading>
-      {SentenceElements}
+      <Subheading>Found in Kanji</Subheading>
+      <KanjiList endpointPath={endpointPath} />
     </CardContainer>
   );
 }

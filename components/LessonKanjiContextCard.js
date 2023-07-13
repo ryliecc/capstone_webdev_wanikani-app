@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import RadicalCombination from "./KanjiRadicalCombination";
+import VocabularyListComponent from "./VocabularyList";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
@@ -19,36 +21,23 @@ const BorderArrow = styled.div`
   border-bottom: 1.6em solid #f4f4f4;
   position: absolute;
   top: -1.5em;
-  right: 25%;
+  right: 17%;
 `;
 
 const Subheading = styled.h3`
   color: #333;
 `;
 
-const SentenceElement = styled.p`
-  color: #333;
-`;
-
-const SentenceMeaning = styled.p`
-  color: #333;
-  margin-bottom: 0.5em;
-`;
-
-export default function LessonContextCard({ contextSentences }) {
-  const SentenceElements = contextSentences?.map((sentence, index) => {
-    return (
-      <div key={index}>
-        <SentenceElement>{sentence.ja}</SentenceElement>
-        <SentenceMeaning>{sentence.en}</SentenceMeaning>
-      </div>
-    );
-  });
+export default function LessonKanjiContextCard({ currentLesson }) {
+  const KanjiId = currentLesson?.id;
+  const VocabularyIds = currentLesson?.data.amalgamation_subject_ids;
+  const endpointPath = VocabularyIds && "?ids=" + VocabularyIds.join(",");
   return (
     <CardContainer>
       <BorderArrow />
-      <Subheading>Context Sentences</Subheading>
-      {SentenceElements}
+      <RadicalCombination id={KanjiId} />
+      <Subheading>Found in Vocabulary</Subheading>
+      <VocabularyListComponent endpointPath={endpointPath} />
     </CardContainer>
   );
 }

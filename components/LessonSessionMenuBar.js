@@ -11,9 +11,17 @@ export default function LessonSessionMenuBar({
   currentLessonPart,
   setCurrentLessonPart,
   currentQuizItem,
+  setQuizItems,
+  changeQuizItemIndexRandomly,
 }) {
   if (currentLessonPart === "quiz") {
-    return <QuizMenuBar currentQuizItem={currentQuizItem} />;
+    return (
+      <QuizMenuBar
+        currentQuizItem={currentQuizItem}
+        setQuizItems={setQuizItems}
+        changeQuizItemIndexRandomly={changeQuizItemIndexRandomly}
+      />
+    );
   }
   if (currentLesson && currentLesson.object === "kana_vocabulary") {
     return (

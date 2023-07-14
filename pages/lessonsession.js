@@ -10,6 +10,7 @@ export default function LessonSessionPage() {
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
   const [currentLessonPart, setCurrentLessonPart] = useState("lesson");
   const [quizItems, setQuizItems] = useState([]);
+  const [currentQuizItemIndex, setCurrentQuizItemIndex] = useState(0);
   const { summary } = useSummary();
   const LessonIds = summary?.lessons[0]?.subject_ids;
   const { subjects, isLoading, isError } = useSubjects(
@@ -28,11 +29,15 @@ export default function LessonSessionPage() {
   const QuizItemsLength = quizItems.length;
 
   useEffect(() => {
+    console.log("Inside useEffect: QuizItemsLength =", QuizItemsLength);
     if (QuizItemsLength === 0 && CurrentLessons) {
-      CurrentLessons.forEach((item) => {
+      console.log("Adding quiz items");
+      CurrentLessons.map((item) => {
+        console.log("Processing item:", item);
         if (item.object === "radical") {
           const newQuizItem = {
             id: item.id,
+            object: item.object,
             subjectType: "Radical",
             expectedAnswerType: "Meaning",
             characters: item.data.characters,
@@ -46,6 +51,7 @@ export default function LessonSessionPage() {
         } else if (item.object === "kana_vocabulary") {
           const newQuizItem = {
             id: item.id,
+            object: item.object,
             subjectType: "Vocabulary",
             expectedAnswerType: "Meaning",
             characters: item.data.characters,
@@ -60,6 +66,7 @@ export default function LessonSessionPage() {
           const newQuizItems = [
             {
               id: item.id + "meaning",
+              object: item.object,
               subjectType: "Vocabulary",
               expectedAnswerType: "Meaning",
               characters: item.data.characters,
@@ -71,6 +78,7 @@ export default function LessonSessionPage() {
             },
             {
               id: item.id + "reading",
+              object: item.object,
               subjectType: "Vocabulary",
               expectedAnswerType: "Reading",
               characters: item.data.characters,
@@ -86,6 +94,7 @@ export default function LessonSessionPage() {
           const newQuizItems = [
             {
               id: item.id + "meaning",
+              object: item.object,
               subjectType: "Kanji",
               expectedAnswerType: "Meaning",
               characters: item.data.characters,
@@ -97,6 +106,7 @@ export default function LessonSessionPage() {
             },
             {
               id: item.id + "reading",
+              object: item.object,
               subjectType: "Kanji",
               expectedAnswerType: "Reading",
               characters: item.data.characters,
@@ -113,9 +123,19 @@ export default function LessonSessionPage() {
     }
   }, [QuizItemsLength, CurrentLessons]);
 
-  const CurrentQuizItemIndex = Math.floor(Math.random() * QuizItemsLength);
-  const CurrentQuizItem = quizItems[CurrentQuizItemIndex];
-  console.log(CurrentQuizItem);
+  function changeQuizItemIndexRandomly() {
+    const randomIndex = Math.floor(Math.random() * quizItems.length);
+    setCurrentQuizItemIndex(randomIndex);
+  }
+
+  useEffect(() => {
+    changeQuizItemIndexRandomly();
+  });
+
+  const CurrentQuizItem = quizItems[currentQuizItemIndex];
+  console.log("Current Quiz Item: ", CurrentQuizItem);
+  console.log("Quiz Items: ", quizItems);
+  console.log("Current Lessons: ", CurrentLessons);
 
   if (isLoading) {
     return <LoadingComponent loadingIsVisible />;
@@ -139,6 +159,8 @@ export default function LessonSessionPage() {
         setCurrentLessonPart={setCurrentLessonPart}
         currentLessons={CurrentLessons}
         currentQuizItem={CurrentQuizItem}
+        setQuizItems={setQuizItems}
+        changeQuizItemIndexRandomly={changeQuizItemIndexRandomly}
       />
       <LessonSessionProgress
         currentLessonIndex={currentLessonIndex}

@@ -52,9 +52,9 @@ export default function LessonQuizAdditionalContent({
   isHiddenWrong,
   setIsHiddenWrong,
   SubjectType,
+  isHiddenInfo,
+  setIsHiddenInfo,
 }) {
-  const [isHiddenInfo, setIsHiddenInfo] = useState(true);
-
   const eyeImage = isHiddenInfo ? <ButtonEyeSlashImage /> : <ButtonEyeImage />;
 
   function handleClickInfoButton() {

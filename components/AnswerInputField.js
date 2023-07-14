@@ -51,21 +51,52 @@ export default function AnswerInputField({
   expectedAnswerType,
   expectedAnswerText,
   setIsHiddenWrong,
+  setIsHiddenInfo,
+  setQuizItems,
+  currentQuizItem,
+  changeQuizItemIndexRandomly,
 }) {
   const [inputFieldBackgroundColor, setInputFieldBackgroundColor] =
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
+  const [quizStatus, setQuizStatus] = useState("not answered");
 
   function handleSubmitAnswer(event) {
     event.preventDefault();
     const answer = event.target.elements.answer.value;
-    if (expectedAnswerText && expectedAnswerText.includes(answer)) {
+    if (quizStatus === "answered correct") {
+      setQuizStatus("not answered");
+      setIsHiddenInfo(true);
+      setQuizItems((prevQuizItems) =>
+        prevQuizItems.filter((item) => item.id !== currentQuizItem.id)
+      );
+      setTextColor("#333");
+      setInputFieldBackgroundColor("f4f4f4");
+      event.target.elements.answer.value = "";
+    } else if (quizStatus === "answered wrong") {
+      setQuizStatus("not answered");
+      setIsHiddenInfo(true);
+      setIsHiddenWrong(true);
+      setTextColor("#333");
+      setInputFieldBackgroundColor("f4f4f4");
+      event.target.elements.answer.value = "";
+      setQuizItems((prevQuizItems) => {
+        const updatedQuizItems = prevQuizItems.filter(
+          (item) => item.id !== currentQuizItem.id
+        );
+        updatedQuizItems.push(currentQuizItem);
+        return updatedQuizItems;
+      });
+      changeQuizItemIndexRandomly();
+    } else if (expectedAnswerText && expectedAnswerText.includes(answer)) {
       setInputFieldBackgroundColor("#88cc00");
       setTextColor("#ffffff");
+      setQuizStatus("answered correct");
     } else {
       setInputFieldBackgroundColor("#ff0033");
       setTextColor("#ffffff");
       setIsHiddenWrong(false);
+      setQuizStatus("answered wrong");
     }
   }
 

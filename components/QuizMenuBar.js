@@ -28,8 +28,13 @@ const CategorySpan = styled.span`
   color: #333;
 `;
 
-export default function QuizMenuBar({ currentQuizItem }) {
+export default function QuizMenuBar({
+  currentQuizItem,
+  setQuizItems,
+  changeQuizItemIndexRandomly,
+}) {
   const [isHiddenWrong, setIsHiddenWrong] = useState(true);
+  const [isHiddenInfo, setIsHiddenInfo] = useState(true);
 
   const SubjectType = currentQuizItem?.subjectType;
   const ExpectedAnswerType = currentQuizItem?.expectedAnswerType;
@@ -44,11 +49,17 @@ export default function QuizMenuBar({ currentQuizItem }) {
         expectedAnswerType={ExpectedAnswerType}
         expectedAnswerText={ExpectedAnswerText}
         setIsHiddenWrong={setIsHiddenWrong}
+        setIsHiddenInfo={setIsHiddenInfo}
+        setQuizItems={setQuizItems}
+        currentQuizItem={currentQuizItem}
+        changeQuizItemIndexRandomly={changeQuizItemIndexRandomly}
       />
       <LessonQuizAdditionalContent
         isHiddenWrong={isHiddenWrong}
         setIsHiddenWrong={setIsHiddenWrong}
         SubjectType="Something"
+        isHiddenInfo={isHiddenInfo}
+        setIsHiddenInfo={setIsHiddenInfo}
       />
     </>
   );

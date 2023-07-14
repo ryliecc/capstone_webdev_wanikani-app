@@ -71,9 +71,8 @@ export default function AnswerInputField({
 
   function handleChangeAnswerField(event) {
     const RomajiInput = event.target.value;
-    const RomajiInputLength = RomajiInput.length;
 
-    if (RomajiInputLength >= 2 && RomajiInput.slice(-2) === "nn") {
+    if (RomajiInput.slice(-2) === "nn") {
       event.target.value = RomajiInput.slice(0, -2) + "ん";
     } else if (RomajiInput.slice(-1) === "n") {
       return null;

@@ -76,7 +76,7 @@ export default function AnswerInputField({
     if (RomajiInputLength >= 2 && RomajiInput.slice(-2) === "nn") {
       event.target.value = RomajiInput.slice(0, -2) + "ん";
     } else if (RomajiInput.slice(-1) === "n") {
-      console.log("I don't want to do anything here. Sorry.");
+      return null;
     } else {
       const HiraganaOutput = RomajiConverter(RomajiInput);
       event.target.value = HiraganaOutput;

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-const Container = styled.section`
-  display: flex;
+const Container = styled.section.attrs((props) => ({
+  $visibility: props.$visibility,
+}))`
+  display: ${(props) => (props.$visibility ? "flex" : "none")};
   justify-content: center;
   align-items: center;
   gap: 0.4em;
@@ -60,9 +62,12 @@ const QuizIcon = styled.div`
   padding: 0.2em 0.4em;
 `;
 
-export default function LessonSessionProgress({ currentLessonIndex }) {
+export default function LessonSessionProgress({
+  currentLessonIndex,
+  currentLessonPart,
+}) {
   return (
-    <Container>
+    <Container $visibility={currentLessonPart === "lesson" ? true : false}>
       <FirstDot />
       <SecondDot
         $backgroundcolor={currentLessonIndex >= 1 ? "#333" : "transparent"}

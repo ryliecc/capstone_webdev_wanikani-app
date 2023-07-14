@@ -48,6 +48,7 @@ export default function LessonKanaVocabularyMenuBar({
   currentLesson,
   currentLessonIndex,
   setCurrentLessonIndex,
+  setCurrentLessonPart,
 }) {
   const router = useRouter();
   const [displayedCard, setDisplayedCard] = useState("meaning");
@@ -80,7 +81,7 @@ export default function LessonKanaVocabularyMenuBar({
         setDisplayedCard("meaning");
         setCurrentLessonIndex(currentLessonIndex + 1);
       } else {
-        setDisplayedCard("meaning");
+        setCurrentLessonPart("quiz");
       }
     }
   }

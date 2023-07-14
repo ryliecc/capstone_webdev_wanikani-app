@@ -49,6 +49,7 @@ export default function LessonKanjiMenuBar({
   currentLesson,
   currentLessonIndex,
   setCurrentLessonIndex,
+  setCurrentLessonPart,
 }) {
   const router = useRouter();
   const [displayedCard, setDisplayedCard] = useState("meaning");
@@ -89,7 +90,7 @@ export default function LessonKanjiMenuBar({
         setDisplayedCard("meaning");
         setCurrentLessonIndex(currentLessonIndex + 1);
       } else {
-        setDisplayedCard("meaning");
+        setCurrentLessonPart("quiz");
       }
     }
   }

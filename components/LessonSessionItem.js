@@ -26,24 +26,41 @@ const Item = styled.p`
   margin-top: 0.4em;
 `;
 
-const ItemMeaning = styled.p`
+const ItemMeaning = styled.p.attrs((props) => ({
+  $visibility: props.$visibility,
+}))`
   color: #ffffff;
   font-size: 1.8em;
+  visibility: ${(props) => (props.$visibility ? "visible" : "hidden")};
 `;
 
-export default function LessonSessionItem({ currentLesson, LessonIds }) {
-  const ItemText = currentLesson?.data.characters;
-  const ItemMeaningText = currentLesson?.data.meanings?.[0]?.meaning;
+export default function LessonSessionItem({
+  currentLesson,
+  LessonIds,
+  currentLessonPart,
+  currentQuizItem,
+}) {
+  const CurrentItem =
+    currentLessonPart === "lesson"
+      ? currentLesson && currentLesson
+      : currentQuizItem && currentQuizItem;
+  const ItemText =
+    currentLessonPart === "lesson"
+      ? CurrentItem?.data.characters
+      : CurrentItem?.characters;
+  const ItemMeaningText =
+    currentLessonPart === "lesson"
+      ? CurrentItem?.data.meanings?.[0]?.meaning
+      : "Nice try.";
 
   function DynamicBackgroundColor() {
-    if (currentLesson && currentLesson.object === "radical") {
+    if (CurrentItem && CurrentItem.object === "radical") {
       return "#00AAFF";
     }
-    if (currentLesson && currentLesson.object === "kanji") {
+    if (CurrentItem && CurrentItem.object === "kanji") {
       return "#FF00AA";
-    } else {
-      return "#AA00FF";
     }
+    return "#AA00FF";
   }
   return (
     <Container $backgroundcolor={DynamicBackgroundColor}>
@@ -52,7 +69,9 @@ export default function LessonSessionItem({ currentLesson, LessonIds }) {
         <LessonItemsLeftCounter LessonIds={LessonIds} />
       </TopBarContainer>
       <Item>{ItemText}</Item>
-      <ItemMeaning>{ItemMeaningText}</ItemMeaning>
+      <ItemMeaning $visibility={currentLessonPart === "lesson" ? true : false}>
+        {ItemMeaningText}
+      </ItemMeaning>
     </Container>
   );
 }

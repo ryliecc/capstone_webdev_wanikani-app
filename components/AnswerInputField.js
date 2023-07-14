@@ -48,8 +48,8 @@ const EnterButtonImage = styled(ChevronRightSVG)`
 `;
 
 export default function AnswerInputField({
-  placeholderText,
-  validAnswerText,
+  expectedAnswerType,
+  expectedAnswerText,
   setIsHiddenWrong,
 }) {
   const [inputFieldBackgroundColor, setInputFieldBackgroundColor] =
@@ -59,7 +59,7 @@ export default function AnswerInputField({
   function handleSubmitAnswer(event) {
     event.preventDefault();
     const answer = event.target.elements.answer.value;
-    if (validAnswerText == answer) {
+    if (expectedAnswerText && expectedAnswerText.includes(answer)) {
       setInputFieldBackgroundColor("#88cc00");
       setTextColor("#ffffff");
     } else {
@@ -70,17 +70,29 @@ export default function AnswerInputField({
   }
 
   function handleChangeAnswerField(event) {
-    const RomajiInput = event.target.value;
+    if (expectedAnswerType === "Reading") {
+      const RomajiInput = event.target.value;
 
-    if (RomajiInput.slice(-2) === "nn") {
-      event.target.value = RomajiInput.slice(0, -2) + "ん";
-    } else if (RomajiInput.slice(-1) === "n") {
-      return null;
+      if (RomajiInput.slice(-2) === "nn") {
+        event.target.value = RomajiInput.slice(0, -2) + "ん";
+      } else if (RomajiInput.slice(-1) === "n") {
+        return null;
+      } else {
+        const HiraganaOutput = RomajiConverter(RomajiInput);
+        event.target.value = HiraganaOutput;
+      }
     } else {
-      const HiraganaOutput = RomajiConverter(RomajiInput);
-      event.target.value = HiraganaOutput;
+      return null;
     }
   }
+
+  const placeholderText = () => {
+    if (expectedAnswerType === "Reading") {
+      return "答え";
+    } else {
+      return "Your answer";
+    }
+  };
 
   return (
     <AnswerFormContainer>
@@ -89,7 +101,7 @@ export default function AnswerInputField({
         $backgroundcolor={inputFieldBackgroundColor}
       >
         <AnswerField
-          placeholder={placeholderText}
+          placeholder={placeholderText()}
           type="text"
           name="answer"
           autoComplete="off"

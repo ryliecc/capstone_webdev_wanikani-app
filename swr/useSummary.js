@@ -24,8 +24,7 @@ export default function useSummary() {
 
   const { data, error, isLoading } = useSWR(
     apiToken ? "summary" : null,
-    fetchSummary,
-    { refreshInterval: 600000 }
+    fetchSummary
   );
 
   return {

@@ -123,9 +123,6 @@ export default function LessonSessionPage() {
   if (isError) {
     return <div>Error fetching...</div>;
   }
-  if (!CurrentQuizItem) {
-    return null;
-  }
   return (
     <>
       <LessonSessionItem

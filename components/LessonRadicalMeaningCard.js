@@ -4,13 +4,13 @@ const CardContainer = styled.div`
   background-color: #f4f4f4;
   margin: 0.8em;
   margin-top: 1em;
-  padding: 0.4em;
+  padding: 0.8em;
   border-radius: 10px;
   display: flex;
   gap: 0.4em;
   flex-direction: column;
   height: auto;
-  padding-bottom: 2em;
+  padding-bottom: 1.2em;
   position: relative;
 `;
 
@@ -27,7 +27,6 @@ const BorderArrow = styled.div`
 
 const Heading = styled.h3`
   color: #333;
-  font-size: 1.4em;
 `;
 
 const Mnemonic = styled.p`

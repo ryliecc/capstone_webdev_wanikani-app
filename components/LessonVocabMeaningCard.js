@@ -25,7 +25,7 @@ const BorderArrow = styled.div`
 `;
 
 const MainContainer = styled.section`
-  width: 75%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   gap: 0.4em;
@@ -53,7 +53,7 @@ const SidebarContainer = styled.section`
 
 const SidebarFirstTitle = styled.h3`
   color: #333;
-  font-size: 1.2em;
+  font-size: 1em;
 `;
 
 const SidebarFirstContent = styled.p`
@@ -64,7 +64,7 @@ const SidebarFirstContent = styled.p`
 
 const SidebarSecondTitle = styled.h3`
   color: #333;
-  font-size: 1.2em;
+  font-size: 1em;
 `;
 
 const SidebarSecondContent = styled.p`

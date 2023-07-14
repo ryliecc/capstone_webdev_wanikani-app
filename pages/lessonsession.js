@@ -29,11 +29,8 @@ export default function LessonSessionPage() {
   const QuizItemsLength = quizItems.length;
 
   useEffect(() => {
-    console.log("Inside useEffect: QuizItemsLength =", QuizItemsLength);
     if (QuizItemsLength === 0 && CurrentLessons) {
-      console.log("Adding quiz items");
       CurrentLessons.map((item) => {
-        console.log("Processing item:", item);
         if (item.object === "radical") {
           const newQuizItem = {
             id: item.id,
@@ -65,7 +62,7 @@ export default function LessonSessionPage() {
         } else if (item.object === "vocabulary") {
           const newQuizItems = [
             {
-              id: item.id + "meaning",
+              id: item.id,
               object: item.object,
               subjectType: "Vocabulary",
               expectedAnswerType: "Meaning",
@@ -77,7 +74,7 @@ export default function LessonSessionPage() {
               }),
             },
             {
-              id: item.id + "reading",
+              id: item.id,
               object: item.object,
               subjectType: "Vocabulary",
               expectedAnswerType: "Reading",
@@ -93,7 +90,7 @@ export default function LessonSessionPage() {
         } else {
           const newQuizItems = [
             {
-              id: item.id + "meaning",
+              id: item.id,
               object: item.object,
               subjectType: "Kanji",
               expectedAnswerType: "Meaning",
@@ -105,7 +102,7 @@ export default function LessonSessionPage() {
               }),
             },
             {
-              id: item.id + "reading",
+              id: item.id,
               object: item.object,
               subjectType: "Kanji",
               expectedAnswerType: "Reading",
@@ -133,9 +130,6 @@ export default function LessonSessionPage() {
   });
 
   const CurrentQuizItem = quizItems[currentQuizItemIndex];
-  console.log("Current Quiz Item: ", CurrentQuizItem);
-  console.log("Quiz Items: ", quizItems);
-  console.log("Current Lessons: ", CurrentLessons);
 
   if (isLoading) {
     return <LoadingComponent loadingIsVisible />;

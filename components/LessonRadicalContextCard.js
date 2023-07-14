@@ -4,12 +4,11 @@ import KanjiList from "./KanjiList";
 const CardContainer = styled.div`
   background-color: #f4f4f4;
   margin: 0.8em;
-  padding: 0.4em;
+  padding: 0.8em;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 0.2em;
-  align-items: center;
   position: relative;
 `;
 
@@ -27,7 +26,6 @@ const BorderArrow = styled.div`
 const Subheading = styled.h3`
   color: #333;
   padding-left: 0.6em;
-  text-align: start;
   width: 100%;
   font-size: 1.4em;
 `;

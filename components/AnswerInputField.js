@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 import { useState } from "react";
+import RomajiConverter from "../RomajiConverter/useRomajiConverter.js";
 
 const AnswerFormContainer = styled.div`
   display: flex;
@@ -68,6 +69,19 @@ export default function AnswerInputField({
     }
   }
 
+  function handleChangeAnswerField(event) {
+    const RomajiInput = event.target.value;
+
+    if (RomajiInput.slice(-2) === "nn") {
+      event.target.value = RomajiInput.slice(0, -2) + "ん";
+    } else if (RomajiInput.slice(-1) === "n") {
+      return null;
+    } else {
+      const HiraganaOutput = RomajiConverter(RomajiInput);
+      event.target.value = HiraganaOutput;
+    }
+  }
+
   return (
     <AnswerFormContainer>
       <AnswerForm
@@ -83,6 +97,7 @@ export default function AnswerInputField({
           autocorrect="off"
           spellcheck="false"
           $color={textColor}
+          onChange={handleChangeAnswerField}
           autoFocus
         />
         <EnterButton>

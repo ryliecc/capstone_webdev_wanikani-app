@@ -20,12 +20,18 @@ const MeaningSpan = styled.span`
 `;
 const Subheading = styled.h4`
   font-size: 1.2em;
-  padding-left: 0.6em;
+  padding-left: 0.4em;
 `;
 const HintsContainer = styled.section`
   background-color: #f4f4f4;
   margin: 1em;
   padding: 1em;
+`;
+
+const HintsText = styled.p`
+  color: #333;
+  font-size: 1em;
+  padding: 0.2em;
 `;
 
 export default function KanjiMeaning({ id }) {
@@ -66,7 +72,7 @@ export default function KanjiMeaning({ id }) {
       <Paragraph>{Mnemonic}</Paragraph>
       <HintsContainer>
         <Subheading>HINTS</Subheading>
-        <Paragraph>{Hint}</Paragraph>
+        <HintsText>{Hint}</HintsText>
       </HintsContainer>
     </>
   );

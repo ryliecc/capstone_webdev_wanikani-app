@@ -4,7 +4,7 @@ import LessonSessionProgress from "../components/LessonSessionProgress.js";
 import useSummary from "../swr/useSummary.js";
 import useSubjects from "../swr/useSubjects.js";
 import LoadingComponent from "../components/Loading.js";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function LessonSessionPage() {
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
@@ -25,6 +25,11 @@ export default function LessonSessionPage() {
   const CurrentLessons = OrderedLessons?.slice(0, 5);
 
   const CurrentLesson = CurrentLessons && CurrentLessons[currentLessonIndex];
+
+  function changeQuizItemIndexRandomly() {
+    const randomIndex = Math.floor(Math.random() * quizItems.length);
+    setCurrentQuizItemIndex(randomIndex);
+  }
 
   function startQuizSession() {
     CurrentLessons?.map((item) => {
@@ -115,11 +120,6 @@ export default function LessonSessionPage() {
       }
     });
     changeQuizItemIndexRandomly();
-  }
-
-  function changeQuizItemIndexRandomly() {
-    const randomIndex = Math.floor(Math.random() * quizItems.length);
-    setCurrentQuizItemIndex(randomIndex);
   }
 
   const CurrentQuizItem = quizItems[currentQuizItemIndex];

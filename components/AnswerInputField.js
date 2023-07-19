@@ -3,6 +3,7 @@ import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 import { useState } from "react";
 import RomajiConverter from "../RomajiConverter/useRomajiConverter.js";
 import { useRouter } from "next/router";
+import useStartAssignment from "../swr/useStartAssignment.js";
 
 const AnswerFormContainer = styled.div`
   display: flex;
@@ -63,6 +64,7 @@ export default function AnswerInputField({
   const [textColor, setTextColor] = useState("#333");
   const [quizStatus, setQuizStatus] = useState("not answered");
   const router = useRouter();
+  const startAssignment = useStartAssignment(currentQuizItem.id);
 
   function handleSubmitAnswer(event) {
     event.preventDefault();
@@ -85,7 +87,7 @@ export default function AnswerInputField({
           console.log(quizItems);
           event.target.elements.answer.value = "";
         } else {
-          //Execute post into api data here
+          startAssignment();
           setTextColor("#333");
           setInputFieldBackgroundColor("f4f4f4");
           console.log(quizItems);

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 import { useState } from "react";
 import RomajiConverter from "../RomajiConverter/useRomajiConverter.js";
-import { useRouter } from "next/router";
 import useStartAssignment from "../swr/useStartAssignment.js";
 
 const AnswerFormContainer = styled.div`
@@ -58,12 +57,12 @@ export default function AnswerInputField({
   setQuizItems,
   currentQuizItem,
   changeQuizItemIndexRandomly,
+  setIsPopupVisible,
 }) {
   const [inputFieldBackgroundColor, setInputFieldBackgroundColor] =
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
   const [quizStatus, setQuizStatus] = useState("not answered");
-  const router = useRouter();
   const startAssignment = useStartAssignment(currentQuizItem.assignmentId);
 
   function handleSubmitAnswer(event) {
@@ -71,7 +70,8 @@ export default function AnswerInputField({
     const answer = event.target.elements.answer.value;
     if (quizStatus === "answered correct") {
       if (quizItems.length === 1) {
-        router.push("/dashboard");
+        startAssignment();
+        setIsPopupVisible(true);
       } else {
         setQuizStatus("not answered");
         setIsHiddenInfo(true);

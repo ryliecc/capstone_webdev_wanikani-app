@@ -157,6 +157,7 @@ export default function LessonSessionPage() {
         currentQuizItem={CurrentQuizItem}
       />
       <LessonSessionMenuBar
+        LessonIds={LessonIds}
         currentLesson={CurrentLesson}
         currentLessonIndex={currentLessonIndex}
         setCurrentLessonIndex={setCurrentLessonIndex}

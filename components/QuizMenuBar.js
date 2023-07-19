@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import AnswerInputField from "./AnswerInputField.js";
 import LessonQuizAdditionalContent from "./LessonQuizAdditionalContent.js";
+import LessonSessionEndPopup from "./LessonSessionEndPopup.js";
 import { useState } from "react";
 
 const Container = styled.div`
@@ -29,6 +30,7 @@ const CategorySpan = styled.span`
 `;
 
 export default function QuizMenuBar({
+  LessonIds,
   currentQuizItem,
   quizItems,
   setQuizItems,
@@ -36,6 +38,7 @@ export default function QuizMenuBar({
 }) {
   const [isHiddenWrong, setIsHiddenWrong] = useState(true);
   const [isHiddenInfo, setIsHiddenInfo] = useState(true);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const SubjectType = currentQuizItem?.subjectType;
   const ExpectedAnswerType = currentQuizItem?.expectedAnswerType;
@@ -55,6 +58,11 @@ export default function QuizMenuBar({
         setQuizItems={setQuizItems}
         currentQuizItem={currentQuizItem}
         changeQuizItemIndexRandomly={changeQuizItemIndexRandomly}
+        setIsPopupVisible={setIsPopupVisible}
+      />
+      <LessonSessionEndPopup
+        isPopupVisible={isPopupVisible}
+        LessonIds={LessonIds}
       />
       <LessonQuizAdditionalContent
         isHiddenWrong={isHiddenWrong}

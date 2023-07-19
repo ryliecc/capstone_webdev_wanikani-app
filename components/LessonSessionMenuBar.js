@@ -5,6 +5,7 @@ import LessonKanjiMenuBar from "./LessonKanjiMenuBar";
 import QuizMenuBar from "./QuizMenuBar";
 
 export default function LessonSessionMenuBar({
+  LessonIds,
   currentLesson,
   currentLessonIndex,
   setCurrentLessonIndex,
@@ -19,6 +20,7 @@ export default function LessonSessionMenuBar({
   if (currentLessonPart === "quiz") {
     return (
       <QuizMenuBar
+        LessonIds={LessonIds}
         currentQuizItem={currentQuizItem}
         quizItems={quizItems}
         setQuizItems={setQuizItems}

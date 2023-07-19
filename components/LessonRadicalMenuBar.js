@@ -49,6 +49,7 @@ export default function LessonRadicalMenuBar({
   currentLessonIndex,
   setCurrentLessonIndex,
   setCurrentLessonPart,
+  startQuizSession,
 }) {
   const router = useRouter();
   const [displayedCard, setDisplayedCard] = useState("meaning");
@@ -81,6 +82,7 @@ export default function LessonRadicalMenuBar({
         setDisplayedCard("meaning");
         setCurrentLessonIndex(currentLessonIndex + 1);
       } else {
+        startQuizSession();
         setCurrentLessonPart("quiz");
       }
     }

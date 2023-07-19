@@ -30,6 +30,7 @@ const CategorySpan = styled.span`
 
 export default function QuizMenuBar({
   currentQuizItem,
+  quizItems,
   setQuizItems,
   changeQuizItemIndexRandomly,
 }) {
@@ -50,6 +51,7 @@ export default function QuizMenuBar({
         expectedAnswerText={ExpectedAnswerText}
         setIsHiddenWrong={setIsHiddenWrong}
         setIsHiddenInfo={setIsHiddenInfo}
+        quizItems={quizItems}
         setQuizItems={setQuizItems}
         currentQuizItem={currentQuizItem}
         changeQuizItemIndexRandomly={changeQuizItemIndexRandomly}

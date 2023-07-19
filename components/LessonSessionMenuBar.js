@@ -10,7 +10,9 @@ export default function LessonSessionMenuBar({
   setCurrentLessonIndex,
   currentLessonPart,
   setCurrentLessonPart,
+  startQuizSession,
   currentQuizItem,
+  quizItems,
   setQuizItems,
   changeQuizItemIndexRandomly,
 }) {
@@ -18,6 +20,7 @@ export default function LessonSessionMenuBar({
     return (
       <QuizMenuBar
         currentQuizItem={currentQuizItem}
+        quizItems={quizItems}
         setQuizItems={setQuizItems}
         changeQuizItemIndexRandomly={changeQuizItemIndexRandomly}
       />
@@ -30,6 +33,7 @@ export default function LessonSessionMenuBar({
         currentLessonIndex={currentLessonIndex}
         setCurrentLessonIndex={setCurrentLessonIndex}
         setCurrentLessonPart={setCurrentLessonPart}
+        startQuizSession={startQuizSession}
       />
     );
   } else if (currentLesson && currentLesson.object === "vocabulary") {
@@ -39,6 +43,7 @@ export default function LessonSessionMenuBar({
         currentLessonIndex={currentLessonIndex}
         setCurrentLessonIndex={setCurrentLessonIndex}
         setCurrentLessonPart={setCurrentLessonPart}
+        startQuizSession={startQuizSession}
       />
     );
   } else if (currentLesson && currentLesson.object === "radical") {
@@ -48,6 +53,7 @@ export default function LessonSessionMenuBar({
         currentLessonIndex={currentLessonIndex}
         setCurrentLessonIndex={setCurrentLessonIndex}
         setCurrentLessonPart={setCurrentLessonPart}
+        startQuizSession={startQuizSession}
       />
     );
   }
@@ -58,6 +64,7 @@ export default function LessonSessionMenuBar({
         currentLessonIndex={currentLessonIndex}
         setCurrentLessonIndex={setCurrentLessonIndex}
         setCurrentLessonPart={setCurrentLessonPart}
+        startQuizSession={startQuizSession}
       />
     </>
   );

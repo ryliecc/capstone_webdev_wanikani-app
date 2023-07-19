@@ -26,27 +26,39 @@ export default function LessonSessionPage() {
 
   const CurrentLesson = CurrentLessons && CurrentLessons[currentLessonIndex];
 
-  const QuizItemsLength = quizItems.length;
-
-  useEffect(() => {
-    if (QuizItemsLength === 0 && CurrentLessons) {
-      CurrentLessons.map((item) => {
-        if (item.object === "radical") {
-          const newQuizItem = {
-            id: item.id,
-            object: item.object,
-            subjectType: "Radical",
-            expectedAnswerType: "Meaning",
-            characters: item.data.characters,
-            expectedAnswer: item.data.meanings.map((meaning) => {
-              if (meaning.accepted_answer === true) {
-                return meaning.meaning;
-              }
-            }),
-          };
-          setQuizItems((prevQuizItems) => [...prevQuizItems, newQuizItem]);
-        } else if (item.object === "kana_vocabulary") {
-          const newQuizItem = {
+  function startQuizSession() {
+    CurrentLessons?.map((item) => {
+      if (item.object === "radical") {
+        const newQuizItem = {
+          id: item.id,
+          object: item.object,
+          subjectType: "Radical",
+          expectedAnswerType: "Meaning",
+          characters: item.data.characters,
+          expectedAnswer: item.data.meanings.map((meaning) => {
+            if (meaning.accepted_answer === true) {
+              return meaning.meaning;
+            }
+          }),
+        };
+        setQuizItems((prevQuizItems) => [...prevQuizItems, newQuizItem]);
+      } else if (item.object === "kana_vocabulary") {
+        const newQuizItem = {
+          id: item.id,
+          object: item.object,
+          subjectType: "Vocabulary",
+          expectedAnswerType: "Meaning",
+          characters: item.data.characters,
+          expectedAnswer: item.data.meanings.map((meaning) => {
+            if (meaning.accepted_answer === true) {
+              return meaning.meaning;
+            }
+          }),
+        };
+        setQuizItems((prevQuizItems) => [...prevQuizItems, newQuizItem]);
+      } else if (item.object === "vocabulary") {
+        const newQuizItems = [
+          {
             id: item.id,
             object: item.object,
             subjectType: "Vocabulary",
@@ -57,77 +69,58 @@ export default function LessonSessionPage() {
                 return meaning.meaning;
               }
             }),
-          };
-          setQuizItems((prevQuizItems) => [...prevQuizItems, newQuizItem]);
-        } else if (item.object === "vocabulary") {
-          const newQuizItems = [
-            {
-              id: item.id,
-              object: item.object,
-              subjectType: "Vocabulary",
-              expectedAnswerType: "Meaning",
-              characters: item.data.characters,
-              expectedAnswer: item.data.meanings.map((meaning) => {
-                if (meaning.accepted_answer === true) {
-                  return meaning.meaning;
-                }
-              }),
-            },
-            {
-              id: item.id,
-              object: item.object,
-              subjectType: "Vocabulary",
-              expectedAnswerType: "Reading",
-              characters: item.data.characters,
-              expectedAnswer: item.data.readings.map((reading) => {
-                if (reading.accepted_answer === true) {
-                  return reading.reading;
-                }
-              }),
-            },
-          ];
-          setQuizItems((prevQuizItems) => [...prevQuizItems, ...newQuizItems]);
-        } else {
-          const newQuizItems = [
-            {
-              id: item.id,
-              object: item.object,
-              subjectType: "Kanji",
-              expectedAnswerType: "Meaning",
-              characters: item.data.characters,
-              expectedAnswer: item.data.meanings.map((meaning) => {
-                if (meaning.accepted_answer === true) {
-                  return meaning.meaning;
-                }
-              }),
-            },
-            {
-              id: item.id,
-              object: item.object,
-              subjectType: "Kanji",
-              expectedAnswerType: "Reading",
-              characters: item.data.characters,
-              expectedAnswer: item.data.readings.map((reading) => {
-                if (reading.accepted_answer === true) {
-                  return reading.reading;
-                }
-              }),
-            },
-          ];
-          setQuizItems((prevQuizItems) => [...prevQuizItems, ...newQuizItems]);
-        }
-      });
-    }
-  }, [QuizItemsLength, CurrentLessons]);
+          },
+          {
+            id: item.id,
+            object: item.object,
+            subjectType: "Vocabulary",
+            expectedAnswerType: "Reading",
+            characters: item.data.characters,
+            expectedAnswer: item.data.readings.map((reading) => {
+              if (reading.accepted_answer === true) {
+                return reading.reading;
+              }
+            }),
+          },
+        ];
+        setQuizItems((prevQuizItems) => [...prevQuizItems, ...newQuizItems]);
+      } else {
+        const newQuizItems = [
+          {
+            id: item.id,
+            object: item.object,
+            subjectType: "Kanji",
+            expectedAnswerType: "Meaning",
+            characters: item.data.characters,
+            expectedAnswer: item.data.meanings.map((meaning) => {
+              if (meaning.accepted_answer === true) {
+                return meaning.meaning;
+              }
+            }),
+          },
+          {
+            id: item.id,
+            object: item.object,
+            subjectType: "Kanji",
+            expectedAnswerType: "Reading",
+            characters: item.data.characters,
+            expectedAnswer: item.data.readings.map((reading) => {
+              if (reading.accepted_answer === true) {
+                return reading.reading;
+              }
+            }),
+          },
+        ];
+        setQuizItems((prevQuizItems) => [...prevQuizItems, ...newQuizItems]);
+      }
+    });
+    changeQuizItemIndexRandomly();
+  }
 
   function changeQuizItemIndexRandomly() {
     const randomIndex = Math.floor(Math.random() * quizItems.length);
     setCurrentQuizItemIndex(randomIndex);
   }
-
-  useEffect(() => {
-    changeQuizItemIndexRandomly();
-  });
 
   const CurrentQuizItem = quizItems[currentQuizItemIndex];
 
@@ -152,7 +145,9 @@ export default function LessonSessionPage() {
         currentLessonPart={currentLessonPart}
         setCurrentLessonPart={setCurrentLessonPart}
         currentLessons={CurrentLessons}
+        startQuizSession={startQuizSession}
         currentQuizItem={CurrentQuizItem}
+        quizItems={quizItems}
         setQuizItems={setQuizItems}
         changeQuizItemIndexRandomly={changeQuizItemIndexRandomly}
       />

@@ -50,6 +50,7 @@ export default function LessonVocabularyMenuBar({
   currentLessonIndex,
   setCurrentLessonIndex,
   setCurrentLessonPart,
+  startQuizSession,
 }) {
   const router = useRouter();
   const [displayedCard, setDisplayedCard] = useState("meaning");
@@ -90,6 +91,7 @@ export default function LessonVocabularyMenuBar({
         setDisplayedCard("meaning");
         setCurrentLessonIndex(currentLessonIndex + 1);
       } else {
+        startQuizSession();
         setCurrentLessonPart("quiz");
       }
     }

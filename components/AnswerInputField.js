@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 import { useState } from "react";
 import RomajiConverter from "../RomajiConverter/useRomajiConverter.js";
+import { useRouter } from "next/router";
 
 const AnswerFormContainer = styled.div`
   display: flex;
@@ -52,6 +53,7 @@ export default function AnswerInputField({
   expectedAnswerText,
   setIsHiddenWrong,
   setIsHiddenInfo,
+  quizItems,
   setQuizItems,
   currentQuizItem,
   changeQuizItemIndexRandomly,
@@ -60,19 +62,36 @@ export default function AnswerInputField({
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
   const [quizStatus, setQuizStatus] = useState("not answered");
+  const router = useRouter();
 
   function handleSubmitAnswer(event) {
     event.preventDefault();
     const answer = event.target.elements.answer.value;
     if (quizStatus === "answered correct") {
-      setQuizStatus("not answered");
-      setIsHiddenInfo(true);
-      setQuizItems((prevQuizItems) =>
-        prevQuizItems.filter((item) => item.id !== currentQuizItem.id)
-      );
-      setTextColor("#333");
-      setInputFieldBackgroundColor("f4f4f4");
-      event.target.elements.answer.value = "";
+      if (quizItems.length === 1) {
+        router.push("/dashboard");
+      } else {
+        setQuizStatus("not answered");
+        setIsHiddenInfo(true);
+        setQuizItems((prevQuizItems) =>
+          prevQuizItems.filter((item) => item.id !== currentQuizItem.id)
+        );
+        const isStillInBatch = quizItems.find(
+          (item) => item.id === currentQuizItem.id
+        );
+        if (isStillInBatch) {
+          setTextColor("#333");
+          setInputFieldBackgroundColor("f4f4f4");
+          console.log(quizItems);
+          event.target.elements.answer.value = "";
+        } else {
+          //Execute post into api data here
+          setTextColor("#333");
+          setInputFieldBackgroundColor("f4f4f4");
+          console.log(quizItems);
+          event.target.elements.answer.value = "";
+        }
+      }
     } else if (quizStatus === "answered wrong") {
       setQuizStatus("not answered");
       setIsHiddenInfo(true);

@@ -64,7 +64,7 @@ export default function AnswerInputField({
   const [textColor, setTextColor] = useState("#333");
   const [quizStatus, setQuizStatus] = useState("not answered");
   const router = useRouter();
-  const startAssignment = useStartAssignment(currentQuizItem.id);
+  const startAssignment = useStartAssignment(currentQuizItem.assignmentId);
 
   function handleSubmitAnswer(event) {
     event.preventDefault();
@@ -76,7 +76,7 @@ export default function AnswerInputField({
         setQuizStatus("not answered");
         setIsHiddenInfo(true);
         setQuizItems((prevQuizItems) =>
-          prevQuizItems.filter((item) => item.id !== currentQuizItem.id)
+          prevQuizItems.filter((item) => item.quizId !== currentQuizItem.quizId)
         );
         const isStillInBatch = quizItems.find(
           (item) => item.id === currentQuizItem.id
@@ -103,7 +103,7 @@ export default function AnswerInputField({
       event.target.elements.answer.value = "";
       setQuizItems((prevQuizItems) => {
         const updatedQuizItems = prevQuizItems.filter(
-          (item) => item.id !== currentQuizItem.id
+          (item) => item.quizId !== currentQuizItem.quizId
         );
         updatedQuizItems.push(currentQuizItem);
         return updatedQuizItems;

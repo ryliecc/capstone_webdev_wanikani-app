@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function useStartAssignment(subjectIds) {
+export default function useGetAssignmentsBySubjectID(subjectIds) {
   const [apiToken, setApiToken] = useLocalStorageState("apiToken", {
     defaultValue: "",
   });
@@ -12,7 +12,8 @@ export default function useStartAssignment(subjectIds) {
       Authorization: "Bearer " + apiToken,
     });
     const apiEndpoint = new Request(
-      "https://api.wanikani.com/v2/assignments/?subject_ids=" + subjectIds,
+      "https://api.wanikani.com/v2/assignments/?subject_ids=" +
+        subjectIds.join(","),
       {
         method: "GET",
         headers: requestHeaders,
@@ -21,12 +22,12 @@ export default function useStartAssignment(subjectIds) {
 
     const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-    const { data, error } = await fetcher(subjectIds);
+    const { data, error } = await fetcher(apiEndpoint);
     return { assignments: data, isError: error };
   };
 
   const { data, error, isLoading } = useSWR(
-    apiToken ? ["assignments", subjectIds] : null,
+    apiToken && subjectIds ? ["assignments", subjectIds] : null,
     fetchAssignments
   );
 

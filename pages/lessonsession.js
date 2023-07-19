@@ -2,6 +2,7 @@ import LessonSessionItem from "../components/LessonSessionItem.js";
 import LessonSessionMenuBar from "../components/LessonSessionMenuBar.js";
 import LessonSessionProgress from "../components/LessonSessionProgress.js";
 import useSummary from "../swr/useSummary.js";
+import useGetAssignmentsBySubjectID from "../swr/useGetAssignmentsBySubjectID.js";
 import useSubjects from "../swr/useSubjects.js";
 import LoadingComponent from "../components/Loading.js";
 import { useState } from "react";
@@ -11,8 +12,10 @@ export default function LessonSessionPage() {
   const [currentLessonPart, setCurrentLessonPart] = useState("lesson");
   const [quizItems, setQuizItems] = useState([]);
   const [currentQuizItemIndex, setCurrentQuizItemIndex] = useState(0);
+
   const { summary } = useSummary();
   const LessonIds = summary?.lessons[0]?.subject_ids;
+  const { assignments } = useGetAssignmentsBySubjectID(LessonIds);
   const { subjects, isLoading, isError } = useSubjects(
     LessonIds && "?ids=" + LessonIds.join(",")
   );
@@ -33,9 +36,14 @@ export default function LessonSessionPage() {
 
   function startQuizSession() {
     CurrentLessons?.map((item) => {
+      const matchingAssignment = assignments?.find(
+        (assignment) => assignment.data.subject_id === item.id
+      );
       if (item.object === "radical") {
         const newQuizItem = {
           id: item.id,
+          assignmentId: matchingAssignment.id,
+          quizId: item.id,
           object: item.object,
           subjectType: "Radical",
           expectedAnswerType: "Meaning",
@@ -50,6 +58,8 @@ export default function LessonSessionPage() {
       } else if (item.object === "kana_vocabulary") {
         const newQuizItem = {
           id: item.id,
+          assignmentId: matchingAssignment.id,
+          quizId: item.id,
           object: item.object,
           subjectType: "Vocabulary",
           expectedAnswerType: "Meaning",
@@ -65,6 +75,8 @@ export default function LessonSessionPage() {
         const newQuizItems = [
           {
             id: item.id,
+            assignmentId: matchingAssignment.id,
+            quizId: item.id + "meaning",
             object: item.object,
             subjectType: "Vocabulary",
             expectedAnswerType: "Meaning",
@@ -77,6 +89,8 @@ export default function LessonSessionPage() {
           },
           {
             id: item.id,
+            assignmentId: matchingAssignment.id,
+            quizId: item.id + "reading",
             object: item.object,
             subjectType: "Vocabulary",
             expectedAnswerType: "Reading",
@@ -93,6 +107,8 @@ export default function LessonSessionPage() {
         const newQuizItems = [
           {
             id: item.id,
+            assignmentId: matchingAssignment.id,
+            quizId: item.id + "meaning",
             object: item.object,
             subjectType: "Kanji",
             expectedAnswerType: "Meaning",
@@ -105,6 +121,8 @@ export default function LessonSessionPage() {
           },
           {
             id: item.id,
+            assignmentId: matchingAssignment.id,
+            quizId: item.id + "reading",
             object: item.object,
             subjectType: "Kanji",
             expectedAnswerType: "Reading",

@@ -70,7 +70,6 @@ export default function AnswerInputField({
     const answer = event.target.elements.answer.value;
     if (quizStatus === "answered correct") {
       if (quizItems.length === 1) {
-        startAssignment();
         setIsPopupVisible(true);
       } else {
         setQuizStatus("not answered");

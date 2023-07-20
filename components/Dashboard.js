@@ -1,8 +1,9 @@
+import styled from "styled-components";
+import { useRouter } from "next/router";
+import useLocalStorageState from "use-local-storage-state";
 import SessionButton from "./SessionButton";
 import LevelProgressBar from "./LevelProgressBar";
 import SubjectsNavBar from "./SubjectsNavBar";
-import styled from "styled-components";
-import { useRouter } from "next/router";
 import LogoutSVG from "../src/heroicons/arrow-left-on-rectangle.svg";
 import SettingsSVG from "../src/heroicons/cog-8-tooth.svg";
 
@@ -78,13 +79,25 @@ const Heading = styled.h2`
 
 export default function Dashboard() {
   const router = useRouter();
+  const [apiToken, setApiToken] = useLocalStorageState("apiToken", {
+    defaultValue: "",
+  });
+
+  function handleClickLogout() {
+    router.push("/");
+    setApiToken("");
+  }
+
+  function handleClickSettings() {
+    router.push("/settings");
+  }
   return (
     <Container>
       <MainNavigationContainer>
-        <LogoutButton type="button">
+        <LogoutButton type="button" onClick={handleClickLogout}>
           <LogoutIcon />
         </LogoutButton>
-        <SettingsButton type="button">
+        <SettingsButton type="button" onClick={handleClickSettings}>
           <SettingsIcon />
         </SettingsButton>
       </MainNavigationContainer>

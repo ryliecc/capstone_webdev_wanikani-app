@@ -63,7 +63,7 @@ export default function AnswerInputField({
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
   const [quizStatus, setQuizStatus] = useState("not answered");
-  const startAssignment = useStartAssignment(currentQuizItem.assignmentId);
+  const startAssignment = useStartAssignment(currentQuizItem?.assignmentId);
 
   function handleSubmitAnswer(event) {
     event.preventDefault();

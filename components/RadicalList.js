@@ -7,6 +7,7 @@ const RadicalListElement = styled.ul`
   flex-wrap: wrap;
   gap: 0.5em;
   margin: 0.5em;
+  justify-content: center;
 `;
 
 const RadicalListItem = styled.li`

@@ -40,9 +40,9 @@ export default function QuizMenuBar({
   const [isHiddenInfo, setIsHiddenInfo] = useState(true);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
-  const SubjectType = currentQuizItem?.subjectType;
   const ExpectedAnswerType = currentQuizItem?.expectedAnswerType;
   const ExpectedAnswerText = currentQuizItem?.expectedAnswer;
+  const SubjectType = currentQuizItem?.subjectType;
   return (
     <>
       <Container>
@@ -67,9 +67,9 @@ export default function QuizMenuBar({
       <LessonQuizAdditionalContent
         isHiddenWrong={isHiddenWrong}
         setIsHiddenWrong={setIsHiddenWrong}
-        SubjectType={SubjectType}
         isHiddenInfo={isHiddenInfo}
         setIsHiddenInfo={setIsHiddenInfo}
+        currentQuizItem={currentQuizItem}
       />
     </>
   );

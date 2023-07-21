@@ -51,9 +51,9 @@ const ContentButton = styled.button`
 export default function LessonQuizAdditionalContent({
   isHiddenWrong,
   setIsHiddenWrong,
-  SubjectType,
   isHiddenInfo,
   setIsHiddenInfo,
+  currentQuizItem,
 }) {
   const eyeImage = isHiddenInfo ? <ButtonEyeSlashImage /> : <ButtonEyeImage />;
 
@@ -78,7 +78,7 @@ export default function LessonQuizAdditionalContent({
       />
       <LessonQuizInfoCard
         cardVisibility={!isHiddenInfo}
-        subjectType={SubjectType}
+        currentQuizItem={currentQuizItem}
       />
     </AdditionalContentContainer>
   );

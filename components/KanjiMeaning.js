@@ -2,15 +2,16 @@ import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
 
 const Heading = styled.h3`
-  font-size: 1.6em;
+  font-size: 1.8em;
   margin: 0.4em;
-  margin-bottom: 0;
+  text-align: center;
+  margin-top: 0.8em;
 `;
 const Paragraph = styled.p`
   display: flex;
   gap: 0.4em;
   font-size: 1.2em;
-  padding: 0.4em;
+  margin: 0.4em;
 `;
 const CategorySpan = styled.span`
   color: #999;
@@ -22,16 +23,29 @@ const Subheading = styled.h4`
   font-size: 1.2em;
   padding-left: 0.4em;
 `;
+
+const HintsArrow = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 1.6em solid transparent;
+  border-right: 1.6em solid transparent;
+  border-bottom: 1.6em solid #f4f4f4;
+  position: absolute;
+  top: -1.4em;
+`;
 const HintsContainer = styled.section`
   background-color: #f4f4f4;
   margin: 1em;
+  margin-top: 1.6em;
   padding: 1em;
+  position: relative;
 `;
 
 const HintsText = styled.p`
   color: #333;
   font-size: 1em;
   padding: 0.2em;
+  padding-left: 0.4em;
 `;
 
 export default function KanjiMeaning({ id }) {
@@ -71,6 +85,7 @@ export default function KanjiMeaning({ id }) {
       <Subheading>Mnemonic</Subheading>
       <Paragraph>{Mnemonic}</Paragraph>
       <HintsContainer>
+        <HintsArrow />
         <Subheading>HINTS</Subheading>
         <HintsText>{Hint}</HintsText>
       </HintsContainer>

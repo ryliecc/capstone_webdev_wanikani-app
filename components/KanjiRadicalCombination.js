@@ -5,6 +5,7 @@ import RadicalList from "./RadicalList.js";
 const Heading = styled.h3`
   font-size: 1.6em;
   margin: 0.4em;
+  text-align: center;
 `;
 
 export default function RadicalCombination({ id }) {
@@ -22,7 +23,7 @@ export default function RadicalCombination({ id }) {
   return (
     <>
       <Heading>Radical Combination</Heading>
-      <RadicalList endpointPath={endpointPath} />
+      <RadicalList endpointPath={endpointPath} isCombination />
     </>
   );
 }

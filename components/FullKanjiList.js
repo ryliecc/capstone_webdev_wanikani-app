@@ -9,6 +9,7 @@ const KanjiHeader = styled.h2`
 const LevelHeader = styled.h3`
   margin-left: 0.8em;
   font-size: 1.2em;
+  text-align: center;
 `;
 
 export default function FullKanjiList() {

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const Heading = styled.h3`
   font-size: 1.8em;
@@ -18,6 +19,12 @@ const CategorySpan = styled.span`
 const Subheading = styled.h4`
   font-size: 1.2em;
   padding-left: 0.4em;
+`;
+
+const Text = styled.p`
+  font-size: 1.2em;
+  margin: 0.4em;
+  line-height: 1.4em;
 `;
 
 export default function RadicalNameSection({ id }) {
@@ -40,7 +47,9 @@ export default function RadicalNameSection({ id }) {
         {Primary}
       </Paragraph>
       <Subheading>Mnemonic</Subheading>
-      <Paragraph>{MeaningMnemonic}</Paragraph>
+      <Text>
+        <StyledApiResponse text={MeaningMnemonic} />
+      </Text>
     </>
   );
 }

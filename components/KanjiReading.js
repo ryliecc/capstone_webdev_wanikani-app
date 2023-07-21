@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const Heading = styled.h3`
   font-size: 1.8em;
@@ -38,10 +39,9 @@ const Subheading = styled.h4`
 `;
 
 const Paragraph = styled.p`
-  display: flex;
-  gap: 0.4em;
   font-size: 1.2em;
   margin: 0.4em;
+  line-height: 1.4em;
 `;
 
 const HintContainer = styled.section`
@@ -67,6 +67,7 @@ const HintsText = styled.p`
   font-size: 1em;
   padding: 0.2em;
   padding-left: 0.4em;
+  line-height: 1.4em;
 `;
 
 export default function KanjiReading({ id }) {
@@ -109,11 +110,15 @@ export default function KanjiReading({ id }) {
         </ReadingListItem>
       </ReadingList>
       <Subheading>Mnemonic</Subheading>
-      <Paragraph>{Mnemonic}</Paragraph>
+      <Paragraph>
+        <StyledApiResponse text={Mnemonic} />
+      </Paragraph>
       <HintContainer>
         <HintsArrow />
         <Subheading>HINTS</Subheading>
-        <HintsText>{Hint}</HintsText>
+        <HintsText>
+          <StyledApiResponse text={Hint} />
+        </HintsText>
       </HintContainer>
     </>
   );

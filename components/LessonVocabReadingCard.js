@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
@@ -38,6 +39,7 @@ const Heading = styled.h3`
 const Text = styled.p`
   color: #333;
   margin-left: 0.2em;
+  line-height: 1.4em;
 `;
 
 export default function LessonVocabReadingCard({ Readings, ReadingMnemonic }) {
@@ -47,7 +49,9 @@ export default function LessonVocabReadingCard({ Readings, ReadingMnemonic }) {
         <BorderArrow />
         <ReadingText>{Readings}</ReadingText>
         <Heading>Explanation</Heading>
-        <Text>{ReadingMnemonic}</Text>
+        <Text>
+          <StyledApiResponse text={ReadingMnemonic} />
+        </Text>
       </CardContainer>
     </>
   );

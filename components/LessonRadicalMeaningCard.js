@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
@@ -31,6 +32,7 @@ const Heading = styled.h3`
 
 const Mnemonic = styled.p`
   color: #333;
+  line-height: 1.4em;
 `;
 
 export default function LessonRadicalMeaningCard({ MeaningMnemonic }) {
@@ -39,7 +41,9 @@ export default function LessonRadicalMeaningCard({ MeaningMnemonic }) {
       <CardContainer>
         <BorderArrow />
         <Heading>Meaning Explanation</Heading>
-        <Mnemonic>{MeaningMnemonic}</Mnemonic>
+        <Mnemonic>
+          <StyledApiResponse text={MeaningMnemonic} />
+        </Mnemonic>
       </CardContainer>
     </>
   );

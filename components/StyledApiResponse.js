@@ -5,21 +5,21 @@ const StyledJa = styled.span``;
 const StyledRadical = styled.span`
   color: #ffffff;
   background-color: #00aaff;
-  padding: 0.2em;
+  padding: 0.05em 0.2em;
   border-radius: 5px;
 `;
 
 const StyledKanji = styled.span`
   color: #ffffff;
   background-color: #ff00aa;
-  padding: 0.2em;
+  padding: 0.05em 0.2em;
   border-radius: 5px;
 `;
 
 const StyledVocabulary = styled.span`
   color: #ffffff;
   background-color: #aa00ff;
-  padding: 0.2em;
+  padding: 0.05em 0.2em;
   border-radius: 5px;
 `;
 

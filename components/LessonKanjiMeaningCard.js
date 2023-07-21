@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
@@ -34,12 +35,14 @@ const Subheading = styled.h4`
 
 const Text = styled.p`
   color: #333;
+  line-height: 1.4em;
 `;
 
 const Paragraph = styled.p`
   display: flex;
   justify-content: flex-start;
   gap: 0.4em;
+  line-height: 1.4em;
 `;
 const CategorySpan = styled.span`
   color: #999;
@@ -66,10 +69,14 @@ export default function LessonKanjiMeaningCard({
           <MeaningSpan>{AlternativeMeanings}</MeaningSpan>
         </Paragraph>
         <Heading>Explanation</Heading>
-        <Text>{MeaningMnemonic}</Text>
+        <Text>
+          <StyledApiResponse text={MeaningMnemonic} />
+        </Text>
         <HintsContainer>
           <Subheading>HINTS</Subheading>
-          <Paragraph>{Hint}</Paragraph>
+          <Paragraph>
+            <StyledApiResponse text={Hint} />
+          </Paragraph>
         </HintsContainer>
       </CardContainer>
     </>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
@@ -38,6 +39,7 @@ const MainTitle = styled.h3`
 
 const MainContent = styled.p`
   color: #333;
+  line-height: 1.4em;
 `;
 
 const SidebarContainer = styled.section`
@@ -83,7 +85,9 @@ export default function LessonVocabMeaningCard({
         <BorderArrow />
         <MainContainer>
           <MainTitle>Meaning Explanation</MainTitle>
-          <MainContent>{MeaningMnemonic}</MainContent>
+          <MainContent>
+            <StyledApiResponse text={MeaningMnemonic} />
+          </MainContent>
         </MainContainer>
         <SidebarContainer>
           <SidebarFirstTitle>Other Meanings</SidebarFirstTitle>

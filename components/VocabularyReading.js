@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const Heading = styled.h3`
   font-size: 1.8em;
@@ -18,6 +19,7 @@ const Subheading = styled.h4`
 const Paragraph = styled.p`
   font-size: 1.2em;
   margin: 0.4em;
+  line-height: 1.4em;
 `;
 
 export default function VocabularyReading({ id }) {
@@ -36,7 +38,9 @@ export default function VocabularyReading({ id }) {
       <Heading>Reading</Heading>
       <ReadingsElement>{Readings}</ReadingsElement>
       <Subheading>Explanation</Subheading>
-      <Paragraph>{Mnemonic}</Paragraph>
+      <Paragraph>
+        <StyledApiResponse text={Mnemonic} />
+      </Paragraph>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledApiResponse from "./StyledApiResponse.js";
 
 const CardContainer = styled.div`
   background-color: #f4f4f4;
@@ -43,7 +44,9 @@ const ReadingKana = styled.span``;
 
 const Subheading = styled.h4``;
 
-const Paragraph = styled.p``;
+const Paragraph = styled.p`
+  line-height: 1.4em;
+`;
 
 const HintContainer = styled.section``;
 
@@ -85,10 +88,14 @@ export default function LessonKanjiReadingCard({ currentLesson }) {
           </ReadingListItem>
         </ReadingList>
         <Subheading>Mnemonic</Subheading>
-        <Paragraph>{Mnemonic}</Paragraph>
+        <Paragraph>
+          <StyledApiResponse text={Mnemonic} />
+        </Paragraph>
         <HintContainer>
           <Subheading>HINTS</Subheading>
-          <Paragraph>{Hint}</Paragraph>
+          <Paragraph>
+            <StyledApiResponse text={Hint} />
+          </Paragraph>
         </HintContainer>
       </CardContainer>
     </>

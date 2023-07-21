@@ -3,6 +3,7 @@ import useSubjects from "../swr/useSubjects.js";
 import { useRouter } from "next/router.js";
 import { useState, useEffect } from "react";
 import PlusSVG from "../src/heroicons/plus.svg";
+import LoadingComponent from "./Loading.js";
 
 const RadicalListElement = styled.ul`
   display: flex;
@@ -76,7 +77,7 @@ export default function RadicalList({ endpointPath, isCombination }) {
   });
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <LoadingComponent loadingIsVisible />;
   }
   if (isError) {
     return <div>Error fetching...</div>;

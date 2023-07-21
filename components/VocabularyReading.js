@@ -1,10 +1,24 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
 
-const Heading = styled.h3``;
-const ReadingsElement = styled.p``;
-const Subheading = styled.h4``;
-const Paragraph = styled.p``;
+const Heading = styled.h3`
+  font-size: 1.8em;
+  margin: 0.4em;
+  text-align: center;
+  margin-top: 0.8em;
+`;
+const ReadingsElement = styled.p`
+  font-size: 1.8em;
+  margin: 0.4em;
+`;
+const Subheading = styled.h4`
+  font-size: 1.2em;
+  padding-left: 0.4em;
+`;
+const Paragraph = styled.p`
+  font-size: 1.2em;
+  margin: 0.4em;
+`;
 
 export default function VocabularyReading({ id }) {
   const { subjects, isLoading, isError } = useSubjects(id);

@@ -1,9 +1,35 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import LeftArrowSVG from "../src/heroicons/arrow-left.svg";
+import RightArrowSVG from "../src/heroicons/arrow-right.svg";
 import VocabularyListComponent from "./VocabularyList.js";
 
-const VocabHeader = styled.h2`
-  text-align: center;
-  font-size: 2em;
+const MainNavigationContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.2em;
+  padding-right: 0.4em;
+`;
+
+const LeftButton = styled.button.attrs((props) => ({
+  $visibilty: props.$visibility,
+}))`
+  border: none;
+  background-color: #fafafa;
+  align-self: start;
+  margin-left: 0.4em;
+  border-radius: 0.4em;
+  padding: 0.4em;
+  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset,
+    0 0 10px rgba(255, 255, 255, 0.5);
+  visibility: ${(props) => (props.$visibility ? "visible" : "hidden")};
+`;
+
+const LeftIcon = styled(LeftArrowSVG)`
+  width: 100%;
+  height: 2.6em;
 `;
 
 const LevelHeader = styled.h3`
@@ -12,30 +38,67 @@ const LevelHeader = styled.h3`
   font-size: 1.2em;
 `;
 
+const RightButton = styled.button.attrs((props) => ({
+  $visibilty: props.$visibility,
+}))`
+  border: none;
+  background-color: #fafafa;
+  align-self: end;
+  margin-left: 0.4em;
+  border-radius: 0.4em;
+  padding: 0.4em;
+  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset,
+    0 0 10px rgba(255, 255, 255, 0.5);
+  visibility: ${(props) => (props.$visibility ? "visible" : "hidden")};
+`;
+
+const RightIcon = styled(RightArrowSVG)`
+  width: 100%;
+  height: 2.6em;
+`;
+
 export default function FullVocabList() {
+  const [levelNumber, setLevelNumber] = useState(1);
+  const [isMoreLevels, setIsMoreLevels] = useState(true);
+  const [isLessLevels, setIsLessLevels] = useState(false);
+
+  useEffect(() => {
+    levelNumber === 1 ? setIsLessLevels(false) : setIsLessLevels(true);
+    levelNumber === 60 ? setIsMoreLevels(false) : setIsMoreLevels(true);
+  }, [levelNumber]);
+
+  function handleClickLeft() {
+    setLevelNumber(levelNumber - 1);
+  }
+
+  function handleClickRight() {
+    setLevelNumber(levelNumber + 1);
+  }
+
   return (
     <>
-      <VocabHeader>単語 - Vocabulary</VocabHeader>
-      <LevelHeader>Level 1</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=1&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 2</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=2&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 3</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=3&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 4</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=4&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 5</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=5&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 6</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=6&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 7</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=7&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 8</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=8&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 9</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=9&types=vocabulary,kana_vocabulary" />
-      <LevelHeader>Level 10</LevelHeader>
-      <VocabularyListComponent endpointPath="?levels=10&types=vocabulary,kana_vocabulary" />
+      <MainNavigationContainer>
+        <LeftButton
+          $visibility={isLessLevels}
+          type="button"
+          onClick={handleClickLeft}
+        >
+          <LeftIcon />
+        </LeftButton>
+        <LevelHeader>Level {levelNumber}</LevelHeader>
+        <RightButton
+          $visibility={isMoreLevels}
+          type="button"
+          onClick={handleClickRight}
+        >
+          <RightIcon />
+        </RightButton>
+      </MainNavigationContainer>
+      <VocabularyListComponent
+        endpointPath={
+          "?levels=" + levelNumber + "&types=vocabulary,kana_vocabulary"
+        }
+      />
     </>
   );
 }

@@ -3,8 +3,9 @@ import useSubjects from "../swr/useSubjects.js";
 import KanjiList from "./KanjiList.js";
 
 const Heading = styled.h3`
-  font-size: 1.6em;
+  font-size: 1.8em;
   margin: 0.4em;
+  text-align: center;
 `;
 
 export default function RadicalFoundInKanji({ id }) {

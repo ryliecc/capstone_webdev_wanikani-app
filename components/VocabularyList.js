@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
 import { useRouter } from "next/router.js";
+import LoadingComponent from "./Loading.js";
 
 const VocabList = styled.ul`
   display: flex;
@@ -50,12 +51,6 @@ const VocabListMeaningSpan = styled.span`
 export default function VocabularyListComponent({ endpointPath }) {
   const router = useRouter();
   const { subjects, isLoading, isError } = useSubjects(endpointPath);
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
-  if (isError) {
-    return <div>Error fetching...</div>;
-  }
 
   const VocabularyListItems = subjects?.map((item) => (
     <VocabListItem
@@ -73,5 +68,12 @@ export default function VocabularyListComponent({ endpointPath }) {
       </SidebarContainer>
     </VocabListItem>
   ));
+
+  if (isLoading) {
+    return <LoadingComponent loadingIsVisible />;
+  }
+  if (isError) {
+    return <div>Error fetching...</div>;
+  }
   return <VocabList>{VocabularyListItems}</VocabList>;
 }

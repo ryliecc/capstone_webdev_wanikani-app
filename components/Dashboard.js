@@ -23,7 +23,8 @@ const MainNavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   position: absolute;
-  padding: 0 0.4em;
+  padding-left: 0.2em;
+  padding-right: 0.4em;
 `;
 
 const LogoutButton = styled.button`
@@ -39,7 +40,7 @@ const LogoutButton = styled.button`
 
 const LogoutIcon = styled(LogoutSVG)`
   width: 100%;
-  height: 3em;
+  height: 2.6em;
 `;
 
 const SettingsButton = styled.button`
@@ -55,15 +56,15 @@ const SettingsButton = styled.button`
 
 const SettingsIcon = styled(SettingsSVG)`
   width: 100%;
-  height: 3em;
+  height: 2.6em;
 `;
 
 const Greeting = styled.p`
-  font-size: 4rem;
+  font-size: 3.4em;
   background-color: #f4f4f4;
   border-radius: 5px;
-  margin-top: 0.4em;
-  padding: 1rem;
+  margin-top: 0.2em;
+  padding: 0.2em;
   color: #333;
 `;
 

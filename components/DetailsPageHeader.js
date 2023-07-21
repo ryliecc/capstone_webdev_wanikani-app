@@ -26,7 +26,7 @@ const CharacterSpan = styled.span.attrs((props) => ({
   border-radius: 6px;
   background-color: ${(props) => props.$backgroundcolor};
   color: #fff;
-  width: 1.5em;
+  padding: 0 0.25em;
   height: 1.5em;
   text-align: center;
   box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset,

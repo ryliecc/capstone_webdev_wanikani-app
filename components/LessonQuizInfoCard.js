@@ -9,7 +9,7 @@ const Container = styled.div.attrs((props) => ({
 export default function LessonQuizInfoCard({ cardVisibility, subjectType }) {
   return (
     <Container $visibility={cardVisibility}>
-      For this subject type has no Info Card been created yet.
+      For the {subjectType} subject type has no Info Card been created yet.
     </Container>
   );
 }

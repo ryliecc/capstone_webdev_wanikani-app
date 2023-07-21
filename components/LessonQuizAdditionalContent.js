@@ -74,7 +74,7 @@ export default function LessonQuizAdditionalContent({
       </ContentButtonContainer>
       <WrongAnswerCard
         cardVisibility={!isHiddenWrong}
-        ArrowPositionRight="68%"
+        ArrowPositionRight="50%"
       />
       <LessonQuizInfoCard
         cardVisibility={!isHiddenInfo}

@@ -6,7 +6,9 @@ const ContentCard = styled.section.attrs((props) => ({
   background-color: #f4f4f4;
   box-shadow: 3px 3px 0 #e1e1e1;
   display: ${(props) => (props.$visibility ? "block" : "none")};
-  width: 100%;
+  width: 65%;
+  height: 4em;
+  padding: 0.8em;
   position: relative;
   margin-top: 0.9em;
 `;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
 import { useRouter } from "next/router.js";
+import { useState } from "react";
+import PlusSVG from "../src/heroicons/plus.svg";
 
 const RadicalListElement = styled.ul`
   display: flex;
@@ -33,7 +35,14 @@ const RadicalListMeaningSpan = styled.span`
   font-size: 0.7em;
 `;
 
-export default function RadicalList({ endpointPath }) {
+const RadicalListPlusIcon = styled(PlusSVG).attrs((props) => ({
+  $visibility: props.$visibility,
+}))`
+  display: ${(props) => (props.$visibility ? "block" : "none")};
+`;
+
+export default function RadicalList({ endpointPath, isCombination }) {
+  const [isPlusVisible, setIsPlusVisible] = useState(false);
   const router = useRouter();
   const { subjects, isLoading, isError } = useSubjects(endpointPath);
   if (isLoading) {
@@ -43,19 +52,24 @@ export default function RadicalList({ endpointPath }) {
     return <div>Error fetching...</div>;
   }
 
-  const RadicalListItems = subjects?.map((item) => (
-    <RadicalListItem
-      key={item.id}
-      onClick={() => router.push("/radicals/" + item.id)}
-    >
-      <RadicalListCharacterSpan>
-        {item.data.characters}
-      </RadicalListCharacterSpan>
-      <RadicalListMeaningSpan>
-        {item.data.meanings.map((meaning) => meaning.meaning).join(", ")}
-      </RadicalListMeaningSpan>
-    </RadicalListItem>
-  ));
+  const RadicalListItems = subjects?.map((item) => {
+    return (
+      <>
+        <RadicalListItem
+          key={item.id}
+          onClick={() => router.push("/radicals/" + item.id)}
+        >
+          <RadicalListCharacterSpan>
+            {item.data.characters}
+          </RadicalListCharacterSpan>
+          <RadicalListMeaningSpan>
+            {item.data.meanings.map((meaning) => meaning.meaning).join(", ")}
+          </RadicalListMeaningSpan>
+        </RadicalListItem>
+        <RadicalListPlusIcon $visibility={isPlusVisible} />
+      </>
+    );
+  });
 
   return <RadicalListElement>{RadicalListItems}</RadicalListElement>;
 }

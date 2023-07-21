@@ -67,7 +67,7 @@ export default function QuizMenuBar({
       <LessonQuizAdditionalContent
         isHiddenWrong={isHiddenWrong}
         setIsHiddenWrong={setIsHiddenWrong}
-        SubjectType="Something"
+        SubjectType={SubjectType}
         isHiddenInfo={isHiddenInfo}
         setIsHiddenInfo={setIsHiddenInfo}
       />

@@ -23,9 +23,19 @@ const StyledVocabulary = styled.span`
   border-radius: 5px;
 `;
 
-const StyledMeaning = styled.span``;
+const StyledMeaning = styled.span`
+  color: #ffffff;
+  background-color: #555;
+  padding: 0.05em 0.2em;
+  border-radius: 5px;
+`;
 
-const StyledReading = styled.span``;
+const StyledReading = styled.span`
+  color: #ffffff;
+  background-color: #555;
+  padding: 0.05em 0.2em;
+  border-radius: 5px;
+`;
 
 export default function StyledApiResponse({ text }) {
   const jaPattern = /<ja>(.*?)<\/ja>/g;
@@ -36,7 +46,7 @@ export default function StyledApiResponse({ text }) {
   const readingPattern = /<reading>(.*?)<\/reading>/g;
 
   function replaceSpansWithComponents(inputText) {
-    return inputText.split(jaPattern).map((item, index) => {
+    return inputText?.split(jaPattern).map((item, index) => {
       if (index % 2 === 1) {
         return <StyledJa key={index}>{item}</StyledJa>;
       }

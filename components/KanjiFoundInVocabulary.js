@@ -2,7 +2,12 @@ import styled from "styled-components";
 import VocabularyListComponent from "./VocabularyList.js";
 import useSubjects from "../swr/useSubjects.js";
 
-const Heading = styled.h3``;
+const Heading = styled.h3`
+  font-size: 1.8em;
+  margin: 0.4em;
+  text-align: center;
+  margin-top: 0.8em;
+`;
 
 export default function KanjiFoundInVocabulary({ id }) {
   const { subjects, isLoading, isError } = useSubjects(id);

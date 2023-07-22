@@ -58,8 +58,8 @@ export default function LessonItemsLeftCounter({ LessonIds }) {
   const LessonKanji = subjects?.filter((item) => item.object === "kanji");
   const KanjiAmount = LessonKanji?.length;
 
-  const LessonVocabulary = subjects?.filter(
-    (item) => item.object === "vocabulary"
+  const LessonVocabulary = subjects?.filter((item) =>
+    item.object.includes("vocabulary")
   );
   const VocabularyAmount = LessonVocabulary?.length;
 

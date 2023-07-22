@@ -1,16 +1,60 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
+import StyledApiResponse from "./StyledApiResponse.js";
 
-const Heading = styled.h3``;
+const Heading = styled.h3`
+  font-size: 1.8em;
+  margin: 0.4em;
+  text-align: center;
+  margin-top: 0.8em;
+`;
 const Paragraph = styled.p`
   display: flex;
-  justify-content: flex-start;
   gap: 0.4em;
+  font-size: 1.2em;
+  margin: 0.4em;
 `;
-const CategorySpan = styled.span``;
-const MeaningSpan = styled.span``;
-const Subheading = styled.h4``;
-const HintsContainer = styled.section``;
+const CategorySpan = styled.span`
+  color: #999;
+`;
+const MeaningSpan = styled.span`
+  color: #333;
+`;
+const Subheading = styled.h4`
+  font-size: 1.2em;
+  padding-left: 0.4em;
+`;
+
+const Text = styled.p`
+  font-size: 1.2em;
+  margin: 0.4em;
+  line-height: 1.4em;
+`;
+
+const HintsArrow = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 1.6em solid transparent;
+  border-right: 1.6em solid transparent;
+  border-bottom: 1.6em solid #f4f4f4;
+  position: absolute;
+  top: -1.4em;
+`;
+const HintsContainer = styled.section`
+  background-color: #f4f4f4;
+  margin: 1em;
+  margin-top: 1.6em;
+  padding: 1em;
+  position: relative;
+`;
+
+const HintsText = styled.p`
+  color: #333;
+  font-size: 1em;
+  padding: 0.2em;
+  padding-left: 0.4em;
+  line-height: 1.4em;
+`;
 
 export default function KanjiMeaning({ id }) {
   const { subjects, isLoading, isError } = useSubjects(id);
@@ -47,10 +91,15 @@ export default function KanjiMeaning({ id }) {
       </Paragraph>
 
       <Subheading>Mnemonic</Subheading>
-      <Paragraph>{Mnemonic}</Paragraph>
+      <Text>
+        <StyledApiResponse text={Mnemonic} />
+      </Text>
       <HintsContainer>
+        <HintsArrow />
         <Subheading>HINTS</Subheading>
-        <Paragraph>{Hint}</Paragraph>
+        <HintsText>
+          <StyledApiResponse text={Hint} />
+        </HintsText>
       </HintsContainer>
     </>
   );

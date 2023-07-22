@@ -5,7 +5,7 @@ import EyeSlashSVG from "../src/heroicons/eye-slash.svg";
 import EyeSVG from "../src/heroicons/eye.svg";
 import SpeakerWaveSVG from "../src/heroicons/speaker-wave.svg";
 import { useState } from "react";
-import InformationCard from "./InformationCard.js";
+import ReviewSessionVocabInformationCard from "./ReviewSessionVocabInformationCard.js";
 import WrongAnswerCard from "./WrongAnswerCard.js";
 
 const AdditionalContentContainer = styled.div`
@@ -104,8 +104,11 @@ export default function AdditionalContent({
           <ButtonSpeakerWaveImage />
         </ContentButton>
       </ContentButtonContainer>
-      <WrongAnswerCard cardVisibility={!isHiddenWrong} />
-      <InformationCard
+      <WrongAnswerCard
+        cardVisibility={!isHiddenWrong}
+        ArrowPositionRight="31%"
+      />
+      <ReviewSessionVocabInformationCard
         cardVisibility={!isHiddenInfo}
         primaryMeaning={primaryMeaning}
         alternativeMeaning={alternativeMeaning}

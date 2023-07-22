@@ -6,12 +6,16 @@ const ContentCard = styled.section.attrs((props) => ({
   background-color: #f4f4f4;
   box-shadow: 3px 3px 0 #e1e1e1;
   display: ${(props) => (props.$visibility ? "block" : "none")};
-  width: 100%;
+  width: 65%;
+  height: 4em;
+  padding: 0.8em;
   position: relative;
   margin-top: 0.9em;
 `;
 
-const BorderArrow = styled.div`
+const BorderArrow = styled.div.attrs((props) => ({
+  $position: props.$position,
+}))`
   width: 0;
   height: 0;
   border-left: 1.6em solid transparent;
@@ -19,18 +23,21 @@ const BorderArrow = styled.div`
   border-bottom: 1.6em solid #f4f4f4;
   position: absolute;
   top: -1.5em;
-  right: 31%;
+  right: ${(props) => props.$position};
 `;
 
 const TextParagraph = styled.p`
   font-size: 1em;
 `;
 
-export default function WrongAnswerCard({ cardVisibility }) {
+export default function WrongAnswerCard({
+  cardVisibility,
+  ArrowPositionRight,
+}) {
   return (
     <>
       <ContentCard $visibility={cardVisibility}>
-        <BorderArrow />
+        <BorderArrow $position={ArrowPositionRight} />
         <TextParagraph>
           Need help? View the correct reading and mnemonic.
         </TextParagraph>

@@ -14,7 +14,7 @@ export default function KanjiDetailsPage() {
     <>
       <AppHeader />
       <SubjectsNavBar />
-      <DetailsPageHeader id={id} />
+      <DetailsPageHeader id={id} typeColor="#FF00AA" />
       <RadicalCombination id={id} />
       <KanjiMeaning id={id} />
       <KanjiReading id={id} />

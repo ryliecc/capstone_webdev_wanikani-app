@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 import { useState } from "react";
 import RomajiConverter from "../RomajiConverter/useRomajiConverter.js";
+import useStartAssignment from "../swr/useStartAssignment.js";
 
 const AnswerFormContainer = styled.div`
   display: flex;
@@ -48,39 +49,101 @@ const EnterButtonImage = styled(ChevronRightSVG)`
 `;
 
 export default function AnswerInputField({
-  placeholderText,
-  validAnswerText,
+  expectedAnswerType,
+  expectedAnswerText,
   setIsHiddenWrong,
+  setIsHiddenInfo,
+  quizItems,
+  setQuizItems,
+  currentQuizItem,
+  changeQuizItemIndexRandomly,
+  setIsPopupVisible,
 }) {
   const [inputFieldBackgroundColor, setInputFieldBackgroundColor] =
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
+  const [quizStatus, setQuizStatus] = useState("not answered");
+  const startAssignment = useStartAssignment(currentQuizItem?.assignmentId);
 
   function handleSubmitAnswer(event) {
     event.preventDefault();
     const answer = event.target.elements.answer.value;
-    if (validAnswerText == answer) {
+    if (quizStatus === "answered correct") {
+      if (quizItems.length === 1) {
+        setIsPopupVisible(true);
+      } else {
+        setQuizStatus("not answered");
+        setIsHiddenInfo(true);
+        setQuizItems((prevQuizItems) =>
+          prevQuizItems.filter((item) => item.quizId !== currentQuizItem.quizId)
+        );
+        const isStillInBatch = quizItems.find(
+          (item) => item.id === currentQuizItem.id
+        );
+        if (isStillInBatch) {
+          setTextColor("#333");
+          setInputFieldBackgroundColor("f4f4f4");
+          console.log(quizItems);
+          event.target.elements.answer.value = "";
+        } else {
+          startAssignment();
+          setTextColor("#333");
+          setInputFieldBackgroundColor("f4f4f4");
+          console.log(quizItems);
+          event.target.elements.answer.value = "";
+        }
+      }
+    } else if (quizStatus === "answered wrong") {
+      setQuizStatus("not answered");
+      setIsHiddenInfo(true);
+      setIsHiddenWrong(true);
+      setTextColor("#333");
+      setInputFieldBackgroundColor("f4f4f4");
+      event.target.elements.answer.value = "";
+      setQuizItems((prevQuizItems) => {
+        const updatedQuizItems = prevQuizItems.filter(
+          (item) => item.quizId !== currentQuizItem.quizId
+        );
+        updatedQuizItems.push(currentQuizItem);
+        return updatedQuizItems;
+      });
+      changeQuizItemIndexRandomly();
+    } else if (expectedAnswerText && expectedAnswerText.includes(answer)) {
       setInputFieldBackgroundColor("#88cc00");
       setTextColor("#ffffff");
+      setQuizStatus("answered correct");
     } else {
       setInputFieldBackgroundColor("#ff0033");
       setTextColor("#ffffff");
       setIsHiddenWrong(false);
+      setQuizStatus("answered wrong");
     }
   }
 
   function handleChangeAnswerField(event) {
-    const RomajiInput = event.target.value;
+    if (expectedAnswerType === "Reading") {
+      const RomajiInput = event.target.value;
 
-    if (RomajiInput.slice(-2) === "nn") {
-      event.target.value = RomajiInput.slice(0, -2) + "ん";
-    } else if (RomajiInput.slice(-1) === "n") {
-      return null;
+      if (RomajiInput.slice(-2) === "nn") {
+        event.target.value = RomajiInput.slice(0, -2) + "ん";
+      } else if (RomajiInput.slice(-1) === "n") {
+        return null;
+      } else {
+        const HiraganaOutput = RomajiConverter(RomajiInput);
+        event.target.value = HiraganaOutput;
+      }
     } else {
-      const HiraganaOutput = RomajiConverter(RomajiInput);
-      event.target.value = HiraganaOutput;
+      return null;
     }
   }
+
+  const placeholderText = () => {
+    if (expectedAnswerType === "Reading") {
+      return "答え";
+    } else {
+      return "Your answer";
+    }
+  };
 
   return (
     <AnswerFormContainer>
@@ -89,7 +152,7 @@ export default function AnswerInputField({
         $backgroundcolor={inputFieldBackgroundColor}
       >
         <AnswerField
-          placeholder={placeholderText}
+          placeholder={placeholderText()}
           type="text"
           name="answer"
           autoComplete="off"

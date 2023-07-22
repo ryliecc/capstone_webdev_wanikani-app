@@ -64,24 +64,6 @@ const TextSpan = styled.span`
   color: #333;
 `;
 
-const Pattern = styled.button.attrs((props) => ({
-  $backgroundcolor: props.$backgroundcolor,
-}))`
-  type: "button";
-  border: none;
-  text-align: start;
-  color: #333;
-  background-color: ${(props) => props.$backgroundcolor};
-`;
-
-const CombinationContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.1em;
-  padding: 0.6em;
-  background-color: #e0e0e0;
-`;
-
 const CombinationElement = styled.p`
   color: #333;
   margin-top: 0.4em;
@@ -120,7 +102,7 @@ const KanjiListMeaningSpan = styled.span`
   font-size: 0.9em;
 `;
 
-export default function InformationCard({
+export default function ReviewSessionVocabInformationCard({
   cardVisibility,
   primaryMeaning,
   alternativeMeaning,
@@ -128,10 +110,6 @@ export default function InformationCard({
   meaningMnemonic,
   primaryReading,
   readingMnemonic,
-  firstPattern,
-  secondPattern,
-  firstWordCombinations,
-  secondWordCombinations,
   contextSentences,
   compositionKanjiCharacter,
   compositionKanjiReading,
@@ -142,11 +120,6 @@ export default function InformationCard({
   const [contextIsVisible, setContextIsVisible] = useState(false);
   const [kanjiCompositionIsVisible, setKanjiCompositionIsVisible] =
     useState(false);
-  const [wordCombinations, setWordCombinations] = useState(
-    firstWordCombinations
-  );
-  const [firstPatternColor, setFirstPatternColor] = useState("#e0e0e0");
-  const [secondPatternColor, setSecondPatternColor] = useState("transparent");
 
   const meaningButtonImage = meaningIsVisible ? (
     <ButtonChevronDownImage />
@@ -184,17 +157,6 @@ export default function InformationCard({
     setKanjiCompositionIsVisible(!kanjiCompositionIsVisible);
   }
 
-  const wordCombinationElements = wordCombinations.map(
-    (wordCombination, index) => {
-      return (
-        <div key={index}>
-          <CombinationElement>{wordCombination.jap}</CombinationElement>
-          <CombinationMeaning>{wordCombination.en}</CombinationMeaning>
-        </div>
-      );
-    }
-  );
-
   const contextSentencesElements = contextSentences.map(
     (contextSentence, index) => {
       return (
@@ -206,17 +168,7 @@ export default function InformationCard({
     }
   );
 
-  function handleClickFirstPattern() {
-    setWordCombinations(firstWordCombinations);
-    setFirstPatternColor("#e0e0e0");
-    setSecondPatternColor("transparent");
-  }
-
-  function handleClickSecondPattern() {
-    setWordCombinations(secondWordCombinations);
-    setFirstPatternColor("transparent");
-    setSecondPatternColor("#e0e0e0");
-  }
+  console.log("test log");
 
   return (
     <>
@@ -262,23 +214,6 @@ export default function InformationCard({
           Context
         </CardHeading>
         <CardText $visibility={contextIsVisible}>
-          <TextHeading>Patterns of Use</TextHeading>
-          <Pattern
-            onClick={handleClickFirstPattern}
-            $backgroundcolor={firstPatternColor}
-          >
-            {firstPattern}
-          </Pattern>
-          <Pattern
-            onClick={handleClickSecondPattern}
-            $backgroundcolor={secondPatternColor}
-          >
-            {secondPattern}
-          </Pattern>
-          <CombinationContainer>
-            <TextHeading>Common Word Combinations</TextHeading>
-            {wordCombinationElements}
-          </CombinationContainer>
           <TextHeading>Context Sentences</TextHeading>
           {contextSentencesElements}
         </CardText>

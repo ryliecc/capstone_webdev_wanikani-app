@@ -37,6 +37,7 @@ const TokenForm = styled.form`
 
 const InputField = styled.input`
   height: 100%;
+  width: 100%;
   border: none;
   text-align: start;
   font-size: 1em;
@@ -46,10 +47,8 @@ const InputField = styled.input`
 
 const EnterButton = styled.button`
   border: none;
-  width: 5em;
   height: 100%;
   position: relative;
-  right: -3.6em;
 `;
 
 const EnterButtonImage = styled(ChevronRightSVG)`

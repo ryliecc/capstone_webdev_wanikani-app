@@ -1,40 +1,100 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import LeftArrowSVG from "../src/heroicons/arrow-left.svg";
+import RightArrowSVG from "../src/heroicons/arrow-right.svg";
 import KanjiList from "./KanjiList.js";
 
-const KanjiHeader = styled.h2`
-  text-align: center;
-  font-size: 2em;
+const MainNavigationContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.2em;
+  padding-right: 0.4em;
+`;
+
+const LeftButton = styled.button.attrs((props) => ({
+  $visibilty: props.$visibility,
+}))`
+  border: none;
+  background-color: #fafafa;
+  align-self: start;
+  margin-left: 0.4em;
+  border-radius: 0.4em;
+  padding: 0.4em;
+  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset,
+    0 0 10px rgba(255, 255, 255, 0.5);
+  visibility: ${(props) => (props.$visibility ? "visible" : "hidden")};
+`;
+
+const LeftIcon = styled(LeftArrowSVG)`
+  width: 100%;
+  height: 2.6em;
 `;
 
 const LevelHeader = styled.h3`
   margin-left: 0.8em;
   font-size: 1.2em;
+  text-align: center;
+`;
+
+const RightButton = styled.button.attrs((props) => ({
+  $visibilty: props.$visibility,
+}))`
+  border: none;
+  background-color: #fafafa;
+  align-self: end;
+  margin-left: 0.4em;
+  border-radius: 0.4em;
+  padding: 0.4em;
+  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset,
+    0 0 10px rgba(255, 255, 255, 0.5);
+  visibility: ${(props) => (props.$visibility ? "visible" : "hidden")};
+`;
+
+const RightIcon = styled(RightArrowSVG)`
+  width: 100%;
+  height: 2.6em;
 `;
 
 export default function FullKanjiList() {
+  const [levelNumber, setLevelNumber] = useState(1);
+  const [isMoreLevels, setIsMoreLevels] = useState(true);
+  const [isLessLevels, setIsLessLevels] = useState(false);
+
+  useEffect(() => {
+    levelNumber === 1 ? setIsLessLevels(false) : setIsLessLevels(true);
+    levelNumber === 60 ? setIsMoreLevels(false) : setIsMoreLevels(true);
+  }, [levelNumber]);
+
+  function handleClickLeft() {
+    setLevelNumber(levelNumber - 1);
+  }
+
+  function handleClickRight() {
+    setLevelNumber(levelNumber + 1);
+  }
+
   return (
     <>
-      <KanjiHeader>漢字 - Kanji</KanjiHeader>
-      <LevelHeader>Level 1</LevelHeader>
-      <KanjiList endpointPath="?levels=1&types=kanji" />
-      <LevelHeader>Level 2</LevelHeader>
-      <KanjiList endpointPath="?levels=2&types=kanji" />
-      <LevelHeader>Level 3</LevelHeader>
-      <KanjiList endpointPath="?levels=3&types=kanji" />
-      <LevelHeader>Level 4</LevelHeader>
-      <KanjiList endpointPath="?levels=4&types=kanji" />
-      <LevelHeader>Level 5</LevelHeader>
-      <KanjiList endpointPath="?levels=5&types=kanji" />
-      <LevelHeader>Level 6</LevelHeader>
-      <KanjiList endpointPath="?levels=6&types=kanji" />
-      <LevelHeader>Level 7</LevelHeader>
-      <KanjiList endpointPath="?levels=7&types=kanji" />
-      <LevelHeader>Level 8</LevelHeader>
-      <KanjiList endpointPath="?levels=8&types=kanji" />
-      <LevelHeader>Level 9</LevelHeader>
-      <KanjiList endpointPath="?levels=9&types=kanji" />
-      <LevelHeader>Level 10</LevelHeader>
-      <KanjiList endpointPath="?levels=10&types=kanji" />
+      <MainNavigationContainer>
+        <LeftButton
+          $visibility={isLessLevels}
+          type="button"
+          onClick={handleClickLeft}
+        >
+          <LeftIcon />
+        </LeftButton>
+        <LevelHeader>Level {levelNumber}</LevelHeader>
+        <RightButton
+          $visibility={isMoreLevels}
+          type="button"
+          onClick={handleClickRight}
+        >
+          <RightIcon />
+        </RightButton>
+      </MainNavigationContainer>
+      <KanjiList endpointPath={"?levels=" + levelNumber + "&types=kanji"} />
     </>
   );
 }

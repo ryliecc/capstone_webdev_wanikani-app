@@ -1,15 +1,34 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
+import StyledApiResponse from "./StyledApiResponse.js";
 
-const Heading = styled.h3``;
+const Heading = styled.h3`
+  font-size: 1.8em;
+  margin: 0.4em;
+  text-align: center;
+  margin-top: 0.8em;
+`;
 const Paragraph = styled.p`
   display: flex;
-  justify-content: flex-start;
   gap: 0.4em;
+  font-size: 1.2em;
+  margin: 0.4em;
 `;
-const CategorySpan = styled.span``;
-const MeaningSpan = styled.span``;
-const Subheading = styled.h4``;
+const CategorySpan = styled.span`
+  color: #999;
+`;
+const MeaningSpan = styled.span`
+  color: #333;
+`;
+const Subheading = styled.h4`
+  font-size: 1.2em;
+  padding-left: 0.4em;
+`;
+const Text = styled.p`
+  font-size: 1.2em;
+  margin: 0.4em;
+  line-height: 1.4em;
+`;
 
 export default function VocabularyMeaning({ id }) {
   const { subjects, isLoading, isError } = useSubjects(id);
@@ -50,7 +69,9 @@ export default function VocabularyMeaning({ id }) {
       </Paragraph>
 
       <Subheading>Explanation</Subheading>
-      <Paragraph>{Mnemonic}</Paragraph>
+      <Text>
+        <StyledApiResponse text={Mnemonic} />
+      </Text>
     </>
   );
 }

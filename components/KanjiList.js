@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import useSubjects from "../swr/useSubjects.js";
 import { useRouter } from "next/router.js";
+import LoadingComponent from "./Loading.js";
 
 const KanjiListElement = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
   margin: 0.5em;
+  justify-content: center;
 `;
 
 const KanjiListItem = styled.li`
@@ -42,12 +44,6 @@ export default function KanjiList({ endpointPath }) {
   const { subjects, isLoading, isError } = useSubjects(
     endpointPath && endpointPath
   );
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
-  if (isError) {
-    return <div>Error fetching...</div>;
-  }
 
   const KanjiListItems = subjects?.map((item) => (
     <KanjiListItem
@@ -63,5 +59,11 @@ export default function KanjiList({ endpointPath }) {
       </KanjiListMeaningSpan>
     </KanjiListItem>
   ));
+  if (isLoading) {
+    return <LoadingComponent loadingIsVisible />;
+  }
+  if (isError) {
+    return <div>Error fetching...</div>;
+  }
   return <KanjiListElement>{KanjiListItems}</KanjiListElement>;
 }

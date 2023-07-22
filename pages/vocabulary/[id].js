@@ -14,7 +14,7 @@ export default function VocabularyDetailsPage() {
     <>
       <AppHeader />
       <SubjectsNavBar />
-      <DetailsPageHeader id={id} />
+      <DetailsPageHeader id={id} typeColor="#AA00FF" />
       <VocabularyMeaning id={id} />
       <VocabularyReading id={id} />
       <VocabularyContext id={id} />

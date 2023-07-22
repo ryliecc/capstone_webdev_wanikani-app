@@ -36,8 +36,8 @@ export default function ReviewSessionPage() {
       <ReviewSessionItem itemText="夕べ" />
       <ReviewCategoryBar objectText="Vocabulary" categoryText="Reading" />
       <AnswerInputField
-        placeholderText="答え"
-        validAnswerText="ゆうべ"
+        expectedAnswerType="Reading"
+        expectedAnswerText="ゆうべ"
         setIsHiddenWrong={setIsHiddenWrong}
       />
       <AdditionalContent

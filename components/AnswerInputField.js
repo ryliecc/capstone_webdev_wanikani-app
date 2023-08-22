@@ -60,6 +60,9 @@ export default function AnswerInputField({
   changeQuizItemIndexRandomly,
   setIsPopupVisible,
 }) {
+  const [apiToken, setApiToken] = useLocalStorageState("apiToken", {
+    defaultValue: "",
+  });
   const [inputFieldBackgroundColor, setInputFieldBackgroundColor] =
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");

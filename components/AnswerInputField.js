@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import useLocalStorageState from "use-local-storage-state";
 import ChevronRightSVG from "../src/heroicons/chevron-right.svg";
 import { useState } from "react";
 import RomajiConverter from "../RomajiConverter/useRomajiConverter.js";
-import useStartAssignment from "../swr/useStartAssignment.js";
+/* import useStartAssignment from "../swr/useStartAssignment.js"; */
 
 const AnswerFormContainer = styled.div`
   display: flex;
@@ -63,7 +64,7 @@ export default function AnswerInputField({
     useState("#f4f4f4");
   const [textColor, setTextColor] = useState("#333");
   const [quizStatus, setQuizStatus] = useState("not answered");
-  const startAssignment = useStartAssignment(currentQuizItem?.assignmentId);
+  /* const startAssignment = useStartAssignment(currentQuizItem?.assignmentId); */
 
   function handleSubmitAnswer(event) {
     event.preventDefault();
@@ -86,7 +87,7 @@ export default function AnswerInputField({
           console.log(quizItems);
           event.target.elements.answer.value = "";
         } else {
-          startAssignment();
+          /* startAssignment(); */
           setTextColor("#333");
           setInputFieldBackgroundColor("f4f4f4");
           console.log(quizItems);
